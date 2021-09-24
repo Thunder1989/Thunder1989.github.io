@@ -1,0 +1,369 @@
+------------------------ Submission 2619, Review 2 ------------------------
+
+Title: FormaTrack: Tracking People based on Body Shape
+
+
+Primary Associate Editor's recommendation to Editors
+
+   Acceptable with minor (or no) changes by IMWUT
+
+Primary Associate Editor meta-review
+
+   The paper has received some quite differing scores. However the substance
+   of all reviews was quite similar. The general idea and some basic results
+   are very interesting. However there were some suggestions/claims with
+   respect to scalability to larger buildings and more people which are just
+   too speculative. Also, the reviewers requested detailed information about
+   the power consumptions. In this sense the minor review as such has to be
+   taken seriously and will be carefully evaluated by the AE
+
+Primary Associate Editor Meta-review: Major / minor revision requirements
+
+   - Make sure that claims related to building level tracking and more
+   people are scaled back.
+   - Provide absolute power consumption numbers
+
+Additional comments for authors
+
+   (blank)
+
+
+------------------------ Submission 2619, Review 1 ------------------------
+
+Title: FormaTrack: Tracking People based on Body Shape
+
+
+Contribution to IMWUT
+
+   The authors have taken a single-chip ultra wide band impulse radar
+   transceiver which has been used for sleep, respiratory monitoring and
+   occupancy and with the aid of supervised machine learning they have
+   produced a system to differentiate people moving through doorways in
+   different ways. In effect a person detection system, at a room level. By
+   taking all the distance data from the radar signal they can improve over
+   height measures alone (~80% to 90%) in a 2 person in a group
+   configuration. When considering a group of 8 with heights from 161-183cm
+   and 60.8kg to 97.9kg their accuracy is reduced to a little over 60%.
+   However, the can demonstrate convincing results when larger room
+   configurations are considered.
+
+Review
+
+   The authors have used a XeThru radar which affords a single chip
+   (monostatic) implementation of an Impulse Radar system. The company which
+   produces this offers various distance, presence and motion features in
+   their products.
+
+   The authors are interested in proposing a new biometric feature called
+   body shape. However, this is not well defined one introduced. Section 1
+   could be improved with a diagram which illustrates what areas of the body
+   are considered part of the body shape metric. The later discussion and
+   results show that height is a large determining factor and perhaps then
+   head to shoulders in the next largest factor. Does the actual shape of
+   the torso, arms, hands, face and legs actually have anything to
+   contribute here? Instead is it simply head distance and shoulder distance
+   and cross section of head and shoulders?
+
+   More detail should be provided on how you have emulated 15 different
+   floors plans. Currently it suggest an arbitrary selection of floor plans
+   and random movements were used, whereas you would not expect some
+   configurations to result in all possible movement patterns being seen. I
+   would like to see test results of just straight movement through the
+   doorways being reported on in terms of accuracy. I fear the random
+   movements + arbitrary floor plans are resulting in the simulation of more
+   unique movement pattern that might be expected in a real deployment.
+
+   For a journal paper the related work section is quite brief.
+
+   Some related work in tracking or tracking objects or use of Radar and ML
+   with recognizing body parts
+   Powerline positioning: A practical sub-room-level indoor location system
+   for domestic use
+   Recognizing daily activities with RFID-based sensors
+   RadarCat: Radar Categorization for Input & Interaction
+   A survey of indoor positioning and object locating systems
+   Object tracking: A survey
+
+   There are a wealth of location based systems, room level tracking and
+   presence detection research and use of Radar for sensing objects and body
+   parts. I would like to have seen a more systematic treatment of
+   description of how these pieces of related work were selected (e.g.
+   reporting of a systematic literature review process)
+
+
+   There are about 5 pages of radar and measurement description provided
+   here. What is not clear is how much this contributes to the paper. For
+   example, the XeThru radar provides a distance measure but this isn't
+   considered or compared with in section 3.2 for distance estimation.
+
+   Section 3.3 is very limited. I was expecting to be presented with details
+   on what is happening as a body moves through the doorway in terms of the
+   reflected signal at key points. As noted earlier the use of blackbox for
+   your machine learning means you cannot detail what aspects of the body
+   are contributing to the reflected signal and hence the metric.
+
+   The experimental setup and evaluation are well described and well
+   reported.
+
+
+
+
+
+
+
+
+
+
+
+Recommendation(s) to 1AE
+
+   Acceptable with minor (or no) changes by IMWUT
+
+Major / minor revisions (recommendation to 1AE)
+
+   Improvements on the related work
+   Diagrams, as noted, to improve the presentation of the work
+   More details in section 3.3 (e.g. aided by diagrams)
+
+Confidence in the review
+
+   Very confident - I am knowledgeable in the area
+
+
+------------------------ Submission 2619, Review 3 ------------------------
+
+Title: FormaTrack: Tracking People based on Body Shape
+
+
+Contribution to IMWUT
+
+   This paper describes an ambient system that recognizes identity and the
+   direction of a single person when he/she is passing through a door. The
+   system doesn't raise privacy concern as camera and microphone. The
+   evaluation demonstrates a quite attractive accuracy.
+
+Review
+
+   In general, this is a really nice paper that I enjoyed reading.
+
+   + a clever idea: the system setup contains sufficient information for
+   identifying a person, even when the person is carrying different extra
+   things (e.g. cap, mobile phone), and on the other hand doesn't capture
+   too rich information that might raise privacy concern.
+   + the paper is well-organized and well-written (e.g. structure,
+   language).
+   + the experiment is well-designed considering multiple aspects like
+   different walking path, the difference between day to day. The number of
+   participants is also OK (except one experiment)
+   + multiple aspects of the system are considered, including power
+   consumption, the time needed for training. These are essential for real
+   implementation.
+
+   There are only some small points that need further clarification and
+   improvement.
+   . in the abstract, it's declared, that "we expect that other, more
+   sophisticated radar sensors can achieve high accuracy with more people
+   and in larger buildings". I feel it's a little bit exaggerating, I guess
+   with more sophisticated radar sensors, the algorithms also need to be
+   changed. How many percent of content in this paper can still be used
+   remains unclear. I'd rather either not claim it or provide more details
+   (what kinds of radar sensor, what further algorithms, what kind of
+   improvement etc.).
+   . the participant number in the last experiment is only 2. This is pretty
+   small. I fully understand the difficulty in data gather and processing,
+   but with a number of 2, the result (although very promising now) is not
+   very convincing.
+   . it's very nice to consider the power consumption and it's great to see
+   power consumption can be dropped to 30%. However, it would be nice to
+   provide the power consumption in number (viz., in Watt), and considering
+   how much power is used in data gathering and how much in data processing
+   . If more data can be provided on other typical door passing system (how
+   much power they consume) so that the reader can compare between the
+   FormaTrack and them, it will be very welcome.
+
+Recommendation(s) to 1AE
+
+   Acceptable with minor (or no) changes by IMWUT
+
+Major / minor revisions (recommendation to 1AE)
+
+   I'd highly suggest increasing the number of participants to at least 5
+   (if not already more than 5) in all experiment.
+
+Confidence in the review
+
+   Very confident - I am knowledgeable in the area
+
+
+------------------------ Submission 2619, Review 4 ------------------------
+
+Title: FormaTrack: Tracking People based on Body Shape
+
+
+Contribution to IMWUT
+
+   The article is about a new approach to detect and identify persons
+   passung through doors. The underlying technology utilizes radar
+   information up to 1m. The authors discuss after their introduction and
+   problem definition related work and after that present their idea
+   utilizing radar information. They therefore give a short introduction
+   into the technic of radar based sensing including the possiblities of
+   relying on the so called doppler effect. The step by step improve the
+   system to reduce false positives and introduce new algorithms for
+   determing the direction from which side the person is entering the room.
+   Applying machine learning approaches the authors can differentiate
+   between two persons with close to 100 percent confidence which drops to
+   80 person if they try to differentiate 4 persons. In a simulation they
+   surveile the possibility to track up to 4 persons in different
+   floorplans. In another chapter the authors discuss the power reduction by
+   either combining the system with a pir sensor or by reducing the sampling
+   rates of the system.
+
+Review
+
+   Although I really like the idea of this paper using radar sensors to
+   detect the movements of persons throughout the houshold I have mixed
+   fealings about this work:
+   1) Structure: Initially the authors discuss their idea of using radar
+   sensors to detect the movements introducing an abstract description of
+   the problem. Coming from data processing and anaylis, I would have
+   prefered learning more about the used radar systems at the beginning of
+   the article (which would have avoided many thoughts untill I reached the
+   evaluation part). Issues which I would have adressed earlier: Sampling
+   rate of the used system, range
+   2) Discussion of the power consumption: There are no number about the
+   power consumption of the system without power saving features.
+   3) What happens if a very large person walks through the door so that the
+   head is closer to the sensor than the given noise threshold?
+
+   4) Health considerations with regard to large persons
+   5) Tracking of persons throughout the house - These are only hypothesis -
+   The simulation gives you hints - but from a single door to an complete
+   house - there are more issues which have to be considered... (And this
+   chapter gives the reader the feeling of reading an advertisement for your
+   other papers ;)).
+   6) Evalutation / Testing: The authors record the weigh of persons only
+   once (or perhaps they ask them), RF Reflections / signal attenuation
+   strongly depend on the fraction of water being part of the obstacle,
+   therefore I think the article should also consider this. In the training
+   / evaluation using machine learning approaches, the authors can achieve
+   this by using random samples of a data set from the persons from each day
+   throughout the week (which would consider the changes in water ratios -
+   especially if subjects come from gym...)
+
+Recommendation(s) to 1AE
+
+   Reject
+
+Major / minor revisions (recommendation to 1AE)
+
+   (blank)
+
+Confidence in the review
+
+   Highly confident - I consider myself an expert in the area
+
+
+------------------------ Submission 2619, Review 5 ------------------------
+
+Title: FormaTrack: Tracking People based on Body Shape
+
+
+Contribution to IMWUT
+
+   This paper presents a study on the use of a body-shape detecting,
+   monostatic radar (mounted on a door frame) to track people in a
+   multi-occupancy home. The paper includes an in-depth description of a
+   method for 1) detecting when someone walks through a doorway, 2)
+   determining direction of travel, 3) identifying the person from a group
+   of up to 8 people. The authors further examine the use of this technique
+   by incorporating a simulation of a multi-room, multi-person scenario. The
+   main study is carried out using 8 people over 7 days, and includes
+   variations in clothing. In an additional study, 2 people are analysed
+   while carrying different objects.
+
+   Overall the methods described are of sufficient detail for
+   reproducibility, and the evaluation makes a convincing case for using
+   this method in future work. This would be an excellent contribution to
+   IMWUT, of interest both to those working on home sensing and sensing more
+   generally.
+
+
+Review
+
+
+
+   I like this work. Almost all of my potential comments were addressed as
+   the paper went on. Those that remain are detailed in the 'Minor
+   Revisions' section below.
+
+   The biggest concern I have is with my (mis) interpretation of Figure 3
+   (see below). In brief, why is the non-crossing (noise) distance not
+   higher than the the ends of the crossing distance?
+
+   Some additional thoughts while reading: It is interesting that high-heels
+   can greatly affect the results (why is this result not in Fig 16?) It
+   would seem that the ideal training might involve instances of each person
+   wearing their most variously shaped clothing (heels, sandles, big hats,
+   etc.)
+
+   The addition of extra sensors to save power makes sense, although it does
+   have the limitation of extra installation costs. [I'm curious if the
+   information from those sensors might even be added to the radar to
+   improve the accuracy of the direction algorithm.] I would also be
+   interested to know what the actual power usage of the equipment is.
+
+
+
+
+Recommendation(s) to 1AE
+
+   Acceptable with minor (or no) changes by IMWUT
+
+Major / minor revisions (recommendation to 1AE)
+
+   I have a number of issues that I would like to see addressed:
+
+        1. section 3 onwards refers to 'non crossing', could you briefly define
+   exactly what this means early on (i.e. no-one is there, rather than
+   someone standing still under the door)
+
+        2. I am confused by Fig3 (a) and the accompanying text in 3.1. Why would
+   the 'non-crossing' distance be lower than the 'crossing' event? Judging
+   by the response of a crossing event, I would have expected the
+   non-crossing distance to be closer to 1.0. Is this some kind of distance
+   range measure rather than an absolute distance? Could you please explain
+   this?
+
+        3. Also with Fig3 (b), why are all of the non-crossing events within the
+   first 40 or so events? This figure needs to be better explained.
+
+        4. In 3.2 the "Radar Frame Rate" is mentioned but is nowhere defined.
+   Later we learn that the "frame rate" is 170Hz, but how does this fit with
+   the formula in 3.2  ( 170/(2*K) Hz doesn't seem right...)? Or is F some
+   other number. Please clarify this and the text following equation 3.
+
+        5. Further limitations. Out of curiosity: what happens if a person stops
+   and waits for a period of time on one side of the door? Similarly if a
+   person changes speed while walking through the door.
+
+        6. If available, what is the actual power consumption of the radar
+   device?
+
+
+   Minor comments:
+
+   - on writing: 3.2, p9. "For this we tilt FormaTrack towards one of the
+   rooms" -- this is written here as if its the first time the idea was
+   mentioned, but the first paragraph of 3.2 already introduces it. Perhaps
+   re-phrase here as a reminder.
+
+   - style: the end of p9 looks like an unfinished sentence (because the
+   eqn. falls onto the next page). Personally I prefer to see some form of
+   punctuation indicating what is to follow, e.g. a colon.
+
+   - 4, p10 "i.e. once each day" -- should that not be 25 times each day?
+
+Confidence in the review
+
+   Highly confident - I consider myself an expert in the area

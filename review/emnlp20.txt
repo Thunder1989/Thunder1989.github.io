@@ -1,0 +1,172 @@
+============================================================================ 
+EMNLP 2020 Reviews for Submission #823
+============================================================================ 
+
+Title: SeNsER: Learning Cross-Building Sensor Metadata Tagger
+Authors: Yang Jiao, Jiacheng Li, Jiaman Wu, Dezhi Hong, Rajesh Gupta and Jingbo Shang
+============================================================================
+                            META-REVIEW
+============================================================================ 
+
+Comments: This work proposes recasting the problem of classifying sensors based on metadata as a NER problem, and makes use of a char-LSTM-CRF model to extrapolate from the comparatively small amount of data that has been previously annotated.
+
+Reviewers recognized this as a unique problem, and while its niche may be narrow so as to compromise generalizability, it is an exemplar of how NLP can be used beyond the traditional applications. 
+
+Reviewers highlighted several areas for improvement that should be seriously considered in a subsequent revision, namely connecting the metrics to the particular use case in order to asses the relative importance of precision / recall, and a comparison or discussion about simpler models. An obvious choice here might be a regular expression based model, though another candidate that does not rely on inspection might be a byte pair encoding over sensor names to identify subwords that comprise each name, which in turn could be classified via bag of (sub)words.
+
+============================================================================
+                            REVIEWER #1
+============================================================================
+
+What is this paper about, what contributions does it make, and what are the main strengths and weaknesses?
+---------------------------------------------------------------------------
+The setting of this paper is a large university spread across at least two campuses.  The goal is to interpret vastly different metadata attached to sensors placed throughout every building on these campuses for information regarding available equipment and thermostat temperatures.  The authors would like to extract this information in some uniform fashion and with a minimum amount of manual annotation considering the fact that any given building could have close to 5,000 sensors alone.  Their approach is to piggyback off of Char-LSTM-CRF using the small amount of data they already have annotated and treat this as a NER-type task.
+
+This is a very well-written paper.  It is clear the authors know the material well as the explanations of their neural network architecture are thorough as is their familiarity with prior work.  This paper fits the track nicely as it is definitely a novel application of NLP.  The comparison to six systems plus three variants of their own is impressive for something so niche.
+
+My main concern is that this is probably too niche for this conference's audience and that that will result, unfairly, in low review scores.
+
+I like was the use of precision/recall/F1 as evaluation metrics, although it isn't clear to me what a true positive, false positive, or false negative is within this type of data.  It would be great if this could be briefly explained.
+---------------------------------------------------------------------------
+
+
+Reasons to accept
+---------------------------------------------------------------------------
+It's the perfect definition of an "NLP Application" (although that phrase also means "applications built that use NLP").  It's clear, concise while also being thorough.  I believe anyone doing work at the character-level will find it beneficial.
+---------------------------------------------------------------------------
+
+
+Reasons to reject
+---------------------------------------------------------------------------
+Some will argue that the application to sensor metadata is too niche and thus "uninteresting" to our community.
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+Reviewer's Scores
+---------------------------------------------------------------------------
+                         Reproducibility: 4
+                  Overall Recommendation: 4
+
+Typos, Grammar, Style, and Presentation Improvements
+---------------------------------------------------------------------------
+On line 184, I think "while" should be "where".
+
+On line 277, what is meant by "self-contained"?  Do you mean "for sake of completeness"?
+
+On line 391, when you say "techniques such as word2vec", did you actually use word2vec?  Did you also or instead use something else?  Please be specific.
+
+Please be consistent in writing either BIOES or IOBES (see line 492).
+---------------------------------------------------------------------------
+
+
+
+============================================================================
+                            REVIEWER #2
+============================================================================
+
+What is this paper about, what contributions does it make, and what are the main strengths and weaknesses?
+---------------------------------------------------------------------------
+This paper presents the sensor metadata tagging as a unique and important domain specific NER problem in limited labeled data settings. The paper attempts to solve the lack of limited labeled data by domain transfer -- treating co-training different vendors/buildings as different but related tasks. More specifically, the domain transfer is accomplished by co-training LM of the source and target domains (buildings) along with the NER chunking and tagging tasks. Along this training paradigm, the paper also utilizes the injection of external knowledge via an embedding derived from wikipedia corpus. Token together, this approach shows improvements in Sensor metadata tagging over a strong baseline for Sensor Metadata tagging (Char-LSTM-CRF). The paper also presents a creative way of mapping acronym using Siamese network. The performance of the final model (sensor) is strong for the dataset used in the study. Because the datasets are proprietary and are not used outside of this st!
+ udy, it is difficult to evaluate the generalizability of the model.
+
+The effectiveness of cross-building knowledge transfer in tagging and chunking performance tasks seem to empirically vary as (Table 2) and depend on the direction of knowledge transfer (which building is the source and which building is the target domains). I imagine that the source-target compatibility and transferability will affect how effective SeNsER will be on real world applications. It would be helpful if the authors could provide some explanation and/or insights on whether the transferability can be measured upfront rather empirically and if so, how. 
+
+The paper overall presents an eclectic collection of several interesting ideas that are brought together to solving a specific difficult domain specific NER problem. The paper could be made stronger by addressing how this collection of ideas come together and how this approach could be more broadly beneficial to NER applications outside of sensor metadata tagging.
+---------------------------------------------------------------------------
+
+
+Reasons to accept
+---------------------------------------------------------------------------
+The paper presents a unique and creative way to solve sensor metadata tagging in the limited data settings with creative use of existing labeled data in a related domain for LM co-training. 
+The paper also presents a creative solution to the Abbreviation discrepancies using Abbreviation-Phrase Matching Model. It addresses the limitation of a strong baseline Char-LSTM-CRF in the limited data settings and proposes a solution to surpass the performance of Char-LSTM-CRF by a large margin.
+---------------------------------------------------------------------------
+
+
+Reasons to reject
+---------------------------------------------------------------------------
+I think the paper overall is strong. To justify the generalizability of SeNsER overall, I would like to see more benchmark results of the domain transfer than just 3 domains (building A, B, C).
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+Reviewer's Scores
+---------------------------------------------------------------------------
+                         Reproducibility: 3
+                  Overall Recommendation: 3.5
+
+Questions for the Author(s)
+---------------------------------------------------------------------------
+It would be helpful for the readers if the paper include some discussion around how the source vs. target domain similarity/compatibility can be measured and how this might affect the quality of the domain transfer. 
+
+To address the generalizability and the effectiveness of SeNsER, are there any larger scale open source sensor metadata tagging datasets that the authors could apply SeNsER to?
+---------------------------------------------------------------------------
+
+
+
+============================================================================
+                            REVIEWER #3
+============================================================================
+
+What is this paper about, what contributions does it make, and what are the main strengths and weaknesses?
+---------------------------------------------------------------------------
+This paper studies the problem of automatically tagging sensor metadata across buildings. This finds application in smart infrastructure management and is a difficult problem because there's no standardized form of tagging and extracting the data (e.g., there might be different character mappings to building name, equipment types and then the sensor metadata itself). The common methods used to address this is regular expression however, that does not generalize to new buildings (and would probably require ongoing crafting / maintenance).
+
+The authors treated the problem as a form of character based NER tagging. i.e., rather than mapping / tagging whole words in the traditional NER setting, here you tag characters. Their solution is based on the Char-LSTM-CRF method from literature but the authors adds 3 things to their own design: (1) language models for regularization, (2) k-mers (i.e., subsequences of length k), and (3) domain knowledge (in this case, an abbreviation dataset from wikipedia).
+
+The k-mers have an intuitive application: for example, T, tmp, and temp can be used to represent the tag for temperature across different buildings. Using k-mers ensures this is learned in the model.
+
+The model is evaluated against 4 baselines: CRF, Char-LSTM-CRF, delimeter and dictionary. The authors show that their selected model outperform the baselines.
+
+However, it is not clear how these baselines were selected. The authors mentioned that they “sifted” through a few models before selecting the final model: were these (i.e., the evaluated baselines) the initially tested models since it is not clear if the baselines selected were from existing literature?
+
+I think one important baseline that was left out is regular expressions. The purpose of baselines is to evaluate against what’s currently used. From the authors admissions, it appears a common way to address this task is via regex, so it would be useful to see how this measures up (i.e., regardless of the generalization problems of regex).
+
+The authors also carry out a form of ablation study to demonstrate the effect / importance of what they added to the base Char-LSTM-CRF
+
+
+Strengths of the paper:
+- It addresses a practical problem
+- some of the approaches chosen e.g., the use of k-mers can be reasoned with intuitively
+- the paper is quite well written
+
+
+Weakness of the paper
+- it is unclear how the authors arrived at the final model that was selected
+- the evaluation baselines don't appear to be based on what you will use to solve this problem (e.g., regexes)
+
+Overall, I'm a bit on the fence. I think the motivation of why an elaborate model is needed is not quite convincing against what I think regex models can accomplish. One way to fix this will be highlighting the downsides / tradeoffs of using such regex models. I have put some more questions in the section below
+---------------------------------------------------------------------------
+
+
+Reasons to accept
+---------------------------------------------------------------------------
+- It addresses a practical problem
+---------------------------------------------------------------------------
+
+
+Reasons to reject
+---------------------------------------------------------------------------
+- the novelty is a bit questionable since it is largely incremental based on existing literature (i.e., applied to a new problem)
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+Reviewer's Scores
+---------------------------------------------------------------------------
+                         Reproducibility: 3
+                  Overall Recommendation: 3
+
+Questions for the Author(s)
+---------------------------------------------------------------------------
+Questions
+If the aim is to generalize to other (unseen) buildings, then why do you train on the target buildings. Or do you train on un-annotated target buildings?
+
+Section 4
+Why is the best model Char-LSTM-CRF? What other models were tried? Section 2 mentions this briefly by saying the authors sifted through other models
+
+What is the general performance of regex models on this task? For unseen target buildings (i.e., if I take my existing regex models) vs for known types of target buildings (e.g., a new building on an existing campus)
+
+What then would be the tradeoff of building / updating the regex models? time? money? e.g., what is the downside of categorizing the high level identifiers of the following tag: SODA1R430__ART to highlight the building (i.e. SOD) and room (i.e. R) and cascading that. Sensors can get deployed quickly (hence the need for annotation), but, there is a limit to how quickly there can be new building so the top level identifier e.g. SOD and R will remain constant for this building.
+---------------------------------------------------------------------------
+

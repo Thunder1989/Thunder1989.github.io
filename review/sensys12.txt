@@ -1,0 +1,153 @@
+===========================================================================
+                          SenSys 2012 Review #95A
+                 Updated Thursday 5 Jul 2012 9:50:19pm EDT
+---------------------------------------------------------------------------
+        Paper #95: MusicalHeart: A Hearty Way of Listening to Music
+---------------------------------------------------------------------------
+
+                      Overall merit: 4. Accept
+                 Reviewer expertise: 3. Knowledgeable
+
+                         ===== Paper summary =====
+
+This paper is about embedding sensors (specifically: accelerometer, microphone, and ECG) into earbuds for detecting a user’s heart rate and activity level (specifically: lie, seated, travel, slowmove, bike, gym, and jog), and while the user is listening to music. The user’s heart rate info can then be used by a music player to recommend the right-tempo music. For example, a user can select a target heart rate during physical exercise, and the music player can recommend music with a higher(lower) temp when the current heart rate is lower(higher) than the target rate. An advantage of this wearable device is built on top of the HiJack system (Michigan) such that it can leverage both power and bandwidth from any smartphone’s headset interface. The system also implements a nice signal processing technique to seperate the heart rate signals from other acoustic signals (music, etc.) in the earbuds. The authors have built and tested this wearable device. They have conducted use
+ r studies to measure the device’s sensing accuracies, energy consumption, etc. In general, this is a nice application paper.
+
+                        ===== Paper strengths =====
+
+-       Built and tested the system in a real user study.
+-       Nice system integration work that packages various sensors and electronic components inside a small earbud device.
+-       A well-written paper
+
+                       ===== Paper weaknesses =====
+
+-       Some minor inconsistency and over-claim (see below)
+
+                      ===== Comments for author =====
+
+-       Section 1 states one of the contributions is “an empirical study involving 37 smartphone users to collect ground truth data of heart rate and activity levels,”. Though the (high) number of participants is nice, it is misleading because only the heart rate experiment involves 37 participants. Two other experiments involve fewer than 37 participants, e.g., the activity level detection experiment has 17 users (Section 8.5) and music recommender experiment has 4 participants (Section 9).
+-       The paper introduces a new acoustic-based heart rate sensing technique, which is different from the existing accelerometer-based or infrared-based techniques.
+-       At the same time, the paper needs to clearly report the heart rate detection accuracy for this acoustic-based technique. Particularly, the paper needs to compare its performance with two similar earbud-embedded techniques based on accelerometer and infrared. It is a bit difficult for readers to interpret its accuracy result in the paper. For example, what does this mean - “(Section 1) the detected heart rate is 75%-85% correlated to the ground truth”? The paper states “(Section 1) an average error of 7.5 BPM” – ought to divide this number by the heart rate and report its detection error rate. Note that the infrared-based technique (i.e., reference [32]) reports 0.56-0.63% detection error.
+-       Since the earphone device is based on HiJack, i.e., the audio interface provides power, why does the earphone device still require a “thin film battery” (in Section 4.1)? Please explain. Does this mean that the earphone device consumes more power than what a smartphone’s audio interface provides?
+-       Is the table (shown in Figure 16) comparing the performance of two algorithms on two different data sets or on the same data set?
+
+===========================================================================
+                          SenSys 2012 Review #95B
+                 Updated Sunday 20 May 2012 10:02:21pm EDT
+---------------------------------------------------------------------------
+        Paper #95: MusicalHeart: A Hearty Way of Listening to Music
+---------------------------------------------------------------------------
+
+                      Overall merit: 5. Strong accept
+                 Reviewer expertise: 2. Some familiarity
+
+                         ===== Paper summary =====
+
+This paper presents the design of a bio-feedback based, context aware, automated music recommendation system to assist the user maintain a target heart rate. The designed platform continuously monitors the heart rate and activity level of the user while the user is listening to music. The physiological information along with contextual information are then sent to a remote server, which provides dynamic music suggestions to assist the user maintain a target heart rate. Thorough evaluations are done to demonstrate the practicality and accuracy of the designed system.
+
+                        ===== Paper strengths =====
+
+This is a terrific paper on all counts - neat idea, nice combination of techniques that combine low-power hardware/signal processing/inference/control, wonderful execution including measurements and user studies. More specifically, the novel ideas are: a) measurement of heart beat rate by analyzing the signal captured through a microphone that is embedded into a earplug - the key challenge being how to separate heart beat signal, music and noise, and the idea being a combination of low-pass filtering + use of dynamic programming-based search for the signal, b) a novel mechanism for music recommendation based on combination of bio-information (heart beat rate), activity and context information, and c) a novel mechanism to assist the user maintain a target heart rate by playing music which is carefully selected based on human physical conditions.
+
+                       ===== Paper weaknesses =====
+
+Nitpicks rather than actual weaknesses. 1) If some music contains signals which have the same frequency as heart beat, can you still separate heart beat signal efficiently? You mentioned heart beat signal can be separated from music, but the experiment does not say what type of music is being played - does the ability to separate heartbeat from music depend on the type of music being played? 2) Some of the results on the effect of music on dropping/raising heart-rate is correlational analysis but the text makes it appear causal - to really make the point, you need to provide p-values and have a hypothesis that you are carefully analyzing.
+
+                      ===== Comments for author =====
+
+This is a neat paper, and has an impressive mix of contributions that are vertical at different levels of the stack from hardware to a compelling bio-feedback based application. The paper builds a small embedded hardware and apply filter theory to separate heart beat signal successfully. Then multiple sensors are exploited to understand current user activity levels and context conditions. Finally bio-information, user activity level and user context are uploaded to remote severs which provides music to fit user physical conditions. It is a nice design and thorough evaluation is done to show the performance of each component.
+
+- I can see the benefit of exploiting bio-information, user activity levels and context information to recommend better music to users. But I cannot understand why music is needed to maintain a given heart beat rate. Why not just play music which fits into current physical condition? For example, high-tempo music may be played during running and soft music may be played when running. Why you need to set a heart beat rate target and play music to help you achieve that target unless you are on a treadmill or a bike and trying to hit some specific calorie goal?
+
+- The estimation of heart beat rate by exploiting the signal captured in a earplug is really neat and well-done.
+
+- For equation 2, if you only maximize Q(X) without minimizing V(X), will the results be better? Why do you care about the variance? If you need to consider variance, could you optimize Q(X)/V(X)? In this way, you are maximizing Q(X) while minimizing V(X).
+
+- In 6.1.1, how many samples do you obtain in 1 second? Will the number be enough for accurate variance calculation? Why not include |Aear| as another feature for classification - will it degrade performance?
+
+- In 6.2, the author claims that "The pitch and roll angles of the accelerometer data is used to distinguish between lying and seated contexts." This seems to require careful phone placement. If I carry my phone in any way I want, the pitch and roll angles of the accelerometer seem like they could generate arbitrary vaulues.
+
+- I cannot figure out how to get Equation 4 and which functionality does it stand for in Fig.9.
+
+- Need background information to explain what is desired pole in equation 7 and 8.
+
+- What is the baseline for analyzing the amount of rise and fall in Fig.13? Is it related to the type of music that is playing?
+
+1- In both text and figures, I cannot understand what is expressed in Fig.18 and Fig.19.
+
+===========================================================================
+                          SenSys 2012 Review #95C
+                Updated Thursday 24 May 2012 7:52:00pm EDT
+---------------------------------------------------------------------------
+        Paper #95: MusicalHeart: A Hearty Way of Listening to Music
+---------------------------------------------------------------------------
+
+                      Overall merit: 2. Weak reject
+                 Reviewer expertise: 4. Expert
+
+                         ===== Paper summary =====
+
+The paper describes a context aware, bio-feedback based music recommendation system for smart phones that is able to obtain heart rate and posture-activity level information from sensors (e.g. microphone, 3-axis acclerometer and gyroscope) placed in earbuds. The paper also describes how the system opportunistically collects context information through the use of the smartphone's GPS and WiFi. Altogether the system is non-invasive, capable of collecting continuous data for a long duration (phone lifetime is estimated to be 22 hours and the sensors consumes 42mW).
+
+Activity and context detection methods are shown to have good enough accuracy. The measured heart rate is shown to be 75-85% correlated with ground truth with an average error of 7.5 bpm, where the ground truth is obtained from pulse oximeter device. The error rate increases with activity level. The authors attribute this loss with poor audio reception due to displacement of earbuds after long periods of high physical activity.  Finally, the paper describes the design of a PI controller for the music recommendation module. The goal of the module is to achieve a target heart rate. Parameters of the models are learned from the history of individual user's responses.
+
+The evaluations are conducted with 37 subjects in a controlled environment to assess the accuracy of heart rate estimation and activity estimation. A pilot study is also conducted with 4 users who use the system for 3 days.
+
+                        ===== Paper strengths =====
+
+1. The system is non-invasive and more importantly does not put any extra burden on the user.
+2. The detection of heart rate from sound collected by the microphone placed in earbuds seems to be a novel innovation.
+3. The multiplexing of audio with digital communication of earbud is a useful innovation to make multiple uses of earbuds practical.
+4. The paper is well written and quite enjoyable to read.
+
+                       ===== Paper weaknesses =====
+
+1.      Several modules appear to be reinventing the wheel. This applies to the estimation of heart rate, activity detection, and context estimation. Numerous methods exist in the literature and hence it is not clear why the paper does not build over them.
+2.      The proposed system is a hobby application. For the application, there is no systematic evaluation of how this improves over what the existing systems do.
+3.      The estimation of heart rate is quite inaccurate with 10 bpm or more. At this error rate, even hobby applications may be ill-informed.
+4.      Heart rate is affected not only by music, but also by several other factors, such as movement, food intake, conversation, etc. Is music playing so potent as to keep the heart rate in desired target despite numerous demands on it? Is the proposed system a health intervention then? Such a design mixes serious health work with hobby science and may make for a system that may have adverse health impacts.
+5.      The energy analysis of the smartphone is incomplete since it does not analyze the impact of the full app (GPS, WiFi, processing, cloud communication, data collection, and music playing) in the lifetime.
+6.      The user study is pretty ad-hoc. It says 37 subjects, then mentions 17, 10, and 10 for dataset collection. Not clear for how long, what parameters were collected, supervised or not.
+7.      The cost-benefit analysis is overblown. Do two EarBuddy boards with MSP, IMU, and acoustic analog circuits cost less than a pulse oximeter?
+
+                      ===== Comments for author =====
+
+The paper claims to present a non-obtrusive heart rate intervention system that estimates heart rate and activity level from audio and inertial measurements embedded in earbuds, supplemented with GPS and WiFi measurements in a mobile phone, and intervenes by playing music to keep the heart rate in a target range. Is it indeed an intervention? Do people want to or can keep their heart rate in range? Is music playing and selection of appropriate music an appropriate, effective, and safe intervention? If the paper instead positions itself to informing music choices by its estimation of heart rate and context, it may be viewed differently. In that case, it will need to compare its performance and user experience with such a method as compared to existing music selection systems that sometimes are based on sharing of music lists from social networks.
+The detection of heart rate is treated as a new problem. But, there exists a rich history of ECG signal processing that are able to tolerate a variety of noises and quality issues. Once Butterworth filters are applied, why not apply Tomkins algorithm and its recent improvements to locate R-peaks and present its performance? In the current form, the R-peak detection problem appears as being solved for the first time and hence is unable to obtain good accuracy. With such error rates as presented, it is hard to envision serious applications of such a system. The cost and benefit of the earbud based heart rate detection is also hyped in the paper. Heart rate devices, especially those based on pluse oximeter sell for less than $100 a piece and they are likely lower than that of a pair of EarBuddy circuits. Further, earbuds also require wearing, which some users may do for music listening, but is not universally used.
+The activity detection is similarly treated as a new problem. Several works exist for activity detection, why were they not used or built upon?
+It is hard to envision the music recommendation system being able to maintain a desired heart rate, just by applying this recommendation system. Is the purpose of music entertainment of biofeedback? If the former, evaluation needs to be presented that this recommendation system leads to better choices and a better overall experience for the listener. This evaluation is needed even if the purpose is the latter to see if playing the music as per heart rate to keep it in certain range leads to a better experience.
+The user study evaluation is not systematic, in my opinion. Did all 37 subjects go through the entire protocol? If not, did some users go through the entire protocol? What is protocol for the study, how long are each activity performed, how is ground truth collected? Pulse oximeter itself may have errors during activity? More robust ambulatory heart rate monitoring systems such as those from Zephyr can be used that have been worn by subjects for 24 hours or more in the field environment.
+In summary, the proposed system needs to calibrate its goal to being either a better entertainment system based on better recommendation, or an intervention system. In either case, it needs to systematically evaluate the performance of the system. Further, the estimation of heart rate, activity, and context needs to be informed from existing work and build upon them if there is need for better accuracy.
+
+===========================================================================
+                          SenSys 2012 Review #95D
+                 Updated Monday 11 Jun 2012 4:00:08pm EDT
+---------------------------------------------------------------------------
+        Paper #95: MusicalHeart: A Hearty Way of Listening to Music
+---------------------------------------------------------------------------
+
+                      Overall merit: 2. Weak reject
+                 Reviewer expertise: 2. Some familiarity
+
+                         ===== Paper summary =====
+
+The paper describes an approach to music recommendation which uses heartbeat detection in headphones while listening to music.
+
+                        ===== Paper strengths =====
+
+Well presented. Nice topic
+
+                       ===== Paper weaknesses =====
+
+Too broad and quite superficial. Unclear contribution.
+
+                      ===== Comments for author =====
+
+The paper is well written and quite dense and sometimes probably doesn't allow for sufficient space for individual parts to be fully explained (e.g. the control theory part).
+The main assumption underlying this paper seems to be captured well here: "jogging, which is a high activity level, he may prefer music with faster rhythms. On the contrary, when a person is sitting and is
+at rest, he may prefer slower music." I would have liked to have seen this evaluated - did the users like the music they were getting? This would explain whether it is sufficient to take the difference between the song's rhythm and the user's heart beat as a proxy for preference.
+
+The contributions of the paper seem to claimed at various level, however I feel that the main novelty of the paper lies in the combination and evaluation of such approach.
+The hardware is briefly described, the activity recognition is actually not so novel and the recommendation is not well evaluated.
+
+In summary, I would have liked the paper to be more focussed in describing and evaluating one perhaps narrower research contribution instead of the engineering of the whole system...

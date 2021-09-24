@@ -1,0 +1,133 @@
+TITLE: Open Speech Platform: Democratizing Hearing Aid Research
+
+-------------------------  METAREVIEW  ------------------------
+All reviewers found this paper interesting and well suited for PH with sufficient contribution of a technical quality to recommend acceptance. As can be seen from the rather detailed reviews, this was, however, a lot of recommendations and issues pointed out.
+
+We therefore highly recommend the authors to go over the reviews in detail and try to incorporate the comments there. The reviews contains a lot of very useful information which would help improve the paper before final publication. In particular the following issues seems important to address:
+
+ * some over-statements and high claims needs to be toned down and rephrased (R1)
+ * the paper currently sound like a "marketing pitch" rather than a scientific paper (R1+R4)
+ * there is a lack of evaluations and this needs to explained and discussed as a limitation and future work (R1+R2+R4)
+ * provide a design rationale for the requirements enlisted (R4)
+
+
+In addition, the reviewers have pointed out a large number of minor issues which needs to be addressed and fixed in the paper.
+
+We look forward to receive an updated and improved version of the paper.
+
+
+
+----------------------- REVIEW 1 ---------------------
+SUBMISSION: 42
+TITLE: Open Speech Platform: Democratizing Hearing Aid Research
+AUTHORS: Dhiman Sengupta, Tamara Zubatiy, Sean Hamilton, Dezhi Hong, Arthur Boothroyd, Rajesh Gupta and Harinath Garudadri
+
+----------- This paper presents... -----------
+The authors present an open-source hardware/software platform (OSP) meant to facilitate lab-based and field research in the field of audiology – specifically by enabling fast prototyping of modular, common building blocks that make all hearing aids today, and by allowing hearing aid users to adjust their own hearing aid fitting in the lab or in the field.
+----------- Significance of contribution -----------
+SCORE: 4 (This paper makes an important contribution to the field)
+----------- Methods & Technical Correctness -----------
+SCORE: 5 (excellent)
+----------- Overall evaluation -----------
+SCORE: 2 (Accept: This paper should probably be accepted.)
+----- TEXT:
+The authors touch upon a very relevant application of pervasive health: that of hearing aid use and hearing aid testing, touching on the themes of personalization and user-empowerment. The solution they present is significantly novel, open, and detailed so that it justifies an academic publication.
+
+The paper is generally well written although on many occasions the authors make claims that I fear are too bold or unsubstantiated, giving some paragraphs the feel of a sales-pitch. We recommend this paper for publication but urge the authors to reread and revise thoroughly their manuscript keeping in mind that this is an academic exercise that requires distancing oneself from one’s own work, avoiding judgements of value, superlative, injunctions, and avoiding familiar language.
+
+We draw the authors attention to a few specific points:
+-       “1 in 4 who suffer” – prefer “1 in 4 of those affected… “
+-       “Without a doubt” : avoid superlative
+-       “a handful of manufacturers have monopolized the market” : that is a rather bold and opinionated statement. Like in many other fields that are highly technical, require significant investment gearing, are highly regulated, require the intervention of specific healthcare professionals (e.g. audiologists) only few companies have succeeded to deliver high-end products on the market for those requiring targeted/personalized/follow-up hearing treatment. The recently made available over-the-counter hearing aids are arguably changing that picture a little but even they do not claim to be able to remedy hearing losses in the individualized and professional way (with the professional counseling) that comes hand-in-hand with hearing aid use.
+-       Can you please provide references that would point to any other researchers/academics/other legitimate source that would support calling hearing aids “prohibitive”.
+-       “if not downright impossible” : familiar + again avoid superlative.
+-       Section 3.1 – “The system should…” Here you use “should” sound a little too injunctive: you merely convey a personal opinion. There are of course benefits for open-source hardware and software but academic writing mostly requires leaving personal opinions aside so perhaps try and present what you deem to be obvious advantages of the open-source model in an argumentative way rather than as something obvious. This is perhaps even more relevant for your second property: “bringing patient into the loop”. (By the way prefer “hearing aid user” to “patient”). What do you mean exactly by that? There seem to be (that is for you to argue) clear benefits in enabling direct user feedback and self-adjustments but there are arguments that point in the other direction too: user empowerment can be dangerous if knowledge is missing, risk of suboptimal fitting, etc.. Giving full-control to users does not always support the most efficient hearing care strategy – use!
+ rs do not always know best and that is why audiologists are still relevant today. So yes.. the use of “should” is tricky.
+-       Explain a bit more (even if obvious) why one needs control “in the wild”
+-       Section 3.3.1 “After understanding… BTE-IRC hearing aid … which performs on par with other commercial hearing aids” : refer to Table 1
+-       5.3 You mention that “the researcher would evaluate the outcome of the self-fitting by having the participant take a speech recognition test four times..” Yet you do not present these results in section 5.4! which is a shame: you sell an objective assessment of intelligibility and only present subjective rating soon sound quality.. Your paper would greatly benefit from it: after all the legitimacy of the self-fitting approach which you advocate for would be reinforced if the results of these objective tests were to point to high intelligibility scores in the self-fitted conditions.. If you do not present these result you should state clearly why in section 5.3
+-        “In every cycle we were able to … innovate”.. Sounds like a marketing pitch.
+
+
+
+----------------------- REVIEW 2 ---------------------
+SUBMISSION: 42
+TITLE: Open Speech Platform: Democratizing Hearing Aid Research
+AUTHORS: Dhiman Sengupta, Tamara Zubatiy, Sean Hamilton, Dezhi Hong, Arthur Boothroyd, Rajesh Gupta and Harinath Garudadri
+
+----------- This paper presents... -----------
+This paper presents an open-source hardware and software platform for enabling easier research in hearing health care.
+----------- Significance of contribution -----------
+SCORE: 4 (This paper makes an important contribution to the field)
+----------- Methods & Technical Correctness -----------
+SCORE: 4 (good)
+----------- Overall evaluation -----------
+SCORE: 2 (Accept: This paper should probably be accepted.)
+----- TEXT:
+Open Speech Platform consists of an open-source hardware and software aimed at democratizing hearing health research. The project is well motivated and does a good job at situating itself among related work. The platform design is written in a clear manner to follow the various design decisions and their rationale.
+
+The multi-part evaluation is explained well and seems sound. One comment for table 1 would be to provide an indicate for each metric if there is an acceptable or ideal range and whether a higher number is better or lower. Just the platform development and empirical evaluation would have been sufficient to have a clear contribution. However, the authors went a step further and conducted a usability study to gauge user perception of the aesthetics, quality, ease of use, and willingness to adopt. The participant age group for the study was representative and the study design was sound.
+
+The one critique I have of this paper is it does not evaluate if other researchers or experts can use the hardware and software to run their own studies. Given the emphasis on democratizing the research, I would have preferred seeing that evaluation over the usability study.
+
+I would hope the authors include links to the hardware and software when the paper is published.
+
+Overall, I find this to be a compelling paper and would recommend an accept.
+
+
+
+----------------------- REVIEW 3 ---------------------
+SUBMISSION: 42
+TITLE: Open Speech Platform: Democratizing Hearing Aid Research
+AUTHORS: Dhiman Sengupta, Tamara Zubatiy, Sean Hamilton, Dezhi Hong, Arthur Boothroyd, Rajesh Gupta and Harinath Garudadri
+
+----------- This paper presents... -----------
+The paper describes the Open Speech Platform for hearing aid. The platform consists of open-source hardware and software. The paper shows the effectiveness of the device with evaluation results.
+----------- Significance of contribution -----------
+SCORE: 4 (This paper makes an important contribution to the field)
+----------- Methods & Technical Correctness -----------
+SCORE: 4 (good)
+----------- Overall evaluation -----------
+SCORE: 2 (Accept: This paper should probably be accepted.)
+----- TEXT:
+The nice thing about this work is its openness. Other researchers can use the device based on the same design and it can provide a research platform for hearing aid.
+
+Since the purpose of this work is creation of a platform, other performance matters can be discussed later.
+
+
+
+----------------------- REVIEW 4 ---------------------
+SUBMISSION: 42
+TITLE: Open Speech Platform: Democratizing Hearing Aid Research
+AUTHORS: Dhiman Sengupta, Tamara Zubatiy, Sean Hamilton, Dezhi Hong, Arthur Boothroyd, Rajesh Gupta and Harinath Garudadri
+
+----------- This paper presents... -----------
+This paper presents an Open Speech Platform to enable research to carry out research on hearing aids in a modular and open way.
+----------- Significance of contribution -----------
+SCORE: 3 (This paper makes a moderately important contribution to the field)
+----------- Methods & Technical Correctness -----------
+SCORE: 4 (good)
+----------- Overall evaluation -----------
+SCORE: 1 (Weak accept: This paper could be accepted, but there is a chance it should not.)
+----- TEXT:
+The introduction as written doesn't feel very balanced. There should be at least some acknowledgement as to why the hearing aid ecosystem is the way it is. Companies will often have chosen closed proprietry systems to protect what they see as commercial IP. It's fine to say that researchers would benefit from having more open systems, but the tone shouldn't be quite so accusatory toward industry for not providing it. Perhaps explaining more clearly what would be in it for the commercial comanies to have a more open platform would help with this framing.
+
+The background related work is well covered, but does often seem to just serve to justify the approach taken here by highlighting specific issues with existing systems rather than explaining some of the insights that have been built upon. For example when discussing openMHA, the fact it requires an additional control interface doesn't explain why it couldn't be used in a modular way inside OSP.
+
+The set of requirements listed in Section 3.1 feel quite arbitrary. They are clearly part of the motivation of researchers building OSP, but there is no attempt to explain how these requirements were derived, or justify that they are the key requirements. Why should patients be in the loop? Why should it provide a research platform for in the wild, and what is meant by this? These requirements may be perfectly valid, but more effort is needed to explain why they are key requirments and more important than other potential requirements of an open source platform.
+
+When describing the RT-MHA architecture in Section 3.2, there needs to be some explanation about why this is a generic, all purpose architecture. Do all existing systems map to this architecture, or are there baked in assumptions about how things should be organsied. There is discussion about the fundamental algorithms that are necessary, but what if the innovation in the research requires fundamental changes to the architecture. A common denominator platform may stiffle certain types of innovation.
+
+It's not entirely clear why the WebApps are built into the platform and not an additional layer that sits on top of OSP.
+
+Section 3.4 that details the Evolution of OSP feels very product driven, particularly with reference to MVPs, and moves the paper away from the framing of trying to solve the research problem as motivated in the Introduction. Is this paper a description of a new product being developed, or is it a research paper attempting to provide novel insights against a set of research questions?
+
+The evaluation sets out three evaluation criteria but it isn't made clear where these criteria have come from. They feel like tests of specific components rather than any evaluation of the OSP approach as a whole. In particular, the usability tests are around whether partipants in research would feel happy using the hearing aids for any period of time. The paper though frames the benefits of OSP being for reseachers. No evaluation seems to have been carried out to assess this.
+
+The experiment carried out is well described and the results readible. It seems measurements were taken during the experiment to assess correction the hearing aid provided, but none of this data is reported as part of the results.
+
+The discussion leads with a claim of success in finding a solution to the problem of not having an open source research platform, but the evidence presented here is that a single setup was created that participants in an experiment found generally acceptable. I think this platform may well have lots of promise, but the experiment carried out here doesn't answer the question as to whether other researchers will find it useful for research they wish to do.
+
+Overall, this paper presents an interesting research platform that shows potential, along with some experiemental data that suggests it can be used to build an acceptible hearing aid within the bounds of industry standards. This is a promising start but more evidence will be needed in terms of uptake and range of research to answer whether the open source platform is generally useful to researchers.
+
+

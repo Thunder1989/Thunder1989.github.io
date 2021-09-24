@@ -1,0 +1,107 @@
+----------------------------------------------------------------------------------------------
+
+SUBMISSION: 933
+TITLE: Identifying Relations between Equipment in Commercial Buildings by Learning from Correlated Events
+
+-------------------------  METAREVIEW  ------------------------
+RECOMMENDATION: reject
+TEXT:
+All reviewers agree that this paper should be rejected. The paper does not meet the criteria of KDD and needs additional work to make it publishable.
+
+
+
+----------------------- REVIEW 1 ---------------------
+SUBMISSION: 933
+TITLE: Identifying Relations between Equipment in Commercial Buildings by Learning from Correlated Events
+AUTHORS: Dezhi Hong, Renqin Cai, Hongning Wang and Kamin Whitehouse
+
+----------- Three positive aspects of the paper -----------
+- The general topic of the article is relevant.
+- The paper features a problem statement and a solution to the problem.
+----------- Three negative aspects of the paper -----------
+- Why is this a paper that has been submitted to the research track and not to the 'Applied Science' track? Put differently, is there anything the reader can learn that goes beyond the specific use case studied here?
+- How important is the specific variant of the problem (detecting relationships in buildings) studied here?
+- I am not sure whether the material in this article is of interest to a broad KDD audience.
+----------- Overall evaluation -----------
+- "... from the VAV serving that room to the upstream AHU controller ..." -- The text itself should introduce the abbreviations used.
+- "irrelevant events" (in the introduction) -- How to decide whether an event is irrelevant? (This question occurs when reading the introduction.)
+- "... however, we focus on a different type of relation -- the functional connection ... do not directly apply" -- I do not understand this, but it is important. The nature of the difference to previous work could be explained.
+- "We alternate between these two groups ... the inference in our evaluation datasets." -- The alternatives compared here should be better explained, I did not understand them.
+- "The ground truth ... is obtained from our industrial partner" -- So how many FDs are there? What is the ground truth? The connection between VAV and AHU (and nothing else)? What are event states of AHU and VAV, intuitively spoken?
+- Why do you use the Pearson Correlation Coefficient as a baseline and not Mutual Information?
+- "knowledge about what type of sensors in different equipment ..." -- How many sensor types are there?
+- Why not detect events and calculate correlations of sequences of events?
+
+English:
+- in both equipment
+- due to sun effect
+- details of each building is summarized
+- in later section
+----------- Reproducibility -----------
+SCORE: 1 (No - Not included. No reproducibility information included in the paper.)
+----------- Please justify your answer regarding Reproducibility -----------
+See above.
+
+
+
+----------------------- REVIEW 2 ---------------------
+SUBMISSION: 933
+TITLE: Identifying Relations between Equipment in Commercial Buildings by Learning from Correlated Events
+AUTHORS: Dezhi Hong, Renqin Cai, Hongning Wang and Kamin Whitehouse
+
+----------- Three positive aspects of the paper -----------
+1. The domain’s relation matching problem and industrial context is easy to follow for non-experts; terminology and the relationship to other modeling paradigms is reasonable.
+
+2. I agree that other domains with sensors and complex interactions may benefit from a similar formulations. One potential application that comes to mind: relating electrical network entities based on similar responses to events based on correlating signals in power systems.
+
+3. The innovation of the work, such as leveraging the bipartite structure of the central AHU with multiple individual VAV units and the considering rate of change as a better and less unstable parameter for inferring state is an interesting and well-motivated extension of past work. Experiment validate the idea via impressive matching accuracy (e.g., positions are generally the 1st or 2nd highest ranked candidate).
+----------- Three negative aspects of the paper -----------
+My most significant concern is that the experiments and model assumptions are only tested and verified for the single described Commercial Building application so it is difficult to determine the idea's future utility in similar domains. More specifically: 1) the approach is restricted to only tests in five buildings for the same task; 2) many of the assumptions (e.g., a bipartite mapping affected by a central object where each element is known to exist, a single universal time lag used for every entity, and the assumption of velocity as a parameter) seem inapplicable to many domains; and 3) there is minimal discussion on generalizability to other domains, such as different matching structures and time lags (e.g., number of items potentially linked to a central element differs or the central object may link to multiple objects). This lack of discussion on applicability in general makes me unconvinced that it belongs in a data-mining research track.
+----------- Overall evaluation -----------
+I consider my negative/positive summary to be sufficiently clear: I believe the work is too limited with the current scope and domain dependent assumptions. It may be better to try a conference application track (though even then there is a chance it is considered too specialized); some significant investigations into other domains, or perhaps more general equipment association problems, would be necessary for publication.
+
+Some other comments:
+- A comparison between the exact latent variable structure and other formulations would greatly aid in clarifying technical novelty.
+- Some more commentary on why performance for each building differs would be interesting. Do the models in each building have significant differences in there state transition rates, for example, that affect the matchability? Is there any effect of what brands or VAV/AHU models or used or the buildings structure in terms of the time shift required or granularity of sensor readings?
+- For the domain in general, I would also be curious about the actual consequences of company incorrectly matching a VAV and AHU or not being able to detect which elements are matched incorrectly. Would your error rate achieved here be sufficient enough to be considered acceptable considering the cost applying sensor tracking and hiring a data scientist to apply the algorithmic model?
+- For Table 2, you could add what the expected matching rate would be for random guesses (either expected or the median for multiple runs) as a measure of task difficulty considering how some buildings have more devices, and therefore are more challenging.
+- The baselines seem a bit dated. Are you sure there are no other stream or time series model that is better suited to the problem from domains such as traffic flow analysis (since there is a notion of connectivity between items) or a graph based approach for determining fake users posting propaganda controlled by a malicious entity, for example?
+- Citing [9], a modern version of Fold Fulkerson, is a bit odd: better to cite the original paper or a textbook/survey summarizing it and similar approaches.
+- For the reference: “David Hallac, Sagar Vare, Stephen Boyd, and Jure Leskovec. 2017. Toeplitz inverse covariance-based clustering of multivariate time series data. In KDD.”  Should specify year of the conference, even though it is clear from context.
+----------- Reproducibility -----------
+SCORE: 2 (Yes - Poor.  Some description provided, but it is clearly insufficient information for reproducibility.)
+----------- Please justify your answer regarding Reproducibility -----------
+Due to the sensitive nature of the sensor data, that is not included. There is discussion on parameter settings and data properties, nonetheless.
+
+
+
+----------------------- REVIEW 3 ---------------------
+SUBMISSION: 933
+TITLE: Identifying Relations between Equipment in Commercial Buildings by Learning from Correlated Events
+AUTHORS: Dezhi Hong, Renqin Cai, Hongning Wang and Kamin Whitehouse
+
+----------- Three positive aspects of the paper -----------
+1. The problem solved in this paper is interesting in reducing the manual work of correlating AHUs and VAVs and potentially reducing energy cost;.
+2. The proposed method is novel and the case study used real-world datasets from different buildings;
+3. The experiment shows the proposed method achieves nearly 10% higher accuracy than the best baseline.
+----------- Three negative aspects of the paper -----------
+1.      The paper lacks a clear problem definition, i.e., exact inputs and output defined in some mathematical terms, plus some constraints/assumptions if any.
+2.      Related work is not thoroughly summarized and compared in evaluation.
+3.      Some assumptions in the proposed method are not well justified.
+----------- Overall evaluation -----------
+1.      The paper lacks a clear problem definition, i.e., exact inputs and output defined in some mathematical terms, plus some constraints/assumptions if any. Normally this is given as a specific section or sub-section so that readers can clearly understand the exact technical problem being solved. Here I understand the general problem, i.e., finding connected AHUs and VAVs given their time-series data (e.g., Fig. 2). However, there is no mathematical definitions and make it difficult to relate the problem to the descriptions of the methods. More importantly, it is also difficult to clearly see what the limitations of related work are without a clear problem definition. A detailed technical definition of the problem will help show the unique things in this problem that require new methods.
+2.      In related work, the paper states that existing literature cannot be used because the problem is “functional connections between equipments”. Conceptually I can see it is solving a different domain problem, but technically it is hard to see why previous methods cannot be applied. Again, a clear problem definition will help. Similarly, the paper states that the patterns are “irregular” and not necessarily outliers so related works are not effective. Technically this is not very persuasive without clear evidences. A simple illustrative example should be created to help make this clear. Also, pattern mining is a much broader topic and the patterns being identified here do not seem to be very complicated (e.g., local changes, mode shifts on 1D data). This further requires a clear definition and example to show why existing methods cannot work well, especially considering that most of methodology section is dedicated to pattern detection. Some example related work the !
+ authors should mention or compare to include:
+[1] Atluri, G., Steinbach, M., Lim, K.O., III, A.M. and Kumar, V., 2014, April. Discovering groups of time series with similar behavior in multiple small intervals of time. In Proceedings of the 2014 SIAM International Conference on Data Mining (pp. 1001-1009). Society for Industrial and Applied Mathematics.
+[2] Zhou, X., Shekhar, S., Mohan, P., Liess, S. and Snyder, P.K., 2011, November. Discovering interesting sub-paths in spatiotemporal datasets: A summary of results. In Proceedings of the 19th ACM SIGSPATIAL international conference on advances in geographic information systems (pp. 44-53). ACM.
+[3] Lin, J., Williamson, S., Borne, K. and DeBarr, D., 2012. Pattern recognition in time series. Advances in Machine Learning and Data Mining for Astronomy, 1, pp.617-645.
+3.      While a methodology is described in a step by step fashion, it is difficult to see what the unique contributions are. The presentation can be substantially improved if the authors can more clearly show what the existing methods are (e.g., Markov models, EM), what their limitations are and what the new contributions are. Or is the proposed method more of a combination of a few existing method? It this is true then the authors should also mention it.
+4.      A few general questions for the case study:
+(1)     In what percentage of commercial buildings people already know about the connections between AHUs and VAVs? I am curious about this because if this is a very important problem then I would expect engineers or designers to record or keep this information during design or installation.
+(2)     How are the case study data collected? The author mentioned that manual methods tend to be erroneous and inaccurate. If this is true then how good are the ground truth data? What is the impact on performance evaluation (given that the margin is not very large vs. KF)?
+(3)     The authors mentioned that the data is collected/recorded for a month. If this is necessary then how useful are some of the computational improvements? Is it easy to collect the data needed in majority of commercial buildings where the connections are unknown? How much data are available (e.g., how many buildings)?
+(4)     Can the data be made publicly available?
+----------- Reproducibility -----------
+SCORE: 2 (Yes - Poor.  Some description provided, but it is clearly insufficient information for reproducibility.)
+----------- Please justify your answer regarding Reproducibility -----------
+The details are provided for the experiments (e.g., parameter selection, etc.). However, some critical choices (e.g., how data is split) do not seem appropriate, making the reproducibility of the experimental results questionable (in terms of general accuracy).

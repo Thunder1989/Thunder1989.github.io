@@ -1,0 +1,199 @@
+===========================================================================
+                           Sensys14 Review #130A
+                     Updated 31 May 2014 2:18:45am EDT
+---------------------------------------------------------------------------
+  Paper #130: Towards Automated Sensor Metadata Acquisition to enable
+              Portable Applications across Heterogenous Building Sensor
+              networks
+---------------------------------------------------------------------------
+
+                      Overall merit: 2. Weak reject
+                 Reviewer expertise: 2. Some familiarity
+
+                         ===== Paper summary =====
+
+This papers tries to provide a common name space for sensors in buildings which use different naming convention.  The idea is to use a small number of examples from an expert to build transformation rules.  Such rules can be used to the whole building or other similar building.  Overall this paper seems out of scope of sensys community.  The proposed technique, based on regular expression, seems to be outdated compared with existing more advanced approaches such as mentioned in the paper: Building Information Model (BIM) and Green Building XML.
+
+                        ===== Paper strengths =====
+
+Authors process a valuable building dataset, which lays a good foundation for this work.
+
+                       ===== Paper weaknesses =====
+
+This work might be out of scope and it is not clear why this work is superior than existing solutions.
+
+                      ===== Comments for author =====
+
+This papers tries to provide a common name space for sensors in buildings which use different naming convention.  The idea is to use a small number of examples from an expert to build transformation rules.  Such rules can be used to the whole building or other similar building.  With proposed technique, authors further  implement applications that are generalizable from one building to another building without modification. 
+Overall this paper seems out of scope of sensys community.  The proposed technique, based on regular expression, seems to be outdated compared with existing more advanced approaches such as mentioned in the paper: Building Information Model (BIM) and Green Building XML.  A few additional comments.
+
+Normally sensor tag would be simply a random identifier, building management database can map this random ID to its metadata.  It is unclear how many existing builds put metadata information into a long-string form.  Will such name convention be outdated already?
+
+The design makes sense with the examples proposed. This reviewer worries that examples are overly simplified with a structured string.  In many case, the name convention might not followed strictly.  For instance, if one check  wifi SSIDs in a building,  naming convention is purely free-style. How to deal with such a challenge?   
+
+It is unclear how to select examples.  If all examples follow the same regular expression, it does not help to improve the coverage, right?  If we need to choose examples, we need to inspect all tags to find out different ones?  According to the authors, it is not quite possible.
+
+===========================================================================
+                           Sensys14 Review #130B
+                     Updated 7 Jun 2014 1:03:01pm EDT
+---------------------------------------------------------------------------
+  Paper #130: Towards Automated Sensor Metadata Acquisition to enable
+              Portable Applications across Heterogenous Building Sensor
+              networks
+---------------------------------------------------------------------------
+
+                      Overall merit: 5. Strong accept
+                 Reviewer expertise: 3. Knowledgeable
+
+                         ===== Paper summary =====
+
+Describes the implementation of a learning-based approach to understanding and classifying unstructured sensor metadata for buildings.
+
+                        ===== Paper strengths =====
+
+Practical problem, technically rigorous approach, extensive and thorough evaluation on a real dataset.
+
+                       ===== Paper weaknesses =====
+
+none of significant concern.
+
+                      ===== Comments for author =====
+
+I thoroughly enjoyed reading this paper.
+
+The problem being addressed is of practical significance -- how to automate the translation of widely varying naming conventions of sensor descriptions using a rigorous learning by examples approach.
+
+The approach chosen is a rigorous synthesis technique. The evaluation is very comprehensive and thorough, utilizing a unique large data set, and addressing nearly every question I had while going through the paper (e.g., how to select examples, how does it generalize for unknown buildings, what to end application query metrics look like after the proposed approach compared to naive grep, and so on...)
+
+Moreover the paper provides a number of interesting insights about buildings and sensors.
+
+===========================================================================
+                           Sensys14 Review #130C
+                     Updated 8 Jun 2014 9:35:22pm EDT
+---------------------------------------------------------------------------
+  Paper #130: Towards Automated Sensor Metadata Acquisition to enable
+              Portable Applications across Heterogenous Building Sensor
+              networks
+---------------------------------------------------------------------------
+
+                      Overall merit: 3. Weak accept
+                 Reviewer expertise: 2. Some familiarity
+
+                         ===== Paper summary =====
+
+This manuscript provides a thorough review of the development of a metadata assignment method for building infrastructure.  It includes the important characteristics associated with guidance by expert input.  It is also intended to enable scaling through an efficient metadata generation method.  Other unique features include metadata development intended to support search capability.
+
+                        ===== Paper strengths =====
+
+This manuscript describes an important problem that currently limits deployment of large-scale building resource monitoring networks.  The development of this method to support search capability is innovative and interesting.
+
+                       ===== Paper weaknesses =====
+
+This manuscript provides a well-written description of a method addressing an urgent, unmet need.  While this is a strength of the paper, its focus and topic may be regarded as being peripheral to mainstream sensor network research challenges and rather common to problems associated with the information theory specific to metadata.  Despite this, this manuscript may be of general interest to the Sensys community.
+
+===========================================================================
+                           Sensys14 Review #130D
+                     Updated 30 Jun 2014 3:18:17pm EDT
+---------------------------------------------------------------------------
+  Paper #130: Towards Automated Sensor Metadata Acquisition to enable
+              Portable Applications across Heterogenous Building Sensor
+              networks
+---------------------------------------------------------------------------
+
+                      Overall merit: 2. Weak reject
+                 Reviewer expertise: 1. No familiarity
+
+                        ===== Paper strengths =====
+
++Novel and practically relevant problem identified.
+
+                       ===== Paper weaknesses =====
+
+-Relevance to SenSys community.
+-Limited innovation.
+-Mixed results.
+
+                      ===== Comments for author =====
+
+The reviewer appreciates the authors’ discovery of a real problem in building sensor networks.
+As in other ‘big data’ applications, cleaning and preparing data for use is a very real yet
+under-appreciated problem.
+
+That being said, the paper has a tenuous connection to the topics that interest the SenSys
+community. The problem of metadata identification seems closer to the SIGMOD community.
+
+Nevertheless, judging the paper on its technical merits, I find that there is limited innovation
+since it largely applies existing techniques for string generation in the context of
+metadata generation for building sensors.
+
+Last but not least, the presented results are mixed. Due to the large metadata namespace a large
+number of input-output pairs are needed to provide good coverage.
+
+It’s also hard to believe that there is no authoritative source for all the sensor strings and
+their metadata. Perhaps there is an underlying non-technical problem where the company that
+installed the sensors and possibly manages the building does not want to share the data?
+
+===========================================================================
+                           Sensys14 Review #130E
+                     Updated 6 Jul 2014 8:06:25am EDT
+---------------------------------------------------------------------------
+  Paper #130: Towards Automated Sensor Metadata Acquisition to enable
+              Portable Applications across Heterogenous Building Sensor
+              networks
+---------------------------------------------------------------------------
+
+                      Overall merit: 2. Weak reject
+                 Reviewer expertise: 2. Some familiarity
+
+                         ===== Paper summary =====
+
+This paper presents an automatic mechanism for converting the
+strings used to identify sensors in building management systems into
+meta-data describing these sensors, which can then be used as the
+basis for building standard building management algorithms.
+
+                        ===== Paper strengths =====
+
+A large, 60 building test set.
+
+                       ===== Paper weaknesses =====
+
+The core of the string processing technique (input-output examples)
+is prior work, although some modifications were necessary for this
+domain.
+
+Evaluation seems to be shallow, given the possibilities available
+with the large data set.
+
+                      ===== Comments for author =====
+
+In the evaluation of the sensor id parsing, the examples (e.g.,
+Figure 6) show both building 1 and building 2.  The text focuses on
+the log tails present in Building 1, but does not address the lack
+of those tails in Building 2.  This should be better explained.
+
+This shallow evaluation also carries through to the building
+management applications.  For example, according to table 1, the top
+10 rooms outside the comfort zone are always outside, while this is
+only true for 2 rooms in building 2.  As the authors state, this
+points to a fundamental problem with the control system for building
+1, but they do not follow up with any investigation that supports
+this  Because the investigation has only the ground truth for 2
+buildings, such an analysis should be feasible.
+
+Although it is reasonable to not show detailed analysis for the 60
+buildings, at least some analysis of the whole data set should be
+provided to support the fact that the parsing technique, with all of
+its possible shortcomings, can achieve something beyond these two
+buildings.  OR, the authors should provide evidence that these two
+buildings are representative of the set and that they offer
+sufficient evidence of the wider applicability of the technique.
+
+
+===========================================================================
+                                  Comment
+  Paper #130: Towards Automated Sensor Metadata Acquisition to enable
+              Portable Applications across Heterogenous Building Sensor
+              networks
+---------------------------------------------------------------------------
+PC summary: This paper addressed an important and often overlooked problem in practical building sensor networks. However, the problem is relatively simple and the technical contribution is deemed insufficient for SenSys.

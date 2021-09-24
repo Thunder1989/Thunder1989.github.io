@@ -1,0 +1,262 @@
+===========================================================================
+                         MobiSys 2013 Review #108A
+                Updated Saturday 19 Jan 2013 5:22:53pm EST
+---------------------------------------------------------------------------
+  Paper #108: Auditeur: A Mobile-Cloud Service Platform for Acoustic Event
+              Detection on Smartphones
+---------------------------------------------------------------------------
+
+                      Overall merit: 3. Weak accept (interesting paper but
+                                        needs to plug a few holes);
+                 Reviewer expertise: 2. Some familiarity
+                          Riskiness: 2. Low risk idea or predictable
+                                        hypothesis (but quite well
+                                        executed)
+
+                         ===== Paper summary =====
+
+This paper proposes an acoustic event detection platform for mobile devices
+which is context-aware and energy-efficient, in which the acoustic event
+detection plans are generated from dynamic programming based acoustic
+feature selection algorithm in the cloud.
+
+                        ===== Paper strengths =====
+
+The platform is useful and friendly to developers, researchers and end-users.
+
+                       ===== Paper weaknesses =====
+
+The methods of offloading and dynamic programming used are not very new.
+
+                       ===== Detailed comments =====
+
+This paper explains the details of design and implementation of the mobile-cloud
+acoustic event detection platform for mobile devices. The evaluation of the system
+is thorough and demonstrates the benefits. Yet, some clarifications are needed.
+
+section 3.3.1: Is the sanity check done manually or automatically? Though the sanity
+check is need to avoid attacks, the efficiency of the check should also be considered.
+
+section 3.3.2: "However, the *tags* has to be exactly the same in order for two
+soundlets to be treated as belonging to the same class." What are specific types of
+tags that is talked about?
+
+section 4.1.2: How is the frequency of monitoring the change in context? How fine-grained
+is the context? Continuously monitoring the context is highly power consuming.
+
+section 8.2.1: The CPU and memory usage can be better demonstrated through CDF curves.
+
+section 8.3.1: "Auditeur chooses only 11 features on average ..." The number should be 19.6.
+
+Figure 11: Although the accuracy of Auditeur is higher than that of Greedy, I'm concerned
+of the low accuracy when the minimum lifetime bound is high.
+
+Figure 15: For Heart app, the accuracy of Auditeur, In-phone and In-cloud is similar
+despite of others. Is this because the classification in this situation does not need
+much complex algorithm, or there is other explanation?
+
+===========================================================================
+                         MobiSys 2013 Review #108B
+                 Updated Tuesday 5 Mar 2013 2:08:59pm EST
+---------------------------------------------------------------------------
+  Paper #108: Auditeur: A Mobile-Cloud Service Platform for Acoustic Event
+              Detection on Smartphones
+---------------------------------------------------------------------------
+
+                      Overall merit: 2. Weak reject (the flaws overwhelm
+                                        the contributions);
+                 Reviewer expertise: 3. Knowledgeable
+                          Riskiness: 2. Low risk idea or predictable
+                                        hypothesis (but quite well
+                                        executed)
+
+                         ===== Paper summary =====
+
+This paper presents the design and implementation of Auditeur, an acoustic event detection platform for smartphones. The paper focuses on building a general-purpose platform such that even novice developers could easily leverage a variety of acoustic events through Auditeur API without handling complications in acoustic event processing. For effective event detection, it adopts a suite of techniques such as adaptive planning of processing pipelines and energy-aware feature selection. With seven apps developed on the platform, it showed improvements in battery consumption as well as accuracy.
+
+The presented system is an end-to-end solution to the acoustic event detection. However, except a few facts about its APIs and the energy optimization, I am not sure what I newly learned from the paper by the end – the paper does not provide enough details of the different system components and it is difficult to catch new insights.
+
+                        ===== Paper strengths =====
+
+- Audituer provides an end-to-end system for general-purpose acoustic event detection. It supports a set of useful and easy-to-use APIs as well as the execution runtime, which will be quite useful for mobile app developers in practice.
+
+- The proposed energy- and context-aware planning method effectively keep the energy consumption of applications within the available battery budget while retaining high accuracy.
+
+                       ===== Paper weaknesses =====
+
+- As mentioned, the paper covers quite a number of diverse issues and system components, but does not provide enough details. So, it is unclear what the lessons are. Also, in comparison with other diverse acoustic event detection systems, it is difficult to catch the unique advantages of the system besides providing a combined set of APIs and techniques.
+
+- It is difficult to point out a specific technical contribution and be excited about it. The system seems to be built with a collection of various existing techniques. I think that the cloud-side planning or energy-aware feature selection could serve as underlying key techniques of the system. However, the description is not enough to catch the detailed operations and novelty.
+
+                       ===== Detailed comments =====
+
+The design of Auditeur encompasses a lot of aspects such as API, Soundlet concept, energy-aware classification planning, cloud support, context-awareness, personalization, storage and cache - but each of these is explored not in a sufficient depth. It was very difficult to catch the novelty of the system from the sentences like “a versatile, general-purpose, flexible, extensible, context-aware, and efficient end-to-end acoustic event detection platform for smartphones, backed by the cloud”.
+
+I wish the paper had narrowed its focus and dug in one or two key problems in a greater depth. Especially, it would be even better to deal with new issues raised when building a general-purpose platform (e.g., inter-application conflicts or sharing).
+
+One possible direction is to strengthen the classification planning part by further describing its operation and novelty - how would the system account for the energy use of different software components that are dynamically wired? Does energy accounting for acoustic event detection need to be different from energy accounting for conventional applications? How does the system guarantee/support the QoS (e.g., accuracy) when flexibly adapting the pipelines for the same application request? It is also helpful to discuss how the system could obtain diverse processing modules and training data to enhance the flexibility of the planning.
+
+I think it is necessary to distinguish the system from the existing acoustic event detection systems more clearly; I understand that Auditeur covers more diverse event types and pursue general-purpose platform, but I think the difference needs to be revealed in a step further. Also, I recommend the authors to compare Audituer and its planning method with other resource coordination systems for sensing applications such as KOBE (SenSys 2011), Orchestrator (PerCom 2010), and the one by N. Roy, et al (PerCom 2011).
+
+It would be much better to introduce more examples in delivering the main body. Before seeing Figure 9, it has been hard for me to clearly understand the scope of events that the system supports. Also, it was difficult to know how the planning techniques work under real applications, event types, and the set of features and classifiers.
+
+Other comments/questions.
+- It is not clear who uploads soundlets with tags for what purposes. Isn’t it costly to upload soundlets to the cloud, especially uploading high-quality sound data through the mobile network? Are there any incentives uploading soundlets?
+- For the three usage scenarios, can we just use other systems such as EmotionSense, Jigsaw or SoundSense? Are there any specific advantages to leverage Audituer?
+- For the Soundlet concept, is “within” tags specified by applications or the system?
+- In Section 8.2.1, the feature extraction seems to consume 98.48% of energy. Does this include executing the classification such as GMM or HMM?
+- In Section 8.3.2, as a base line for evaluation of feature selection techniques, the paper shows a method that uses 221 features. I am not sure it is a fair comparison; were there any previous systems that use such a large set of features?
+- There might be several discussion points to add.
+    - It seems that the planning is performed on the clouds. Are there any specific reasons to do so? It might be better to discuss the case that the planning is performed on smartphones.
+    - I wonder if there potentially exist any scalability issues on clouds to deal with plenty of requests(e.g., sound upload, planning, …) from a large number of mobile devices.
+
+===========================================================================
+                         MobiSys 2013 Review #108C
+                Updated Thursday 28 Feb 2013 11:18:13am EST
+---------------------------------------------------------------------------
+  Paper #108: Auditeur: A Mobile-Cloud Service Platform for Acoustic Event
+              Detection on Smartphones
+---------------------------------------------------------------------------
+
+                      Overall merit: 4. Accept (no paper is perfect, but
+                                        this one is pretty good);
+                 Reviewer expertise: 3. Knowledgeable
+                          Riskiness: 3. Refreshing/risky idea or bold
+                                        hypothesis (but execution has
+                                        drawbacks)
+
+                         ===== Paper summary =====
+
+The paper presents Auditeur, a general purpose audio classification engine for mobile phones. By running logic on both the smartphones and the cloud, the system enables developers and end-users to obtain classification models from the Auditeur backend tailored to the particular phone's context. In this way the user can build audio classification application and services without knowing the details or have to implement complex machine learning algorithms. Auditeur is implemented on Android smartphones and tablets and tested with the support of several users recording an audio data set of 5000 audio clips.
+
+                        ===== Paper strengths =====
+
+- Interesting concept. This is the first general-purpose context-aware audio inference engine targeting end-users. Auditeur brings something new to the mobile sensing community in the audio inference space.
+- Implementation on Android platforms and long-lived participants involvement in different environments.
+- Paper is fairly well written.
+
+                       ===== Paper weaknesses =====
+
+- The idea of splitting a machine learning pipeline between mobile devices and the cloud is not new.
+- Building and adopting energy aware classifiers on mobile devices is not a new idea either.
+- The most difficult part is about detecting context to swap in and out the proper classifier: this doesn't seem to have been properly evaluated.
+- Energy implications of downloading classifiers and classification policies from backend unclear due to mobility when people's context changes rapidly.
+
+                       ===== Detailed comments =====
+
+Overall, I like the idea. A Shazam-like service for end-users and developers is one of the missing elements in the mobile sensing space. Auditeur makes machine learning much more digestible and manageable for common users -- they don't need to worry about the nitty-gritty details of a machine learning algorithm itself. I would have loved to assign a better merit score to this paper but I see the following issues:
+
+- many of the employed techniques are not novel in themselves. In particular, previous work already shows how to split the job between the phone and backend with the phone sensing, extracting the features and classifying the event and the backend training classification models and pushing them down to the phone client (see your reference [14]). The idea of offloading tasks to the cloud has been widely discussed. Beside [14] there is MAUI (Mobisys'10) and Odessa (Mobisys'11) just to name a few;
+
+- energy aware classifiers for mobile phones have been also investigated and people have shown how to custom-train and pick classifiers based on the phone's resources and context: see "Balancing Energy, Latency and Accuracy for Mobile Sensor Data Classification" from Sensys'11 and "ACE: Exploiting Correlation for Energy-Efﬁcient and Continuous Context Sensing" from Mobisys'12;
+
+- the average battery lifetime doesn't seem to be sufficiently long (10-12 hours) before the accuracy drops below useful levels. And you have to factor in the normal use of the phone -- such as listening to music, using the maps and browsing the web -- which would drive the battery lifetime further down. The mobile sensing community made several advances in the past couple of years in pushing the boundary of the battery lifetime (in the range of days) through proper duty-cycling and smarter machine learning algorithms. How does you system compare to their efforts?
+
+- the most novel part is the idea of dynamically swapping in and out classifiers based on context and resources. It is known that building a classifier for each context is a way to boost the classification accuracy, and it is not surprising to observe higher accuracy from context-aware classifiers than from general-purpose ones. However, nobody has systematically tried to implement a dynamic training and classification approach like in Auditeur. The tricky part is inferring the phone's context. Location is ok, but what about if in pocket or in hand or if the person is sleeping? Or in-pocket vs quite environment which might produce similar audio patterns? What about classifying car vs bus vs subway. While techniques to infer these different scenarios have been proposed, it's not clear what happens when you put everything together. Errors in the context classification will propagate to the final event classification, where the accuracy may be significantly lower that what you !
+ present because of picking the wrong classifier. And your 10% to 13% accuracy gain might drop down to only few points when factoring in this error. This part hasn't been evaluated and the dynamics from the mobility aspects are not taken into account.
+
+- Also, the performance comparison with what you call the baseline (only in-phone and only in-cloud implementations) is not completely fair, since, as pointed out above, hybrid approaches have been proposed already.
+
+- To make sure that people don't upload data with wrong labels, your system applies a filter by comparing the incoming sound with existing sounds in the database with the same label and discards the new sound if there is lack of similarity. How well does it work in practice?  This is a very hard problem and it is only lightly touched in the paper.
+
+- In some cases you might have overlaps between labels: guitar and violin in the instruments class produce music. How do you disambiguate them?
+
+- I was surprised to see that most of the power in your system is taken by FFT and MFCC extraction compared to, say running a GMM. This result slightly contradicts previous findings, such as in your references [11] and [14]. Can you comment on that?
+
+- The accuracy of the classifier will remain low until a statistically significant data set has been collected. Please comment on whether and how it is possible to alleviate this bootstraping issue.
+
+- I like the outcome of the user study.
+
+- how do you use the 2000 soundless from the web? The quality of the recording is microphone specific and often phones from a same vendor (e.g., iPhone 3G and 3Gs and 4) produce audio with different characteristics (in terms of gain, frequency response etc). Let alone audio recorded by microphones that are not from a phone, maybe professional equipment. The performance then of a model trained with the web audio and tested with the phone audio would most likely be very very poor unless the audio on the web is collected using the same phones you test with. How do you solve this problem?
+
+- Due to mobility and phone usage modes, a phone can quickly go in and out of context. Although some of the models can be pre-loaded at the beginning, still some others need to be downloaded on the flight based on the specific context. Can you quantify the impact on the phone's battery of these possibly frequent transmissions over the air?
+
+- No need to repeat the same text in the intro and related work.
+
+===========================================================================
+                         MobiSys 2013 Review #108D
+                 Updated Monday 11 Feb 2013 7:06:37pm EST
+---------------------------------------------------------------------------
+  Paper #108: Auditeur: A Mobile-Cloud Service Platform for Acoustic Event
+              Detection on Smartphones
+---------------------------------------------------------------------------
+
+                      Overall merit: 3. Weak accept (interesting paper but
+                                        needs to plug a few holes);
+                 Reviewer expertise: 2. Some familiarity
+                          Riskiness: 3. Refreshing/risky idea or bold
+                                        hypothesis (but execution has
+                                        drawbacks)
+
+                         ===== Paper summary =====
+
+The paper describes Auditeur, a platform for smartphone acoustic event classification. It has an API to allow applications quick access to audio classifiers with minimal programming. The classifiers depend on the existence of audio samples to train the classifier the app uses, or else the app developer must record them itself. The API allows for developers to share their sound samples and provide labels, and admission control helps the database avoid outliers for submitted samples. The platform divides the architecture between the phone and the server, but minimizes interaction to sending data for training and the server's sending of new classifiers configurations. After the server determines the best configuration for the specified energy budgets, classification occurs on the mobile device. Of the many features that can be used for classification, the server selects the subset to maximize information gain while remaining under an energy budget constraint for feature extract!
+ ion. This allows the system to have different features to meet different battery deadlines. It uses location (indoor/outdoor), phone position on the body, and environmental noise context to improve accuracy. The classifier(s) are then sent to the phone to be run on the device. The evaluation uses 7 apps, some replicating the systems of prior work. They compare Auditeur (with different context data) to a baseline that uses the features in other work, using the cloud or doing all on the phone. There is a tradeoff between power savings and accuracy, and while increasing battery lifetime by 33.4%, they lose only 2% accuracy compared to using all the features. They did a user study to confirm that the API was easy to use and effective.
+
+                        ===== Paper strengths =====
+
+The system successfully reduces power usage for acoustic event classifiers. The approach is logical and well-designed. It addresses both energy savings and accuracy through multiple contributions. It provides a simple but powerful API for sound classifier use and training, and machanisms to support crowdsourced data sets as developers share samples. The evaluation shows that the system maintains most of the accuracy while decreasing energy usage to meet energy budgets, and validates the architecture used. The API provides real-time event detection for apps. The evaluation used seven different apps created with the API, and Auditeur improved both accuracy and energy usage.
+
+                       ===== Paper weaknesses =====
+
+The paper doesn't discuss how to make sure the approach is feasible for people who need the phone all day, since the target battery life in their evaluation is under 10 hours, with wireless off, no other background services, and minimum screen brightness. However, the paper does remark that it's improvements scale down energy usage compared to other work, which implies the energy savings would extend to any other energy-saving strategy like duty cycling. The system is effective at detecting event from short term information, so it is not suitable for tasks like speech recognition. Use of GPS for location data is mentioned only vaguely, and says they would be used "when available". The evaluation doesn't mention using different locations other than indoor vs outdoor.
+
+The paper is vague about what it means by available GPS location. Does it mean when the phone can get a location fix? Energy-efficient location is out of scope for the paper, but at least indicate briefly that the system won't be continuously sampling GPS, which would more than negate any energy savings provided by Auditeur. Location besides indoor/outdoor is not commented on in the evaluation, and the role of location for describing contexts is not clear. How would it be used?
+
+===========================================================================
+                         MobiSys 2013 Review #108E
+                 Updated Friday 15 Feb 2013 10:30:32am EST
+---------------------------------------------------------------------------
+  Paper #108: Auditeur: A Mobile-Cloud Service Platform for Acoustic Event
+              Detection on Smartphones
+---------------------------------------------------------------------------
+
+                      Overall merit: 3. Weak accept (interesting paper but
+                                        needs to plug a few holes);
+                 Reviewer expertise: 3. Knowledgeable
+                          Riskiness: 3. Refreshing/risky idea or bold
+                                        hypothesis (but execution has
+                                        drawbacks)
+
+                         ===== Paper summary =====
+
+-- Develops a platform for auditory sensing/event detection leveraging a hybrid mobile/cloud framework.
+
+                        ===== Paper strengths =====
+
+-- Highly relevant.
+-- Fresh take on auditory sensing.
+-- Interesting and pleasant paper to read.
+-- Thorough and clean evaluation.
+
+                       ===== Paper weaknesses =====
+
+-- Motivation is not overwhelmingly compelling.
+-- Generation process for creating execution plans in the cloud is not well explained.
+
+                       ===== Detailed comments =====
+
+-- Page 1, column 2: Good, comprehensive list of works relying on acoustic processing. This helps the motivation considerably. It would be nice, however, to have some substantiation/justification that programming for acoustic event detection is "hard", that these existing systems share substantial similarity in their mechanisms for auditory processing, and that it would be possible to extract this audio logic to a sharable platform. It's not immediately clear that Auditeur covers the range of detection capabilities required in the listed works.
+-- This separation of functionality between the mobile and cloud ends is interesting. I like the approach in that is seems to enable an "app store" of sorts for acoustic classifiers. It seems that one need only have an idea of which classifiers they would want to integrate, and could subscribe to those classifiers accordingly. As classifiers improve, so would subscribing apps. Nifty.
+-- Nice, clear, seemingly-substantial list of contributions (end Section 1). It's not obvious what some of the percentage improvements really mean (hoping/expecting this will become clearer in the eval).
+-- I highly doubt that reported percentage improvements are given with the right (or a reasonable) number of significant digits. E.g., perhaps sub 10.71%-13.86% with 10-13% or ~10%.
+-- Generally nice usage scenario discussion ... really like how the discussion is organized by PoV. However, discussion for "Developers" is not particularly forward-looking -- seems like a reduced-functionality version of Shazaam. I this case, cloud processing seems to make more sense, given the huge library of songs that can be compared. Further, the discussion for "Researchers" and for "End-users" is too similar. Seems strange that end-users would be required to do their own training. I'd imagine that this would be tough to do well in practice, and that most interesting sounds would be generic enough to be encoded by a developer.
+-- It's not clear how the "within" tags are generated. Are these just other "content" tags?
+-- 3.2 is not specific enough. What kind of sensing is used? What kind of "assumed" contexts are reasonable?
+-- 3.3.1: it would be nice to shave a clearer idea of what kind of tags are in the "public space".
+-- It would be nice to have some specifics regarding your cloud processing prototype. I want to understand how deployable, scalable this is in practice. Seems like it's just one EC2 instance without clear thoughts in regard towards a many-user deployment. MongoDB seems to make sense for data, but curious about computational load.
+-- Is detection for moving indoors <--> outdoors, putting the phone in the pocket, etc. currently implemented?
+-- I'm glad that you have included Figure 4 ... gives a flavor of using the API in practice.
+-- I don't have a clear sense of how execution plans are generated and matched to the kind of auditory recognition some app wants to perform. Is there a human in the loop in creating some reasonable diction of possible execution plans? Feels like a magic black box. There is some discussion regarding energy, but I'm not sure how well accuracy fits into the model. Can "information gain" be quantified accurately?
+-- 7.1.2 is very dense, not especially clear. Style is not well in keeping with the rest of the paper.
+-- CPU and memory requirements appear reasonable. Though, it would be nice to see a distribution curve, rather than just numbers, for CPU load. Memory requirements seem well within reason.
+-- Cute app ideas in Table 6 :-)
+
+
+===========================================================================
+                                  Comment
+  Paper #108: Auditeur: A Mobile-Cloud Service Platform for Acoustic Event
+              Detection on Smartphones
+---------------------------------------------------------------------------
+The PC discussion agreed that the paper has a novel, interesting idea that it will be useful to the community. The concern was that the presented architecture might be similar to other previous work. The paper should be more clear at differentiating itself from prior work.
+

@@ -1,0 +1,131 @@
+===========================================================================
+                         BuildSys 2015 Review #76A
+---------------------------------------------------------------------------
+Paper #76: Automated Metadata Construction to support Portable Building
+           Applications
+---------------------------------------------------------------------------
+
+                         ===== Paper summary =====
+
+The paper describes an approach to identifying meta-data information in legacy building BMS systems.  The paper takes a human-in-the-loop approach, where a BMS operator that knows something about the existing meta-data schema answers questions posed by the system to recognize existing relationships in the labeling. The approach basically extracts relationships from the existing labeling structure of the BMS.
+
+                            Novelty: 3. Significant novelty in an
+                                        established research area
+
+                           ===== Strengths =====
+
+The approach is novel, the technique and system are described in detail, and the evaluation is strong.
+
+                          ===== Weaknesses =====
+
+There are some limitations to the approach.  For example, the labeling in the existing system may not follow any rules or logic.
+
+                      ===== Comments for author =====
+
+This is a nice paper with a novel approach to an important problem.
+
+                      Overall merit: 5. Strong accept
+                 Reviewer expertise: 3. Knowledgeable
+
+===========================================================================
+                         BuildSys 2015 Review #76B
+---------------------------------------------------------------------------
+Paper #76: Automated Metadata Construction to support Portable Building
+           Applications
+---------------------------------------------------------------------------
+
+                         ===== Paper summary =====
+
+This paper propose a framework of machine learning to create engines to automatically translate the proprietary tagging languages between building information systems.
+
+                            Novelty: 5. Significantly novel work in a new
+                                        research area
+
+                           ===== Strengths =====
+
+Addresses a real problem when integrating/migrating disparate building information systems.
+
+                      ===== Comments for author =====
+
+In this paper, the authors discuss a machine learning framework that involves human in the loop to standardize tags used in building information systems.
+
+A lot of tags, i.e. mnemonics and acronyms are used in building information systems. However, as building information systems are usually developed independently by different companies and groups of engineers, the tags’ grammar and semantics are proprietary.
+
+To facilitate system migration and interoperations, we need a mechanism to standardize/translate these tag grammar and semantics.
+
+In this paper, the authors propose a framework. The first step of the framework is to cluster related tags. Then show the clusters to human engineers, to pick the most representative examples. Then these examples are further learned via machine learning.
+
+Empirical study upon three disparate building information systems show that the above machine learning framework can effectively create the necessary knowledge engine, to facilitate automatic translation and standardization.
+
+                      Overall merit: 5. Strong accept
+                 Reviewer expertise: 2. Some familiarity
+
+===========================================================================
+                         BuildSys 2015 Review #76C
+---------------------------------------------------------------------------
+Paper #76: Automated Metadata Construction to support Portable Building
+           Applications
+---------------------------------------------------------------------------
+
+                         ===== Paper summary =====
+
+The paper identifies a problem that will be new to most of the community : that of automatically parsing and making sense of disparate data coming from various building management systems. The paper applies a number of (what I assume to be) standard techniques, and then develops them specifically for this application.
+
+The topic will be unknown to most attendees of the conference, but will be recognized by most as important and interesting. The paper is well written, and I would recommend acceptance.
+
+                            Novelty: 5. Significantly novel work in a new
+                                        research area
+
+                           ===== Strengths =====
+
+The topic will be unknown to most attendees of the conference, but will be recognized by most as important and interesting. The paper is well written, and I would recommend acceptance.
+
+                      ===== Comments for author =====
+
+The paper identifies a problem that will be new to most of the community : that of automatically parsing and making sense of disparate data coming from various building management systems. The paper applies a number of (what I assume to be) standard techniques, and then develops them specifically for this application.
+
+The topic will be unknown to most attendees of the conference, but will be recognized by most as important and interesting. The paper is well written, and I would recommend acceptance.
+
+                      Overall merit: 5. Strong accept
+                 Reviewer expertise: 2. Some familiarity
+
+===========================================================================
+                         BuildSys 2015 Review #76D
+---------------------------------------------------------------------------
+Paper #76: Automated Metadata Construction to support Portable Building
+           Applications
+---------------------------------------------------------------------------
+
+                         ===== Paper summary =====
+
+This paper presents an approach to the point auto-mapping problem for Building Auotmation Systems. The approach relies on clustering the tags by using the properties of their syntax to learn which tags would provide most useful information to the system if they were labeled by a human, and then utilizing measurements from those tags to further improve (and automate) the process of propagating the learned mappings. The authors evaluate their approach on three buildings during one season.
+
+                            Novelty: 3. Significant novelty in an
+                                        established research area
+
+                           ===== Strengths =====
+
+The paper combines an approach that performs inference from tags, with another one that performs inference from measurements.
+
+The evaluation is carried out on three different buildings.
+
+                          ===== Weaknesses =====
+
+The main weakness, in my opinion, is that the results vary quite significantly across buildings suggesting that a more extensive evaluation is required to properly characterize the scalability / generalizability of this method. Furthermore, the authors did not clarify the length of time considered for the data-driven approach, though it appears to be from a single cooling season. I am concerned that changes in the statistical properties of the signal over time (when the building is subjected to different environmental or operational conditions) can negatively influence the performance of this approach.
+
+Given that there are many other approaches that have been proposed to solve this problem it would have been great to see a comparison between them.
+
+                      ===== Comments for author =====
+
+Overall, this is a very nicely written paper.
+
+Besides the weakness described above, there are a couple of other minor items:
+
+I was also not clear how the authors "ground-truthed" the sensor meta data.
+
+The literature review could have included more references to recent work, such as (for example) other papers published in the last version of BulidSys.
+
+It would have been great to see more details about the 8-tuples used for the data-driven approach: how are they distributed across different buildings, for similar tags? How are they different? Which portion of this vector is most informative?
+
+                      Overall merit: 4. Accept
+                 Reviewer expertise: 3. Knowledgeable

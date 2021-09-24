@@ -1,0 +1,140 @@
+----------------------- REVIEW 1 ---------------------
+PAPER: 882
+TITLE: Identifying Relations between Equipment in Commercial Buildings via Correlated Events
+AUTHORS: Dezhi Hong, Renqin Cai, Hongning Wang and Kamin Whitehouse
+
+Is this paper suitable for the Applied Data Science Track?: 1 (Yes)
+Does the paper belong to one of the categories Deployed, In-Progress, Observational?: 1 (Yes)
+Category DEPLOYED: no
+Category IN-PROGRESS: yes
+Category OBSERVATIONAL:: no
+Is there a clearly defined audience / group of users that will benefit from the solution presented in the paper?: 1 (Yes)
+Originality/Novelty: 2 (Minor improvements over existing solutions)
+Technical Quality: 2 (Fair technical work but the validation is not persuading)
+Impact/Outreach of the presented solution: 3 (Fair: Fair solution to an important problem, but there are alternatives around.)
+Overall evaluation: -2 (I am not championing but if there is a champion then I am fine accepting)
+
+----------- Please justify the category to which you assigned the paper. -----------
+It seems that their system is not under current commercial use.
+
+----------- Please justify your answer on the paper's anticipated audience: -----------
+Large building management and maintenance companies.
+
+----------- Originality/Novelty -----------
+Their HMM is standard and they simplify the causal graph underlying the problem.
+
+----------- Technical Quality -----------
+I missed the comparison with other solutions proposed recently, mainly Hallac et al (2017).
+
+----------- Impact/Outreach of the presented solution -----------
+Maybe their solution is all we need to monitor equipment in large buildings but the evaluation is not complete.
+
+----------- Review -----------
+The authors consider the individual time series separately (that is, each sensor individually), run their HMM model to obtain the latent states z(t)in each time series separately. Having this for the times series of each air handling unit (AHU) and each variable air volume (VAV), they find the AHU and VAV pairs of latent states z_{VAV} and z_{AHU} that are similar according to the cosine similarity index. In this way, they find the (AHU, VAV) pairs that are causally related. In practice, they reduce the simultaneous processing of all sensors time series to the individual processing of each sensor time series separately and the then carry out a simple pairwise cosine similarity index calculation.
+
+The main advantage of this procedure is the large reduction in complexity when the simultaneous modeling of all time series was avoided. The point is that it is not clear if this simplification loses too much as compared to a more complex model because no complex model has been considered in the paper. This is unfortunate because there are already other models. 
+
+The authors do not cover recent and relevant work that has been presented and awarded in KDD itself last year. The runner-up in the BEST PAPER AWARD in KDD 2017 is Hallac et al. Toeplitz inverse covariance-based clustering of multivariate time series data, KDD 2017. This paper presented a beautiful solution to the same problem the authors study here. In fact, it is a bit more general: two time series can become coupled and later uncoupled and then coupled again, all of this unspecified a priori. More importantly, their method works with very large scale data and a large number of simultaneous time series.
+
+A second important point is that the authors claim that they are innovating by using an HMM more general than what they call the usual HMM, one modeling directly the observations only their mean and variance. This is not correct.
+HMM is much more flexible than this. Their model is covered as an initial example in dynamic Bayesian models textbooks. Indeed, dynamic models are much more general than a simple HMM modeling the level (the observed measured values) and trend (derivative). Modern references are [1] and [2].
+
+In particular, [2] is relevant here. It seems to me that the more general approach is to imagine a causal graph connecting the sensors (the vertices) and then proceed to obtain a good estimate of the causal graph structure. The authors seem to assume, a priori, that many directed edges are forbidden (from VAV to AHU, that there is one and only one AHU connecting a VAV, that there are no edges between different VAVs or differents AHUs, etc). This greatly simplifies the search for the DAG involved.   
+
+In summary, the authors' proposal is not innovative in terms of their HMM models and algorithms. However, their simple approach for a large number of time series that should be considered simultaneously may be very useful in their applications. Maybe their simplification is enough to capture the main causal relationships between the sensors and However, it is hard to evaluate this as other models more complex than their proposal and already known by KDD audience has not been considered in their experiments.
+
+[1] Prado, R. and West, M. (2010) Time Series. Modeling, Computation, and Inference. CRC Press.
+[2] Koller and Friedman. (2009) Probabilistic graphical models: principles and techniques. MIT press.
+
+
+----------------------- REVIEW 2 ---------------------
+PAPER: 882
+TITLE: Identifying Relations between Equipment in Commercial Buildings via Correlated Events
+AUTHORS: Dezhi Hong, Renqin Cai, Hongning Wang and Kamin Whitehouse
+
+Is this paper suitable for the Applied Data Science Track?: 1 (Yes)
+Does the paper belong to one of the categories Deployed, In-Progress, Observational?: 1 (Yes)
+Category DEPLOYED: no
+Category IN-PROGRESS: yes
+Category OBSERVATIONAL:: no
+Is there a clearly defined audience / group of users that will benefit from the solution presented in the paper?: 1 (Yes)
+Originality/Novelty: 3 (Incremental)
+Technical Quality: 4 (Good technical work, properly evaluated)
+Impact/Outreach of the presented solution: 4 (Good: Good solution to a rather narrowly defined problem for a small target group of users.)
+Overall evaluation: 3 (I half-champion and would accept  if someone else is also at least half-championing)
+
+----------- Please justify the category to which you assigned the paper. -----------
+The paper describes an implemented system that can discover relations between connected equipment in buildings.
+
+----------- Please justify your answer on the paper's anticipated audience: -----------
+Knowing the connection of various pieces of equipment in a building can be useful in various applications (e.g. root-cause analysis, diagnostic).
+
+----------- Originality/Novelty -----------
+The paper proposes a novel approach to discovering how various pieces of equipment are connected based on the insight that connected equipment is subjected to the same event
+
+----------- Technical Quality -----------
+The proposed solution is properly explained and evaluated.
+
+----------- Impact/Outreach of the presented solution -----------
+Automatically discovering functional relations between pieces of equipment is an important problem which this paper solves in a novel way.
+
+----------- Review -----------
+The paper proposes a novel approach to discovering how various pieces of equipment are connected based on the insight that connected equipment is subjected to the same event. The proposed solution is properly explained and evaluated, the paper is well written.
+
+
+----------------------- REVIEW 3 ---------------------
+PAPER: 882
+TITLE: Identifying Relations between Equipment in Commercial Buildings via Correlated Events
+AUTHORS: Dezhi Hong, Renqin Cai, Hongning Wang and Kamin Whitehouse
+
+Is this paper suitable for the Applied Data Science Track?: 1 (Yes)
+Does the paper belong to one of the categories Deployed, In-Progress, Observational?: 1 (Yes)
+Category DEPLOYED: no
+Category IN-PROGRESS: yes
+Category OBSERVATIONAL:: no
+Is there a clearly defined audience / group of users that will benefit from the solution presented in the paper?: 1 (Yes)
+Originality/Novelty: 4 (Novel approach, using mature components in a novel way)
+Technical Quality: 3 (Fair technical work, with some flaws in design and/or validation)
+Impact/Outreach of the presented solution: 3 (Fair: Fair solution to an important problem, but there are alternatives around.)
+Overall evaluation: -2 (I am not championing but if there is a champion then I am fine accepting)
+
+----------- Please justify the category to which you assigned the paper. -----------
+The proposed VAV/AHU connection detection approach has not been deployed for real world application. The paper does not provide important insights of a significant real world application.
+
+----------- Please justify your answer on the paper's anticipated audience: -----------
+The proposed solution may be useful to the building management team for maintainence and applying energy efficient solutions. However, the usage of VAV/AUH connection information is not explictly dicussed in the paper.
+
+----------- Originality/Novelty -----------
+A new model is proposed for detecting state of devices. The overall approach for event detection and connection identification is reasonable with good performance as shown in the experiments.
+
+----------- Technical Quality -----------
+I am not sure about how difficult it is to mannually identify the connections between VAV and AHU, would that information be missing after installment from the supplier.
+        Besides, the discussion on usage of this connection information is not sufficient. The needs of the target group are not clear to me.i
+
+----------- Impact/Outreach of the presented solution -----------
+As mentioned before, the difficulty in identifying the VAV/AHU connection and its usage are not sufficiently discussed.
+
+----------- Review -----------
+The paper proposed a new model MEMO for detecting events of AHU, e.g., outlet fan speed increase, and associated VAV. The event detection results are then used to identify the associations of VAV and AHU, i.e., their connection information. The authors proposed to apply masking to filter events of VAV that are not temporally aligned with those of AHU. The resulting event sequences are used to calculate a cosine similarity score with those of AHU. Each VAV is assigned to the AHU with the highest similarity score. The proposed solution seems reasonable and demonstrates good performance via experiments.
+
+My major concern is I am not sure what the difficulty in identifying the VAV/AHU connection information is, and what its usage is. The authors need to provide more discussions on situations when such connection information is missing and why, and how useful it could be in real world applications. Since the number of AHU is small, I am not sure how difficult it would be to manually identify the connections with more information about the building, as associated VAV/AHU are expected to be physically close to each other, e.g., at the same floor (correct me if I am wrong).  In the dataset used, the number of AHUs and the number of floors are identical for two buildings. However, the detailed information about how VAV/AHU is deployed is not mentioned.
+
+In the experiments, I am interested to see experimental results on evaluation of the event detection model MEMO, which is the major technical contribution of this paper. Is MEMO able to discover meaningful events of AHU and VAV? Besides VAV/AHU connection discovery, is there any other case when such event information could be useful?
+
+For connection discovering, I am curious about the performance of simpler methods like clustering, which is also unsupervised method. The ground truth of total number of clusters is known, which is identical to the number of AHUs.
+
+The masking technique is useful for some buildings, e.g., 10320, but not for all. It would be good if the authors can provide more insights on when such masking would work and why.
+
+
+-------------------------  METAREVIEW  ------------------------
+PAPER: 882
+TITLE: Identifying Relations between Equipment in Commercial Buildings via Correlated Events
+
+The work described in this paper presents a Markovian Event Model that aims to identify the latent events in time series data, with the view to identify relationships between equipment based on simultaneous events through the usage of a correlation metric. The paper looks more like work in progress and the reviewers have identified several shortcomings that makes this work in progress not ready to appear in the applied track:
+
+- the approach is not novel; this per say is not a problem, but due to the next items becomes an issue
+- there is no deployment to actually see the impact of the proposed work
+- the motivation of the problem is not clear, including the motivation of the approach
+- the above (lack of motivation of the approach) also may come from the fact that the literature was not reviewed and the work was hence not framed within previous work.
+
+Overall I feel that the paper brings little in terms of domain, approach, lessons learned for the applied track.

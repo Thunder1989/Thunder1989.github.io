@@ -1,0 +1,100 @@
+----------------------- REVIEW 1 ---------------------
+PAPER: 1631
+TITLE: Extracting Correlated Events for Equipment Relation Inference in Commercial Buildings
+AUTHORS: Dezhi Hong, Renqin Cai, Hongning Wang and Kamin Whitehouse
+
+Relevance to CIKM: 4 (good)
+Originality of the Work: 3 (fair)
+Technical Soundness: 4 (good)
+Quality of Presentation: 4 (good)
+Impact of Ideas or Results: 3 (fair)
+Adequacy of Citations: 3 (fair)
+Reproducibility of Methods: 3 (fair)
+Overall Evaluation: -2 (I am not championing but if there is a champion then I am fine accepting)
+
+----------- List 3 or more strong points, labelled S1, S2, ... -----------
+(S1) Well-motivated graphical model (MEMO)
+(S2) Comprehensive empirical evaluation
+(S3) Clear real-life use case
+
+----------- List 3 or more weak points, labelled W1, W2, ... -----------
+(W1) Some technical details are unclear
+(W2) Very simplistic event correlation measure
+(W3) Ad-hoc solution for event detection
+
+----------- Overall Evaluation -----------
+The paper presents an approach to discover pairs of coupled sensors in a commercial building to find sensors that are functionally related. The observation is that functionally related sensors are not necessarily correlated in the observed values, but changes in the sensor readings are triggered by the same events in the physical world (e.g., a person entering a room). Hence, they propose a two-step approach and perform a temporal segmentation of all sensor readings into periods of event and no-event, and correlate the resulting binary sequences using the cosine similarity. Their empirical evaluation shows performance that is superior to the selected competitors.
+
+Generally, the method is well motivated and most of the technical decisions are explained with a sufficient level of detail. Furthermore, the empirical evaluation is comprehensive. The approach seems to work well for the particular use case that the authors study. However, the design decisions appear to be rather ad-hoc, and there is only little internal evaluation. Some points for improvement:
+
+- Section 3.1 discusses "velocity of change" without defining what it means.
+
+- The alterations to the model described in Section 3.3 are unclear, and it seems that they introduce additional dependencies into the future that do not fit in the Markovian framework from Figure 3.
+
+- In Section 3.4, the cosine similarity is used to correlate the binary event sequences. However, cosine similarity clearly fails if an event has effects of different lengths in the two sensor time series that are compared, or if the impacts are shifted/have different delays in the series. There is no discussion of alternative measures to compare discrete sequences.
+
+- The MEMO model proposed here for event detection/segmentation seems to work well for the particular sensor readings that the authors study, but seems to fail in capturing the dependencies in other pairs of points (Sec 4.5). This observation indicates that the MEMO model works well under a very specific kind of event impact, but fails to capture other kinds of event impacts. This weakness can be addressed by putting more emphasis on the general framework (event detection/segmentation + event sequence correlation module) and allowing to instantiate the modules of the framework differently.
+
+
+----------------------- REVIEW 2 ---------------------
+PAPER: 1631
+TITLE: Extracting Correlated Events for Equipment Relation Inference in Commercial Buildings
+AUTHORS: Dezhi Hong, Renqin Cai, Hongning Wang and Kamin Whitehouse
+
+Relevance to CIKM: 4 (good)
+Originality of the Work: 3 (fair)
+Technical Soundness: 4 (good)
+Quality of Presentation: 3 (fair)
+Impact of Ideas or Results: 4 (good)
+Adequacy of Citations: 4 (good)
+Reproducibility of Methods: 3 (fair)
+Overall Evaluation: -2 (I am not championing but if there is a champion then I am fine accepting)
+
+----------- List 3 or more strong points, labelled S1, S2, ... -----------
+S1. The problem has significant practical value.
+S2. The Markov method looks reasonable.
+S3. Good performance of the proposed method.
+
+----------- List 3 or more weak points, labelled W1, W2, ... -----------
+W1. Unclear problem statement.
+W2. Important benchmarks, such as machine learning methods, may be missing.
+W3. The presentation can be improved.
+
+----------- Overall Evaluation -----------
+The authors aim to solve an interesting problem: detecting equipment correlation in commercial buildings. The solution proposed by the authors, namely MEMO, is a Markov model. The method makes sense to me, but I believe that it can only be considered as a minor contribution as it is just a reasonable extension of the regular Markov model framework. The key strength of this work is the result. However, the authors may want to complete the benchmark lists by considering some machine learning algorithms, e.g., deep neural networks and ensemble methods. Furthermore, the paper needs a clear and formal problem statement before starting the discussion of methodology. It is also unclear about the potential value of the work. The authors need to clarify the significance of the problem they work on. I also suggest the authors proofread the paper for the language issues.
+
+
+----------------------- REVIEW 3 ---------------------
+PAPER: 1631
+TITLE: Extracting Correlated Events for Equipment Relation Inference in Commercial Buildings
+AUTHORS: Dezhi Hong, Renqin Cai, Hongning Wang and Kamin Whitehouse
+
+Relevance to CIKM: 4 (good)
+Originality of the Work: 3 (fair)
+Technical Soundness: 3 (fair)
+Quality of Presentation: 4 (good)
+Impact of Ideas or Results: 4 (good)
+Adequacy of Citations: 3 (fair)
+Reproducibility of Methods: 3 (fair)
+Overall Evaluation: 3 (I half-champion and would accept if someone else is also at least half-championing)
+
+----------- List 3 or more strong points, labelled S1, S2, ... -----------
+S1- Sound and solid approach
+S2- Good formalization and presentation
+
+----------- List 3 or more weak points, labelled W1, W2, ... -----------
+W1- limited novelty
+
+----------- Overall Evaluation -----------
+The paper presents an approach based on Markov Models for inferring events from records in large sensor networks.
+The work appears solid and complete, the methods are well described and the experiment is based on real, large datasets. However, innovation is rather limited, as the work consists into application and variants of well known techniques.
+
+
+-------------------------  METAREVIEW  ------------------------
+PAPER: 1631
+TITLE: Extracting Correlated Events for Equipment Relation Inference in Commercial Buildings
+
+The paper presents an event detection problem in time series. The solution is reasonable but straightforward. The biggest concern is the limited novelty of the method. I also find the literature survey is lacking. In fact there are many papers on stream mining, which focus on precisely event detection on such data. But the authors didn't seem to be aware that line of research. e.g.,
+- Spiros Papadimitriou, Jimeng Sun, Christos Faloutsos: Streaming Pattern Discovery in Multiple Time-Series. VLDB 2005: 697-708
+- Yasushi Sakurai, Spiros Papadimitriou, Christos Faloutsos:
+BRAID: Stream Mining through Group Lag Correlations. SIGMOD Conference 2005: 599-610

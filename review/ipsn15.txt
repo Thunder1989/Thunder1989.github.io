@@ -1,0 +1,188 @@
+===========================================================================
+                            ipsn15 Review #139A
+                     Updated 9 Jan 2015 6:36:04pm EST
+---------------------------------------------------------------------------
+  Paper #139: Portable Building Applications through Metadata Augmentation
+---------------------------------------------------------------------------
+
+                      Overall merit: 2. Weak reject
+                 Reviewer expertise: 4. Expert
+
+                         ===== Paper summary =====
+
+This paper aims to address the problem of normalizing meta data in Building Management systems with the goal of enabling a common schema such that portable applications for smart buildings can be built. The main assumption is that metadata is not consistent across buildings due to their age, and different styles when buildings are commissioned. The paper uses a method to automatically synthesize building sensor metadata in an iterative manner where an expert provides some examples of how sensor tags are organized and then with a few examples their technique can be boosted to learn a large fraction of the remaining metadata tags. The authors evaluate their techinque on two buildings with manually labelled ground truth and then apply it to 10 other buildings commssioned by the same vendor showing good results.
+
+                      ===== Comments for author =====
+
+This paper addresses an important problem of high heterogeneity and quality in the metadata available for sensors/actuators in large commercial buildings. The technique that the authors have proposed to incrementally build regular expressions by asking a building expert to provide some examples is definitely promising and one that could help building managers normalize their building metadata into a common format for analysis, understanding. The paper also highlights the different cases and challenges that must be addressed in order to succeed at buildings of different ages and vendors (2).
+
+The paper is generally well written and the problem is articulated well. I felt the novelty was somewhat on the low side, especially since the paper did not present a whole lot of surprising insights. However, I still thought that the contributions could be useful to the buildings community.
+
+My main concern with the paper was on its evaluation. The goal as stated in the paper was to make it easier for Mangers (?) to normalize their metadata, so that portable apps could be written. If usability and ease of use was the main goal, I did not see any user study or evaluation of the User Interface or even discussion of it? Who was the expert who used your system? How long did they take to do this for buildings 1 and 2?  Figures 4,5,6 are barely legible. The paper also talks about how a few number of examples (19,35) enable understanding of 70% of the tags, but does not talk about where the technique fails and why even with a large nuber of examples the number of sensors fully qualified remains less than 90% (Figure 5). Which of the metadata is not identified and why?
+
+The paper also makes the claim that using their technique to boost the metadata, universal and portable building apps can be made. I think that its a bit of an over-reaching claim since their may be many other things that need to be considered moving from one building to the other. What if the capabilities of the sensors across buildings are different? What about access control? Given differences in buildings themselves behavior of the same app may be different. 
+
+Other comments:
+- Section 3.5 was a bit confusing and perhaps un-necessary. You are just boosting the metadata right? Why do you need to talk about the time series data, sampling schedule etc? The metadata does not change that often?
+
+- I can barely see the figures. Fig 4 (legend and axis) are barely visible. figure 5 is the same way (legends). I am unsure about what the main point of Figure 6 is.
+
+- The results in figure 9 is not that surprising given that all the buildings are from the same vendor, although quite diverse ages. I wonder how the techniques when trained on one vendor's system and applied to a different vendors system. Note also that the metadata is still decently consistent when the same vendor commisions multiple buildings based on our experience on our campus. 
+
+- there are a few typos and grammar mistakes that can be fixed in a careful pass.
+  e.g. abstract: "respetively" --> "respectively"
+  Section 3.2  : "inputted"    --> "input"
+
+===========================================================================
+                            ipsn15 Review #139B
+                     Updated 2 Dec 2014 7:59:10am EST
+---------------------------------------------------------------------------
+  Paper #139: Portable Building Applications through Metadata Augmentation
+---------------------------------------------------------------------------
+
+                      Overall merit: 3. Weak accept
+                 Reviewer expertise: 2. Some familiarity
+
+                         ===== Paper summary =====
+
+The paper proposes a technique for automated parsing of building system
+metadata given some expert guidance, allowing applications to be ported
+between existing building systems.
+
+                      ===== Comments for author =====
+
+I liked that this paper presented a reasonable solution to a real-world
+problem---and one that might have escaped notice from the research community.
+The presentation is overall clear although a bit drawn out in places. And the
+problem doesn't seem particularly challenging, given that the authors admit
+that learning a small number of tags is sufficient to reconstruct a large
+portion of the tag space given the distribution of tag structures.
+
+My main concern is that little attention has been paid to the impact of
+missing and missed classifications. The paper would have been strengthened by
+more consideration of both (a) places where the metadata augmentation
+process fails to parse tags and (b) errors and the resulting impact of
+building management. While learning 70% of the tags may seem sufficient for a
+conference submission, I would be concerned that the remaining 30% is large
+enough to frustrate a lot of building management applications. In addition,
+incorrect tag classification could cause serious bugs in building management
+systems that could impact energy usage or usability. Given that the accuracy
+shown in Figure 5 does dip periodically at times there do clearly seem to be
+places where tags are incorrectly identified. What impact this would have on
+building management systems needs to be more clearly explained. Otherwise,
+regardless of aggregate accuracy such approaches will be rejected by building
+managers due to fears about misclassification.
+
+Geoffrey Challen :: challen@buffalo.edu
+
+===========================================================================
+                            ipsn15 Review #139C
+                     Updated 9 Jan 2015 6:35:56pm EST
+---------------------------------------------------------------------------
+  Paper #139: Portable Building Applications through Metadata Augmentation
+---------------------------------------------------------------------------
+
+                      Overall merit: 2. Weak reject
+                 Reviewer expertise: 3. Knowledgeable
+
+                         ===== Paper summary =====
+
+This paper looks at the problem of parsing human constructed labels for building transducers given training input from facilities managers.  The motivation being that once control points are augmented with meta data, portable applications can be written to perform more meaningful analysis on the sensors streams.
+
+                      ===== Comments for author =====
+
+This paper tackles a real and common problem in the building domain.  It is great to see the problem approached in such a systematic manner.   My main concern with this work is that it does not discuss the impact of failures on the end application.  Most facilities managers find themselves inundated with alarm conditions to the point where they quickly begin to ignore them.  If this approach is only 90% accurate, this may not be good enough to avoid exacerbating the problem.  Given the context of where this approach would be applied (networks that are not cleanly labeled) it is possible that such an approach would never be good enough without more aggressive techniques like active learning.  You are also always stuck with problem points that were incorrectly labeled from the start or cases where the knowledge about zone layout etc was lost due to personnel changes.  One of the most interesting parts of the paper was the section on how a purely data-driven approach was able to help cl
+ assify attributes like sensor type.  Some systems do have meta data attached with points (often through manufacturer Device Profiles), it would be good to know how often we really need this approach.
+
+While practical, the approach in this paper is relatively simple compared to more advanced metadata and taxonomy extraction problems found outside of the building domain.  The applications of finding rogue zones, inefficient air handling units and missing nighttime setbacks are already common in more advanced building management platforms (Panoptix, APOGEE, Talison BAS,  etc).  From this perspective, the claims of scalable building efficiency analytics are inflated.  In the least, there should be some commercial solutions discussed in the related work.
+
+Minor:
+"that couple" -> "that a couple"
+"buildilng" -> "building"
+Figu 4 is unreadable
+
+===========================================================================
+                            ipsn15 Review #139D
+                     Updated 16 Jan 2015 6:10:07pm EST
+---------------------------------------------------------------------------
+  Paper #139: Portable Building Applications through Metadata Augmentation
+---------------------------------------------------------------------------
+
+                      Overall merit: 2. Weak reject
+                 Reviewer expertise: 3. Knowledgeable
+
+                         ===== Paper summary =====
+
+This paper is about automatically translating building sensor metadata into key value pairs based on a set of examples provided by relevant experts like building managers. As result, data coming from various buildings may be merged in a common knowledge base. The paper addresses: motivation, application of program synthesis techniques to the problem at hand, evaluation using building testbeds, building analytics, and related work.
+
+                      ===== Comments for author =====
+
+The topic of the paper that is enabling global building data analytics by targeting a common data space is interesting and appealing. However, the significance of the contribution is unclear to me.
+
+In particular:
+
+- There is extensive work on leveraging semantic technologies (aka ontologies) for smart spaces and IoT-based systems. Then, it would be good to position the work presented in the paper with respect to that area.
+
+- It may still be considered that although the global building data space may leverage semantic technology, legacy buildings still need to be accomodated and translation from legacy streams into ontology-annotated metadata is yet to be performed. However, learning by examples is a common approach in machine learning and I would expect that solutions are available in the machine learning and especially NLP community.
+
+- I can see promise in developing advanced building data analytics based on a common data space/knowledge but that is beyond the scope of the paper.
+
+===========================================================================
+                            ipsn15 Review #139E
+                     Updated 9 Jan 2015 6:35:18pm EST
+---------------------------------------------------------------------------
+  Paper #139: Portable Building Applications through Metadata Augmentation
+---------------------------------------------------------------------------
+
+                      Overall merit: 2. Weak reject
+                 Reviewer expertise: 2. Some familiarity
+
+                         ===== Paper summary =====
+
+This submission describes how to automatically harmonize the metadata
+of building sensors. The challenge is the metadata is coded by
+different vendors, operators, etc. so they tend to be
+inconsistent. The benefit of harmonizing the metadata is we will be
+able to write a single application that can run on data from different
+buildings.
+
+                      ===== Comments for author =====
+
+Strengths: The paper presents a scalable way to deploy building system
+applications. The technique to harmonize the metadata seems to work
+well.
+
+Weaknesses: The application probably won't be deployed in very old
+buildings and in new buildings as systems are rennovated, they will
+probably use more and more standard tags so the techniques developed
+may not have as large an impact. The techncial evaluation could be
+better.
+
+
+I enjoyed reading the paper.
+
+The problem is well-motivated: it is easy enough to build an
+application to control one or two buildings but how do we scale it to
+a large number of buildings.
+
+The authors propose technical solution to interpreting the metadata
+strings coded by vendors or building operators and transform them into
+a standard format. The technique seems to work well. In terms of
+novelty in the technique, the key distinction between what is proposed
+here and program synthesis is the noise and inconsistency in the
+strings because humans generated these strings as opposed to computer
+programs. There is no evaluation of the impact of this noise in the
+accuracy of the system. So it is hard to tell the impact of the
+technical contribution in advancing the state of the art in program
+synthesis. One experiment the authors could do is introduce noise in
+the labels and compute the robustness of the techniques proposed.
+
+It is not clear why building 2 requires more examples than building 1
+to achieve the same accuracy for a given technique to present next
+example?
+
+It would be good to address the role of metadata standardization and
+how the system will work when more and more buildings have standard
+metadata. What if we have n standard metadata formats that become
+popular?
+
