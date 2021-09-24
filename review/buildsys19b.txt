@@ -1,0 +1,110 @@
+Review #55A
+===========================================================================
+
+Reviewer expertise
+------------------
+2. Some familiarity
+
+Paper summary
+-------------
+In this paper, the authors present an approach to parsing points name with less expert labeling.
+
+Strengths
+---------
++ well motivated research problem.
++ well structured and self-contained in a 4-page writeup.
+
+Comments for author
+-------------------
+I have following minor comments for improvement in future versions.
+
+- figure 3 and 4 are accuracy comparison across the number of training labels. It may not well indicate the human burden. I think a user study would be helpful in this case.
+
+- the quality of selected subsequences seems not being evaluated.
+
+- I looked forward to seeing a deep dive on bad prediction instances. this may help to discover the insights of the approach.
+
+Human/animal subject approval
+-----------------------------
+2. Not needed or approval is mentioned in the paper.
+
+Overall merit
+-------------
+3. Weak accept
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+Review #55B
+===========================================================================
+
+Reviewer expertise
+------------------
+3. Knowledgeable
+
+Paper summary
+-------------
+The paper presents an active learning technique (based on conditional random fields) to assign context to sensors in a large building. The key idea is to use labels on a small fraction of the sensor metadata and use a learning algorithm to automatically assign context to the sensor. The approach is shown to work with high accuracy with a small number of human-annotations.
+
+Strengths
+---------
+This is a very useful system that can reduce the burden of manually labeling sensors. The approach works with very high accuracy for a large dataset.
+
+Significant Weaknesses
+----------------------
+There are a few evaluation metrics that are missing (described below) which would make evaluating the efficacy of the algorithm easier.
+
+Comments for author
+-------------------
+The idea proposed in the paper is a very useful one. With minimal human intervention, if the generation of the context (metadata) for sensors in a building can be generated, this would lead to a low-cost less cumbersome method.
+
+The use of entropy as a metric to determine which of the training inputs have to be labeled can lower the effort on the human annotator's part. In the evaluation, however, it is not clear what is the spread of entropy for the inputs. the evaluation claims that a small number of sensors entries needs to be labeled, however, there is no metric on why that is the case?
+
+Where is the uncertainty introduced in the problem? Are the metadata/point names very different? Or are there errors in these entries? Is the format not uniform? It is not very clear why a learning method is required over something which is more deterministic or rule-based. Without understanding the complexity of the problem, it is difficult to gauge the needs for a sophisticated learning technique.
+
+Human/animal subject approval
+-----------------------------
+2. Not needed or approval is mentioned in the paper.
+
+Overall merit
+-------------
+4. Accept
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+Review #55C
+===========================================================================
+
+Reviewer expertise
+------------------
+2. Some familiarity
+
+Paper summary
+-------------
+This short paper outlines a new proposed method for meta data labelling automation using an iterative algorithm that uses strong (human) and weak (existing tagged meta data) to infer meta data. These improvements are targeted at partially labelled instances and inductive vs. transductive labelling
+
+Strengths
+---------
++ The motivation for the paper is clear and novel
++ This paper compares against a few other previous methods for automated labelling, and provides a viable set of improvements.
+
+Significant Weaknesses
+----------------------
+- The biggest issue with the paper is that the testing and evaluation of the approach could be done against a larger set of recent previous work using open point meta data sets and techniques.
+- The paper does not comment on reproducibility or open data/code access.
+
+Comments for author
+-------------------
+- Readability and clarity of the technique can be improved
+- Please explain the origin of the data set
+
+Human/animal subject approval
+-----------------------------
+1. Needed but not mentioned in the paper
+
+Overall merit
+-------------
+3. Weak accept

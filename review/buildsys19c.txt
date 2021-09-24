@@ -1,0 +1,112 @@
+Review #132A
+===========================================================================
+
+Reviewer expertise
+------------------
+1. No familiarity
+
+Paper summary
+-------------
+This (short) paper analyses a number of published BMS apps to examine what level of access is granted to users and how it is done. The paper presents a taxonomy of common patterns of access control and then makes some suggestions on guidelines for future app development.
+
+Strengths
+---------
++ Survey of ~125 papers to examine what approaches have been taken in the past
++ Guidelines for future apps
+
+Significant Weaknesses
+----------------------
+- As a short paper, it is hard to go into detail about the survey of the 125 apps and their relative merits - however, detailed online results are available at [6]
+
+Comments for author
+-------------------
+There is a nugget of interesting work in this paper that has been provided by conducting a retrospective survey of common patterns adopted in access control. The authors provide a new taxonomy in analyzing the different characteristics of various apps. The fact that the detailed results are available online suggests that this is a useful and detailed piece of work, of which this paper simply serves as a marker with some high level guidelines.
+
+Human/animal subject approval
+-----------------------------
+2. Not needed or approval is mentioned in the paper.
+
+Overall merit
+-------------
+3. Weak accept
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+Review #132B
+===========================================================================
+
+Reviewer expertise
+------------------
+3. Knowledgeable
+
+Paper summary
+-------------
+This paper studies access control problems on smart building apps. The authors point out that the access control of building apps have unique features that make it hard to adopt the same access control strategy as existing applications, such as smart-phones. Also, existing access control methods cannot be effectively applied in building apps. The authors reviewed papers in smart building conferences and proposed design suggestions access control system in building.
+
+Strengths
+---------
+1.      The paper reviewed 125 papers published in smart building conferences and use these papers to summarize the required resources of building apps.
+2.      The paper analyzed existing published Building Operating Systems and point out the potential security risks caused by their access control strategy, showing that access control of smart building apps is a direction worth study.
+
+Significant Weaknesses
+----------------------
+The author defines a building as multi-tenant environments, and multi-tenant access control research has been studied in the database and cloud areas. There is no related work about multi-tenant environment’s access control. The authors should clarify the difference between smart building and existing traditional multi-tenant in access control, or why building access control system cannot be designed with reference to these multi-tenant access control systems.
+
+Comments for author
+-------------------
+This paper describes the differences between building access control systems and other existing access control systems. The author presents future directions in designing access control systems in building. There are a few issues:
+
+1. The three dimensions of Who, What, and When are not comprehensive, although the author claims that these dimensions are complete in expressing existing works.
+
+2. The paper claims that When represents the user's context information. The user location is context information but very different in semantics from When. Is there a possible where category?
+
+3. In summary, I think this article is an unfinished work. How to use the results of Table 1 to form an effective access control strategy in a building is very meaningful and promising work, but the author has not further studied this issue. I hope the authors can follow up and design a real access control system that can be used.
+
+Human/animal subject approval
+-----------------------------
+2. Not needed or approval is mentioned in the paper.
+
+Overall merit
+-------------
+4. Accept
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+Review #132C
+===========================================================================
+
+Reviewer expertise
+------------------
+2. Some familiarity
+
+Paper summary
+-------------
+This paper analyses the permission structure of building IoT/BMS/EMS systems related applications and proposed an increase in the typologies of to account for various logical aspects of the stakeholders. It is essentially a literature review of ACM papers from the past to understand who the stakeholders are and what levels of permission they were given
+
+Strengths
+---------
+* This paper is essentially a fascinating review of stakeholders and their duties within the building industry - the approach is novel and the breadth of literature is comprehensive.
+* This paper could prove useful for understanding the future roles for applications applied to analysis of energy from the built environment
+* The literature review data has been nicely compiled and opened up for the community to build upon
+
+Significant Weaknesses
+----------------------
+There is a question regarding how comprehensive the analysis is based on the short paper format - this topic could be explored in much more detail in a longer paper or journal paper.
+
+Comments for author
+-------------------
+* There are quite a few spelling, grammar and language mistakes — too many to call out individually. Please work on polishing the manuscript
+*
+
+Human/animal subject approval
+-----------------------------
+2. Not needed or approval is mentioned in the paper.
+
+Overall merit
+-------------
+3. Weak accept
+

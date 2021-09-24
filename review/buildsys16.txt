@@ -1,0 +1,71 @@
+===========================================================================
+                         BuildSys '16 Review #79A
+---------------------------------------------------------------------------
+  Paper #79: BRICK v1.0 - Towards a Unified Metadata Schema For Buildings
+---------------------------------------------------------------------------
+
+                      Overall merit: 5. Strong accept
+                 Reviewer expertise: 3. Knowledgeable
+
+                         ===== Paper summary =====
+
+This paper describes a framework to describe metadata in buildings: BRICK.  BRICK has the structure/flexibility to describe both building automation system data and other design data such as those in a BIM.
+
+                      ===== Comments for author =====
+
+The study addresses a significant area that has strong needs from the building industry.  The paper is very well written.  The proposed schema shows great potential and effectiveness.  I just have some minor editorial comments/suggestions:
+1)      Abstract: “while technological advances has have been …”
+2)      Figure 1: suggest to use RTU (roof top unit), instead of AHU, in this example.  AHU needs water loops and other primary systems (chillers, boilers) and is not a good stand-alone HVAC example.
+3)      Section 2.1: second paragraph indicates that an AHU includes pumps.  An AHU does not include pumps.  The water loops (chilled water or hot water) that serve an AHU include pumps.  Considering that many readers for this paper might come from the building industry, it would be great to follow the traditional terminology and definitions.
+4)      Section 3.3: it states that “supply air temperature” and “discharge air temperature” refer to the same concept.  In reality, although some field engineers mix these two concepts, they actually should refer to temperatures at different locations.  Supply air temperature typically is referring to the temperature after the supply fan in an air handling unit of roof top unit.  Discharge air temperature typically is referring to the temperature at the outlet of a terminal unit (such as a VAV or CAV unit).  These two temperatures could be very different if a reheat coil is in use.  However, this does raise an interesting question: how to handle some miss-used terms that are often observed in the field?
+
+===========================================================================
+                         BuildSys '16 Review #79C
+---------------------------------------------------------------------------
+  Paper #79: BRICK v1.0 - Towards a Unified Metadata Schema For Buildings
+---------------------------------------------------------------------------
+
+                      Overall merit: 3. Weak accept
+                 Reviewer expertise: 3. Knowledgeable
+
+                         ===== Paper summary =====
+
+This paper presents a schema for metadata in commercial buildings. It is a pioneering work to establish a basis for storing and sharing dataset for different studies and applications.
+
+                      ===== Comments for author =====
+
+1. Will the schema work well for all types of commercial buildings, especially for high-specialized buildings like hospitals?
+2. The schema design is based on the summarization of existing applications. Please explain how to update the schema if there are new sensors or systems installed in the building.
+3. How were the data points with legacy labels converted to Brick in the case studies?
+4. The performance of data schema highly relies on the accuracy and reliability of automatic conversion technique which has not been developed yet.   
+5. Are the building geometry and material related properties included in the data schema, as they have significant influences on the applications?
+
+===========================================================================
+                         BuildSys '16 Review #79D
+---------------------------------------------------------------------------
+  Paper #79: BRICK v1.0 - Towards a Unified Metadata Schema For Buildings
+---------------------------------------------------------------------------
+
+                      Overall merit: 3. Weak accept
+                 Reviewer expertise: 3. Knowledgeable
+
+                         ===== Paper summary =====
+
+This paper presents a novel schema, callend Brick, for describing the components used within Building Management Systems (BMS). The correctness, expressiveness, and usability of the proposed metadata schema is demonstrated by showing that: (1) it allows to implement different types of applications; (2) the BMS of five large office buildings can be almost entirely translated into Brick’s schema.
+
+                      ===== Comments for author =====
+
+This paper addresses an open and relevant problem, it is very well-written and overall easy to follow.
+Assessing this paper is however difficult, as it always is – at least for this reviewer – when new metadata schemas or ontologies are presented.
+
+The main reason is that it is hard to demonstrate – qualitatively or quantitatively -- that a proposed schema is good or at least better than existing ones. The authors do a great job in showing that their approach allows to model diverse applications and buildings. Nonetheless, the question about whether Brick is the ultimate metadata schema for buildings remains open.
+
+It is also difficult to understand the actual technical contribution of this paper. Doing what the authors describe in this paper clearly requires a large effort and background knowledge about building management systems. On the other side, the paper does not seem to present novel concepts or insights. Many of the critical comments expressed towards related approaches are also subjective opinions of the authors that are hard to support with quantitative evidence (``IFC is ``too verbose’’, mapping existing buildings to Haystack is ``difficult’’).
+
+Regarding the evaluation, the authors convincingly show that the ``Completeness’’ requirement is fulfilled by Bricks. They indeed show that – apart from few exceptions -- their approach can represent all sensor metadata information contained in five different BMSs. The ``Expressiveness’’ and ``Usability’’ of Bricks appear however harder to quantify and are not explicitly addressed in the evaluation. For instance, showing that Brick is usable (or ``more usable’’ than other systems) would probably require running a user study, in which facility managers or developers use Brick and express their satisfaction with it. What is ``easy’’ or ``intuitive’’ is usually much less easy to capture than assumed. 
+
+Lastly, the success of a metadata schema is often related not only to its actual quality but also to the forces behind it that promote its usage in practical settings. By making their sources publicly available*, the authors have made a first important step towards the adoption of Bricks by other researchers and practitioners. The test of time will show how the community will react.
+
+*A link pointing to the source should be included in a prominent position in the paper, though.
+
+Despite the negative comments expressed above, I do recommend this paper to be accepted for publication at BuildSys. The experience shared by the authors might be very much useful to others researchers, who hopefully will also adopt Brick and profit from it in their work.

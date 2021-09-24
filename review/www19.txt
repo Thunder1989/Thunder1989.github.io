@@ -1,0 +1,94 @@
+----------------------- REVIEW 1 ---------------------
+PAPER: 1696
+TITLE: Identifying Relations between Equipment in Commercial Buildings by Learning from Correlated Events
+AUTHORS: Dezhi Hong, Renqin Cai, Hongning Wang and Kamin Whitehouse
+
+Audience: 2 (Yes, but only to a small group of people)
+Overall score: -1 (weak reject)
+
+----------- Strengths -----------
+- Interesting problem. The motivation is clearly stated.
+- The techniques used look sound.
+- Evaluation with the real-world dataset.
+
+----------- Weaknesses -----------
+- Lacks significant technical challenges.
+- Limited innovation in the applied techniques.
+- No evidence that the proposed method could be generalized to other types of equipment.
+
+----------- Summary and review comments -----------
+This paper addresses an interesting problem in the smart building. It aims to find functionally connected equipment using a data-driven approach. First, a Markov model is used to find the potential equipment states. Based on the detected states, correlated equipment is then detected. According to the evaluation in five commercial buildings, it could achieve a detection accuracy of 94.38%.
+
+  Although the techniques used look sound, it seems to barely limited innovations in the proposed methods. Besides, authors do not highlight significant technical challenges. The only challenge mentioned is too many false positive detections which are insufficient for a full paper of this conference.
+
+  Another concern of mine is that how to find other types of connected equipment with this method. Since the time lags between different types of equipment might also be different, do the same parameter set work?
+  Also, to address the time lags, Dynamic Time Warping (DTW) might also be a potentially useful measurement.
+
+  I suggest considering the collective correlation between types of equipment as an AHU is connected with multiple VAVs. Instead of pairwise correlation, if we look at the relation between a set of equipment, there might be new findings or insights.
+
+
+----------------------- REVIEW 2 ---------------------
+PAPER: 1696
+TITLE: Identifying Relations between Equipment in Commercial Buildings by Learning from Correlated Events
+AUTHORS: Dezhi Hong, Renqin Cai, Hongning Wang and Kamin Whitehouse
+
+Audience: 2 (Yes, but only to a small group of people)
+Overall score: -1 (weak reject)
+
+----------- Strengths -----------
+* A correlation model that goes beyond just raw time-series correlation and implicitly models the change in underlying contextual states of different spaces in a building.
+
+* Results shown on real world data involving 5 commercial buildings indicate a significant increase in assignment accuracy, compared to multiple baselines.
+
+* The approach of modeling the velocity changes as a means of identifying changes in the underlying state is a clever idea.
+
+----------- Weaknesses -----------
+* While the paper makes a broad claim about a generalized and accurate approach, the actual results are quite limiting: the final analyses is simply about AHU to VAV matching. The underlying states are domain-specific (e.g., airflow is tied to sudden influx/egress of occupants)--it would seem that eve
+
+* I'm not very convinced of the importance/significance of this problem--for commercial buildings, I would expect that most sensors and actuators are tagged, and the building plans provide the necessary correlation values.
+
+* Explanation of the approach, while mathematical, lacks appropriate explanatory, easy-to-follow insight.
+
+----------- Summary and review comments -----------
+The paper talks about automatically inferring relationships between equipments in a commercial building by correlating the sensor events over a time period.  More specifically, the goal is to map each VAV (varible air volume) box in a building to an AHU (air handling unit) in the building. The author(s) claim this type of mapping can help in fault detection, identification of coolest/hottest rooms etc. inside a building. The high level idea to establish this mapping is that there would be a correlation between AHU events and its corresponding VAV boxes e.g. change in air flow at AHU would also be reflected in all of its connected VAV boxes. If an AHU and a VAV box are seen to be correlated for a significant amount of time, then the probability of that VAV belonging to the AHU is higher.
+
+While the authors tout the 'self-learning' aspects of the system and its generalizability, I felt that much of the improvements came from specific choices of thresholds--e.g., the correlation window between an AHU and VAV. The presented results don't explicitly tease out such effects--e.g., how would the accuracy vary if the 15-minute lag windo was changed to 5 mins or 30 mins?
+
+Similarly, the performance of the model (the choice of K) seems to be based purely on numerical analysis--for different types of physical correlations between building resources, it is likely that the number of distinct contexts could be quite different.
+
+Accordingly, my main concerns remain about: (a) the significance of the problem---why is establishing this correlation so important, and what types of building don't have such data as part of their BIM repository?, and (b) the application/generalization of this approach to other building resources.
+
+
+----------------------- REVIEW 3 ---------------------
+PAPER: 1696
+TITLE: Identifying Relations between Equipment in Commercial Buildings by Learning from Correlated Events
+AUTHORS: Dezhi Hong, Renqin Cai, Hongning Wang and Kamin Whitehouse
+
+Audience: 2 (Yes, but only to a small group of people)
+Overall score: 1 (weak accept)
+
+----------- Strengths -----------
+- Introduction of a method for detecting event correlation among equipment exposed to the same context.
+
+- Detailed evaluation with a real dataset.
+
+----------- Weaknesses -----------
+Few remarks listed below.
+
+----------- Summary and review comments -----------
+This paper introduces an approach for inferring functional connections between equipment in commercial buildings by applying machine learning on the time series sensor data of the different pieces of equipment: detecting correlated events manifests the functional relationship between the pieces of equipment producing them. Such automated context inference can be important for enabling building analytics at scale. In particular, the approach aims to identify which variable air volume (VAV) boxes are connected to an air handling unit (AHU) among all VAVs and AHUs of a building.
+
+The authors introduce their method for modeling, learning and inferring events, addressing all the specificities of this particular type of events and their propagation among functionally connected equipment. They evaluate their approach against baseline solutions on data collected over one month from more than 1000 pieces of equipment from 5 commercial buildings of various sizes located in the US. The ground truth comes from building design plans. Additionally, the authors propose a way for automatically deciding what are the best sensor input types to use for inference when multiple possibilities are available.
+
+I have the following remarks on the paper:
+
+- While I can see the value in the proposed method of detecting event correlation among equipment exposed to the same context, the specific target use case makes me wonder: this direct functional connection between equipment is certainly well documented in building design plans. The same remark applies to the example of sensors in the same on-body network, also pointed out by the authors. A more useful application seems to be the reverse direction mentioned by the authors: identifying problems such as sensor failures when data streams are known to be correlated but not observed so.
+
+- The authors criticize a previous related work, which infers the relations between VAVs and AHUs by perturbing the operation of each AHU and observing the responses in VAVs [25]. However, besides the manual triggering and disturbance that this may cause to building occupants, these perturbations can be seen as events in the sense of the present paper. The authors should compare more in detail with the technique employed in that work and its results.
+
+
+-------------------------  METAREVIEW  ------------------------
+PAPER: 1696
+TITLE: Identifying Relations between Equipment in Commercial Buildings by Learning from Correlated Events
+
+There was inadequate support to accept this paper in view of the concerns outlined in the negative reviews.

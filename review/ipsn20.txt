@@ -1,0 +1,262 @@
+Review #74A
+===========================================================================
+
+Overall merit
+-------------
+3. Weak accept
+
+Reviewer expertise
+------------------
+2. Some familiarity
+
+Research Artifact Quality
+-------------------------
+4. Artifact(s) promised, significant utility to many researchers
+
+Paper summary
+-------------
+The paper considers the problem of metadata mapping -- obtaining the context labels
+of sensors data such as type, location, etc. In prior work, human users label some
+data items and learning approaches were adopted to propagate the labels to remaining
+data items. In this work, the authors use weak oracles -- which contains noisy labels
+and propose methods to incorporate information from multiple weak oracles for two tasks:
+1. Estimate the reliability of each wek oracle for ceratin sensor data types
+2. select an instance to improve the classifier.
+
+The authors claim that prior work has done each task separately and the contribution of
+this paper is to combine both tasks.
+
+The paper reports evaluation results using real sensor data.
+
+Strengths
+---------
+Well written paper; thorough evaluation results.
+
+A data set of 11000 sensors and 5 buildings is available publicly.
+
+Weaknesses
+----------
+I think the authors seem to have made good choices of components in the final system.
+How much novelty is there with the proposed approach of combing two goals in one?
+For example, the reliability estimaton is by iterative weighted majority voting [32].
+Query selection uses the method in [23].
+
+Comments for author
+-------------------
+I am not an expert on this particular problem but I have difficulty evaluating
+the novelty of the proposed approach, with respect to prior work.
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+Review #74B
+===========================================================================
+
+Overall merit
+-------------
+4. Accept
+
+Reviewer expertise
+------------------
+4. Expert
+
+Research Artifact Quality
+-------------------------
+3. Artifact(s) promised, minor utility to few researchers
+
+Paper summary
+-------------
+This paper introduces a new technique to classify different sensors types in buildings by improving classifier performance of weak oracles when combined with strong oracles and improve the estimation of weak-oracle reliability.
+
+Strengths
+---------
++ novel technique that beats the state of the art for an important metadata problem in buildings
++ extensive experiments and comparison to state of art methods
++ large dataset of available building data
+
+Weaknesses
+----------
+- incremental improvement
+- his only considers type classification
+
+Comments for author
+-------------------
+This paper considers an important and recently well-studied problem in buildings related to metadata normalization.  The work considers a novel formulation with a set of weak labelers and feedback from a strong labeler.  The novel formulation and approach allow the weak leaners to improve with feedback and for the model to have better estimates of the weak leaners' ability to provide useful labels.
+
+The paper provides extensive evaluation over many building datasets and compares them to all the main state of the art methods, showing consistently better performance.
+
+The main drawback is that it only considers sensor type classification.  Some prior work considers the full pipeline system, such as:
+
+* Jason Koh, Dezhi Hong, Rajesh Gupta, Kamin Whitehouse, Hongning Wang, and Yuvraj Agarwal. 2018. Plaster: an integration, benchmark, and development framework for metadata normalization methods. In Proceedings of the 5th Conference on Systems for Built Environments (BuildSys '18). ACM, New York, NY, USA, 1-10. DOI: https://doi.org/10.1145/3276774.3276794
+
+* Arka A. Bhattacharya, Dezhi Hong, David Culler, Jorge Ortiz, Kamin Whitehouse, and Eugene Wu. 2015. Automated Metadata Construction to Support Portable Building Applications. In Proceedings of the 2nd ACM International Conference on Embedded Systems for Energy-Efficient Built Environments (BuildSys '15). ACM, New York, NY, USA, 3-12. DOI: https://doi.org/10.1145/2821650.2821667
+
+
+These provide complete normalization and adds significant complexity to the pipeline.  Considering only type classification limits the overall impact of the work.
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+Review #74C
+===========================================================================
+
+Overall merit
+-------------
+4. Accept
+
+Reviewer expertise
+------------------
+2. Some familiarity
+
+Research Artifact Quality
+-------------------------
+1. No public research artifact promised
+
+Paper summary
+-------------
+This submission introduces Selective Sampling technique to improve
+label classification for sensor names in the buildings. The assumption
+is the names have information embedded in them but not consistently
+across the dataset and sometimes incompletely. The authors utilize a
+strong oracle and a set of weak oracles in an active learning
+framework. The clusters are labeled using weak oracle(s) and the
+authors use disagreement based selection to decide to instances for
+query. The authors demonstrate the effectiveness of their techniques
+in a dataset from multiple buildings with several thousand data
+points.
+
+Strengths
+---------
+The authors describe the challenge with the other techniques for
+deciding the queries and propose a new method based on disagreement,
+which seems to make a big difference.
+
+The evaluation is sufficient.
+
+Weaknesses
+----------
+There is no consideration that the strong oracle may also make
+mistakes. There may not be a perfect oracle.
+
+It is unclear if the dataset characteristics is representative of
+buildings across the US or the world.
+
+Comments for author
+-------------------
+The proposed technique for selective sampling seems effective.
+
+The evaluation follows a nice logic, teasing apart the impact of
+different components.
+
+It is not clear if the achieved performance is good enough for control
+or monitoring applications. What type of labeling performance is
+needed for building control application? If we have not achieved the
+application-required performance numbers, the system may not be useful
+at all.
+
+The framework considers all the sensors to be equally
+important. Another optimization could be to know the sensor priority
+depending on the application and use that as another piece of
+information to decide what to query rather than the current
+use-agnostic method.
+
+Table 2 last column should be sensor type.
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+Review #74D
+===========================================================================
+
+Overall merit
+-------------
+3. Weak accept
+
+Reviewer expertise
+------------------
+2. Some familiarity
+
+Research Artifact Quality
+-------------------------
+3. Artifact(s) promised, minor utility to few researchers
+
+Paper summary
+-------------
+The paper presents a method to proactively learn how to best determine a label for a sensor using a combination of
+perfect expert oracles (human labeller), imperfect oracles (non expert humans) and classifiers that have been trained to
+classify labels given label and time series training data from other building sensors.
+The method involves calculating the likely accuracy of labels generated from weak classifiers or non experts and aggregating them
+into clusters and sub-clusters using entropy reduction branching. Moreover other methods are used to deal with labels that contradict ground truth or majority based decisions.
+The iterative approach aims at improving the prediction certainty overall by reorganising the clusters.
+The method is reported to be superior than several other similar methods.
+
+Strengths
+---------
+The paper presents a comprehensive review of the research space and describes an integration of known and new approaches to address the problem.
+
+The results appear to be superior to exisiting methods.
+
+Several pros and cons are considered that shows significant thought has gone into the work.
+
+Weaknesses
+----------
+The paper misses a section that more clearly describes the way the method applies in different scale scenarios e.g. with one expert, one semi expert and two, three four, ten  ML based classifiers being aggregated.
+
+It would have been good to understand what the metadata looks like when for example the type of sensor is correctly labelled but its location is incorrect and then the system eventually finds the correct location.
+
+It has been hard to see how this method tranlates into actual practice applicable to today's buildings and beyond probabilities that the meta data is evidently more human useful.
+
+Comments for author
+-------------------
+The work appears to be of a high standard and there is clearly a good understanding of the problem and the solution proposed.
+The paper is weakly accepted because there is insufficient explanation of the practical interpretation bringing the work back to
+a practical building scenario with actual labelling being aggregated better and better with each iteration, eventually becoming human
+readable and useful.
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+Review #74E
+===========================================================================
+
+Overall merit
+-------------
+2. Weak reject
+
+Reviewer expertise
+------------------
+1. No familiarity
+
+Research Artifact Quality
+-------------------------
+1. No public research artifact promised
+
+Paper summary
+-------------
+The paper presents a sensor type classification method for buildings. Existing solutions leverage annotations. In contrast, the paper proposes to use multiple weak oracles to extract meta-data. The proposed method is tested on 5 buildings with more than 11k sensors of 18 types and shows promising performance.
+
+Strengths
+---------
+* Novel problem formulation
+* Good results, real data, comparison to alternative approaches
+* Well-written and structured paper
+
+Weaknesses
+----------
+* Weak motivation
+* Some implementation details remained unclear to me
+
+Comments for author
+-------------------
+My main concern is the motivation behind the proposed approach. First, why does the problem exist? Since instrumenting a building (or several buildings) requires a bunch of sensors, why can't the problem be solved by an agreement with a sensor vendor? Why not standardize the sensor type labels for the smart building industry all together? How many different labels, say for a temperature sensor, does the data set from 5 buildings contain? Are all 11k labels unique? I guess no. So, why determining a sensor type is such a huge problem? Who, how and why embeds the sensors into a building? Who gathers and processes the data? Please provide these details for the reader to understand where does the problem come from.
+
+My second question is why not determine a sensor type solely based on the sensor data? (maybe with combination with weather information) This approach should scale well across buildings. Why struggle classifying a bunch of "nonsense" names such as those listed in Tab 1?
+
+Finally, the decisions the proposed approach builds on are not well justified. For example, why is the proposed approach (and all discussed alternatives) iterative? Why is the Dirichlet Process used to initialize the clustering? Why is a simple method, such as kNN, not used as one of the benchmarks?
+
+Check spelling of words in the references, e.g., "Btter".
+

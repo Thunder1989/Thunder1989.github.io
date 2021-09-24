@@ -1,0 +1,116 @@
+Review #73A
+===========================================================================
+
+Overall merit
+-------------
+3. Weak accept
+
+Reviewer expertise
+------------------
+3. Knowledgeable
+
+Paper summary
+-------------
+A framework was proposed for integrating and evaluating state-of-art metadata normalization methods. It enables creating workflows consisting of modular and reusable components, such as preprocessing, feature engineering, inference models, and evaluation metrics, for benchmarking the metadata normalization techniques.
+
+Strengths
+---------
+An excellent benchmarking study was conducted using existing state-of-art metadata normalization techniques on data from five different case studies.
+
+Weaknesses
+----------
+The core of the framework is merely creating machine learning (ML) workflows, however, there are several ML frameworks out there providing features more than what Plaster does – modular, extensible, and reusable.
+
+Comments for author
+-------------------
+- If the objective is creating an open source framework, we have MLflow from databricks, Weka, and several others, that also provide many extensible and reusable features for creating ML workflow, and benchmarking the ML algorithms. Examples are MLJAR, OpenML, Microsoft Azure ML Studio, etc., for prototyping, developing and deploying ML models. In Azure ML studio, one can create ML workflows interactively – integrating different datasets, extensible feature engineering modules (can write our own new feature in python or R), several ML algorithms (again write our own in Python or R, so virtually any ML algo), different evaluation metrics, run experiments and benchmark algorithms. So if the code for existing Inferencers are already in open source, we just need put up them in ML Studio.
+- The related work mostly covers brick and existing metadata normalization methods. Probably, a qualitative comparison of Plaster’s design principles and features with other generic ML workflow frameworks would be useful.
+- Also, can’t we extend the existing open-source research systems, such as OpenBAS/BOSS (http://sdb.cs.berkeley.edu/sdb/OpenBAS/index.html), BuildingDepot (http://buildingdepot.org/), or OpenBAN (https://dl.acm.org/citation.cfm?id=2902322), by adding modules/services for normalizing metadata and benchmark them. Highlighting the need for developing Plaster as an independent framework, rater a module in existing research systems would be a plus.
+- Integration with BMS - It seems we need to manually get the metadata from new buildings and use it with Plaster now. Can Plaster be integrated with existing BMS for getting metadata automatically? Probably, that could be a feature of Plaster that is specific to Building domain.
+- Overall, adding some features which are specific to buildings would strengthen the paper -- interactive UI, programming APIs (showing how easy is to write few lines of code for benchmarking), etc.
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+Review #73B
+===========================================================================
+
+Overall merit
+-------------
+3. Weak accept
+
+Reviewer expertise
+------------------
+2. Some familiarity
+
+Paper summary
+-------------
+This paper presents a framework that ingests wide ranging data from a number of sources/modalities and creates a consistent and standardized ('normalized') schema for a particular building. The main novelty is the integration of a number of existing normalization techniques into a common framework.
+
+Strengths
+---------
++ Some good results demonstrating the relative strengths of existing normalization methods
++ A framework that allows methods to be objectively compared to each other
++ Data from some real buildings are analysed
+
+Weaknesses
+----------
+- The core technical novelty is low in that a framework is "just" plumbing around existing techniques
+- Experimental results could be more clearly described and discussed
+- Presentation of the paper is not fantastic
+
+Comments for author
+-------------------
+This paper tackles the problem of normalizing data from control points for smart buildings into a consistent schema/ontology (Brick is chosen here, but the authors point out that any schema could be used). The main contribution as far as I can tell is the comparative evaluation of a number of existing normalization methods. This is useful, but more emphasis could be placed on this evaluation and its findings. Some specific comments:
+
+- The framework itself is pretty standard as far as any data processing pipeline is concerned. It takes 6 pages to get to the evaluation, and my feeling is that this could be reduced to 4, leaving more room for the discussions on the existing methods.
+
+- I think the way that different inferencers can be chained together (e.g. in Fig 5) is probably the most novel feature of the framework, yet has not been sufficiently discussed.
+
+- The macro and micro F1 scores make the results graphs very cluttered and there is not sufficient discussion on the two scores and their implication for the inference process. This could be restructured so that each score is discussed.
+
+- Although Table 1 is very helpful in showing the existing methods, it would perhaps help to provide some more discussion about the way each technique works.
+
+- Results are quite dense and hard to really draw conclusions from - it would help to discuss the relative merits of all the proposed methods in a more taxonomic and systematic way in the conclusions.
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+Review #73C
+===========================================================================
+
+Overall merit
+-------------
+3. Weak accept
+
+Reviewer expertise
+------------------
+3. Knowledgeable
+
+Paper summary
+-------------
+The paper presents Plaster, a Python-implemented software framework that enables the exploration and integration of various algorithms on building metadata normalization. Moreover, the framework provides capabilities for comparing algorithms and their performance. The framework seeks to create a comprehensive platform that brings together all the existing methods in the literature. The manuscript presents demonstrations using the data from five buildings for benchmarking, workflow, and times series feature selection.
+
+Strengths
+---------
+The paper presents the efforts to create a standardized platform for metadata normalization according to Brick schema. Such a platform could help improve the methodologies by enabling the comparison between the state-of-the-art normalization techniques. It is a well-written manuscript with a clear description of the framework components.
+
+Weaknesses
+----------
+The presented research does not provide novel methodologies in normalization efforts and rather compiles the existing techniques into a unified platform. The evaluations (demonstrations) need more details, specifically on the features, used in the inference processes.
+
+Comments for author
+-------------------
+- The abstract does not reflect the content and contributions of the paper but rather reads like a white paper. The promotional tone for Plaster is observed at some other parts of the manuscript. It is recommended that authors modify the text to focus more on the technical details of the framework.
+
+- On page 2, between the lines 132 to 140, adding some clarifying examples will help clarify the problem statement.
+
+- Early in the manuscript, adding a definition for metadata normalization will be beneficial.
+
+- The concept of active learning needs further elaboration. Section 3 does not sufficiently describe that concept and how it is being implemented and the differences active and supervised learning.
+
+- Given that the proposed framework is an effort on centralizing existing metadata normalizing methods, evaluation does not seem to be a good description for demonstrations at the end of the manuscript. Using the word demonstration seems to be a better fit.
+
+- The evaluation cases do not provide sufficient details on the input data to the inferencers.

@@ -1,0 +1,142 @@
+Review #163A
+===========================================================================
+
+Reviewer expertise
+------------------
+2. Some familiarity
+
+Paper summary
+-------------
+The paper presents a framework to automatically identify the physical context of HVAC equipments in buildings (i.e., how each equipment is connected). Specifically, AHU-VAV functional relationship was investigated. The proposed framework builds upon the insight that functionally connected equipment are exposed to similar events and thus will exhibit correlated changes in their time-series data.
+
+Strengths
+---------
+* Inferring the physical relationship between HVAC equipment with minimal manual intervention.
+* proposed method can filter out irrelevant events, reducing the number of spurious correlations.
+
+Significant Weaknesses
+----------------------
+* Generality of the framework beyond AHU-VAV connections. For instance, the ability to detect associations between water-side and air-side equipment in a multi-zone HVAC system (e.g., water-cooled VAV system).
+* Increase in cooling tower fan speed might not result in a coincidental change in the downstream VAV.
+
+Comments for author
+-------------------
+The paper presents an interesting study with practical applications. It would be interesting also to see the extendibility of the proposed approach for inferring functional connections between water-side and air-side HVAC equipments (e.g., cooling tower - AHU - VAV).
+
+Minor suggestions to authors:
+* An overview of the AHU and VAV data streams (i.e., type of sensors and data collected) used would aid in understanding the context of the study.
+* Authors should include the convergence criterion for the Gibbs sampler. i.e., how was convergence assessed?
+
+Human/animal subject approval
+-----------------------------
+2. Not needed or approval is mentioned in the paper.
+
+Overall merit
+-------------
+4. Accept
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+Review #163B
+===========================================================================
+
+Reviewer expertise
+------------------
+3. Knowledgeable
+
+Paper summary
+-------------
+In medium to large buildings, there are multiple variable air volume boxes (VAVs)
+and multiple air handling units (AHUs). There is a many-one relationship between
+VAVs and AHUs, i.e., each AHU can provide air flow to multiple VAVs. The main
+problem tackled in the paper is the inference of the association between
+VAVs and AHUs, i.e., a given VAV is associated with which AHU.
+
+Methodology wise, at a higher level, the paper first builds a model for inferring
+"events" for each AHU and each VAV individually. For AHU, the sensor data used
+is the supply fan speed. For VAV the data is the air flow volume. The events are
+modeled as hidden latent variables that induce sensor observation changes over
+time. The parameters of the models are estimated using Expectation-Maximization.
+Once the event sequences for all AHUs and VAVs are computed, for a pair of AHU and
+VAV, a similarity score is computed and the highest scored AHU is then assigned
+to a given VAV.
+
+The evaluation uses kenos data from 5 buildings over a one month period. The
+proposed method is compared with multiple baseline methods. The proposed method
+demonstrated sizable advantage in the comparison. Furthermore, it is shown that
+the method can be made more automatic (i.e. removing the need of manual
+data-device association) without significant loss of accuracy.
+
+Strengths
+---------
+The methodology developed in the paper is well grounded, i.e., (1) the use of
+latent event variables and HMMs for inferring events, and (2) the use of the
+events to derive device association. The method appears to be of good generality.
+The evaluation is fairly thorough.
+
+Significant Weaknesses
+----------------------
+The key assumption that the AHU-VAV association is unavailable is very surprising.
+It would seem that a building's blueprint would contain such data with ~100%
+accuracy; any subsequent changes should also be well documented. Unless the authors
+can substantiate the need, i.e., the ground truth is not already available in
+most buildings, which they didn't do in the current manuscript, the paper's work
+seems not very meaningful.
+
+Comments for author
+-------------------
+Besides the summary, strengths, and weaknesses mentioned above, some additional
+comments:
+
+It would seem that an HMM with sensor observations depending on state changes and
+past sensor observations should be a natural comparison point, i.e., is the 3-layer
+model necessary? It is not clear that the HMM model used for baseline comparison
+in the paper is modeled as this. Please clarify.
+
+In the convergence experimentation (Fig. 8), it uses 8 weeks of data. However,
+the paper states that one month worth of data was collected in all five buildings.
+This seems contradictory.
+
+In the abstract, I am not sure what is a "non-polynomial combinatorial data
+segmentation problem". Do you mean the problem is NP-hard?
+
+Human/animal subject approval
+-----------------------------
+2. Not needed or approval is mentioned in the paper.
+
+Overall merit
+-------------
+2. Weak reject
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+Review #163C
+===========================================================================
+
+Reviewer expertise
+------------------
+2. Some familiarity
+
+Paper summary
+-------------
+This paper proposes an approach to automatically infer the functional relations of equipment in the building, and evaluates the performance on data from 5 commercial buildings.
+
+Strengths
+---------
+Inferring the functional relations of building equipment is of great importance to understand the energy behaviors of equipment and explore the energy saving opportunities.
+
+Significant Weaknesses
+----------------------
+More literature review would be helpful to justify the necessity and contributions of the proposed approach, as inferring the relations of time-series data for building equipment has been extensively studied already.
+
+Human/animal subject approval
+-----------------------------
+2. Not needed or approval is mentioned in the paper.
+
+Overall merit
+-------------
+3. Weak accept

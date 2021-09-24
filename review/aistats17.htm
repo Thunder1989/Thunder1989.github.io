@@ -1,0 +1,460 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head><title>
+	Reviews For Paper
+</title>
+<style>
+body
+{
+	font-family:verdana,arial,helvetica;
+}
+#header
+{
+    width: 100%;
+    font-size: small;
+    background-color:#F7F7F7;
+}
+.headerSeparator
+{
+    background-color: #105586;
+}
+.printThemeText
+{
+    font-size:small;
+}
+.printThemeTable td
+{
+    vertical-align:top;
+}
+.printThemeGrid th
+{
+    color:white;
+    background:#5D7B9D;
+    font-weight:bold;
+}
+.printThemeGrid
+{
+    border-collapse:collapse;
+}
+.printThemeGrid td, .printThemeGrid th
+{
+    border:solid 1px #D6D3CE;
+    padding:4px 4px 4px 4px;
+}
+.printThemeGrid .row
+{ 
+    background-color:#F7F6F3;
+    color:#333333;
+    vertical-align:top;
+}
+.printThemeGrid .altrow
+{ 
+    background-color:White;
+    color:#284775;
+    vertical-align:top;
+}
+.cellprompt
+{
+	font-weight:bold;
+	white-space:nowrap;
+    width:100px;	
+}
+.paperHeader
+{
+    background-color:#dee3e7;
+    margin:5px 5px 15px 0px;
+    width:99%;
+    font-family:Verdana;
+    font-size:medium;
+    font-weight:bold;
+}
+.sectionHeader
+{
+    background-color:#dee3e7;
+    padding:5px 5px 5px 0px;
+    width:99%;
+    text-decoration:underline;
+    font-family:Verdana;
+    font-size:small;
+    font-weight:bold;
+}
+.underlineheader
+{
+    text-decoration:underline;
+    font-weight:bold;
+    padding:5px 0px;
+}
+.response
+{
+    padding:5px 0px;
+}
+.reviewerlabel
+{
+    padding-right:20px;
+}
+.pageTitle
+{
+    background-color:#dee3e7;
+    padding:5px 5px 5px 5px;
+    margin-top:10px;
+    width:99%;
+    font-family:Verdana;
+    font-size:medium;
+    font-weight:bold;
+}
+.submissionDetailsView
+{
+}
+.submissionDetailsView tr
+{
+    vertical-align:top;
+}
+.submissionDetailsView td.prompt
+{
+    font-weight:bold;
+}
+.submissionDetailsView tr.sectionSeparator
+{
+
+}
+.submissionDetailsView tr.sectionSeparator td
+{
+    background-color:#dee3e7;
+    padding:5px 5px 5px 5px;
+    font-family:Verdana;
+    font-size:small;
+    font-weight:bold;
+    color:Navy;
+}
+/*CSS Grid View General Definitions*/
+.CssGridView
+{
+    font-size:small; 
+}
+
+.CssGridView td, .CssGridView th
+{
+    padding:4px 4px 4px 4px;
+}
+
+/*CSS Compact Grid View General Definitions*/
+.CssGridViewCompact img
+{
+    border-style:none;
+    border-width:0px;
+}
+
+.CssGridViewCompact
+{
+    font-size:1em;
+    border-style:solid;
+    border-color:#D6D3CE;
+    border-width:1px;
+}
+
+.CssGridViewCompact .hrow a
+{
+    font-size:1em;
+}
+
+.CssGridViewCompact .row a, .CssGridViewCompact .altrow a
+{
+    font-size:0.8em;
+}
+
+.CssGridViewCompact .row .normal a, .CssGridViewCompact .row .normal, .CssGridViewCompact .altrow .normal a, .CssGridViewCompact .altrow .normal
+{
+    font-size:1em;
+}
+
+/*CSS Grid View Header Styles*/
+.CssGridView .hrow, .CssGridViewCompact .hrow
+{ 
+    background-color:#5D7B9D;
+    font-weight:bold;
+    color:White;
+}
+
+
+.CssGridViewCompact .hrow td
+{ 
+    border-bottom-width:0px;
+}
+
+.CssGridViewCompact .hrow th
+{ 
+    border-top-width:0px;
+    font-size:0.8em;
+    vertical-align:top;
+    border-left-width:0px;
+    border-right-width:0px;
+}
+
+.CssGridViewCompact .smaller
+{
+    font-size:0.8em;
+}
+
+/*CSS Grid View Row Styles*/
+.CssGridViewCompact .row, .CssGridViewCompact .altrow
+{
+    border-top-style:solid;
+    border-top-color:#D6D3CE;
+    border-top-width:1px;
+    border-bottom-style:solid;
+    border-bottom-color:#D6D3CE;
+    border-bottom-width:1px;
+}
+
+/*CSS Grid View Header Styles*/
+.CssGridViewCompact .hrow .leftborder, .CssGridViewCompact .row .leftborder, .CssGridViewCompact .altrow .leftborder
+{
+    border-left-width:1px;
+    border-left-color:#D6D3CE;
+    border-left-style:solid;
+}
+
+.CssGridViewCompact .hrow .rightborder, .CssGridViewCompact .row .rightborder, .CssGridViewCompact .altrow .rightborder
+{
+    border-right-width:1px;
+    border-right-color:#D6D3CE;
+    border-right-style:solid;
+}
+
+.CssGridView .hrow a, .CssGridViewCompact .hrow a
+{ 
+    color:White;
+}
+ 
+.CssGridView .row, .CssGridViewCompact .row
+{ 
+    background-color:#F7F6F3;
+    color:#333333;
+    vertical-align:top;
+}
+
+.CssGridView .altrow, .CssGridViewCompact .altrow
+{ 
+    vertical-align:top;
+}
+
+.CssGridViewCompact .row td
+{ 
+    border-left-width:0px;
+    border-right-width:0px;
+}
+ 
+.CssGridViewCompact .altrow
+{ 
+    background-color:White;
+    color:#284775;
+    vertical-align:top;
+}
+
+.CssGridView .altrow tr, .CssGridViewCompact .altrow tr, .CssGridView .row tr, .CssGridViewCompact .row tr
+{ 
+    vertical-align:top;
+}
+</style>
+</head>
+<body>
+<form name="aspnetForm" method="post" action="./ViewReviewsForPaper.aspx?paperId=212" id="aspnetForm">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTAxNDM4ODU3Ng9kFgJmD2QWAgIDD2QWAmYPZBYCAgUPDxYCHgdWaXNpYmxlZ2QWBgIBD2QWAmYPZBYCZg9kFgQCAQ9kFgICAQ9kFgJmDw8WAh4EVGV4dAUDMjEyZGQCAg9kFgICAQ9kFgJmDw8WAh8BBUBIaWdoLWRpbWVuc2lvbmFsIFRpbWUgU2VyaWVzIENsdXN0ZXJpbmcgdmlhIENyb3NzLVByZWRpY3RhYmlsaXR5ZGQCAw8PFgIfAGhkZAIFDxYCHgtfIUl0ZW1Db3VudAIEFghmD2QWBgIDD2QWAmYPFQETQXNzaWduZWRfUmV2aWV3ZXJfMWQCBw88KwARAwAPFgQeC18hRGF0YUJvdW5kZx8CAgNkARAWABYAFgAMFCsAABYCZg9kFggCAQ9kFgRmDw8WAh8BBSZTdW1tYXJ5IG9mIFBhcGVyIGFuZCBEZXRhaWxlZCBDb21tZW50c2RkAgEPZBYCZg8VAYoMVGhpcyBwYXBlciBkZXNjcmliZXMgYSBuZXcgc2ltaWxhcml0eSBtZXRyaWMgKG5hbWVseSBjcm9zcy1wcmVkaWN0YWJpbGl0eSkgaW4gdGhlIGNvbnRleHQgb2YgdGltZSBzZXJpZXMgYW5hbHlzaXMgYW5kIHdpdGggdGhlIHBhcnRpY3VsYXIgZ29hbCBvZiBzZXJpZXMgY2x1c3RlcmluZyBpbiBwcm9ibGVtcyB3aXRoIG11Y2ggbW9yZSBzZXJpZXMgdGhhdCBwb2ludHMgaW4gZWFjaCBvZiB0aGVtLjxiciAvPjxiciAvPlRpbWUgc2VyaWVzIGNsdXN0ZXJpbmcgaXMgYSB2ZXJ5IGludGVyZXN0aW5nIHByb2JsZW0gYW5kIHRoZSBhdXRob3JzIGFyZSByaWdodCB3aGVuIHRoZXkgZm9yZXNlZSBpdCBtYXkgYmVjb21lIGEga2V5IGRhdGEgYW5hbHl0aWNzIGFyZWEgZHVlIHRvIGV4cG9uZW50aWFsbHkgaW5jcmVhc2luZyBhdmFpbGFibGUgb2Ygc3VjaCB0eXBlIG9mIGRhdGEuPGJyIC8+PGJyIC8+VGhlIHJlcG9ydGVkIHJlc2VhcmNoIGlzIGFwcHJvcHJpYXRlbHkgd2l0aGluIHRoZSByZW1pdCBvZiB0aGUgQUlTVEFUUyBjb25mZXJlbmNlIGFuZCB0aGUgcGFwZXIgd2VsbCB3cml0dGVuIGFuZCBzdHJ1Y3R1cmVkLiA8YnIgLz5UaGUgbWF0aGVtYXRpY2FsIGRldmVsb3BtZW50cyBhcmUgdmVyeSB0aG9yb3VnaCBhbmQgc2VlbSBzb3VuZCB0byBtZS4gVGhlIHJldmlldyBvZiBtZXRob2RzIGluIHNlY3Rpb24gMiBpcyBhIGJpdCBza2V3ZWQgYW5kIGxpbWl0ZWQsIGJ1dCB0aGlzIGlzIHBlcmhhcHMgdW5hdm9pZGFibGUgZ2l2ZW4gc3BhY2UgY29uc3RyYWludHMuPGJyIC8+PGJyIC8+VGhlIHJlc3VsdHMgZnJvbSBzeW50aGV0aWMgZGF0YSBhcmUgdmVyeSBlbmNvdXJhZ2luZyBhbmQgdGhlIGNvbXBhcmlzb24gd2l0aCBiYXNlbGluZSBtZXRob2RzIGlzIGZhaXIuPGJyIC8+VGhlIGNvcnJlc3BvbmRpbmcgcmVzdWx0cyB3aXRoIGEgcmVhbCBkYXRhIHNldCBhcmUgbGltaXRlZCBpbiBzY29wZSBidXQgaW50ZXJlc3Rpbmcgbm9uZXRoZWxlc3MuPGJyIC8+TXkgbWFpbiBjb25jZXJuIGFib3V0IHRoaXMgcGFwZXIgaGFzIHRvIGRvIHdpdGggdGhpcyByZWFsIGRhdGEgYW5hbHlzaXMgZnJvbSBhIGdlbmVyYWwgdmlld3BvaW50OiBXaGF0IEkgYWN0dWFsbHkgc29yZWx5IG1pc3MgaGVyZSBpcyBhIG1vcmUgY2xlYXIganVzdGlmaWNhdGlvbiBvZiB3aHkgY3Jvc3MtcHJlZGljdGFiaWxpdHkgaXMgYW4gaW50ZXJlc3Rpbmcgc2ltaWxhcml0eSBtZWFzdXJlIGZvciB0aW1lIHNlcmllcyBjbHVzdGVyaW5nLCB0aGF0IGlzLCB3aHkgaXMgaXQgaW50ZXJlc3RpbmcgYW5kLCBpbXBvcnRhbnRseSwgZm9yIHdoaWNoIHR5cGUgb2YgcHJvYmxlbXM/OiB3aGF0IGlzIHRoZSBkb21haW4gY29udGV4dCBvZiBhcHBsaWNhYmlsaXR5PzxiciAvPkEgZmV3IHNlbnRlbmNlcyB0byBuYWlsIHRoaXMgcG9pbnQgd291bGQgYmUgbW9zdCB3ZWxjb21lLiA8YnIgLz48YnIgLz5NaW5vciBzdHVmZjogcGxlYXNlIHJldmlzZSBiaWJsaW9ncmFwaHkgbGlzdCBpbiBvcmRlciB0byBlbGltaW5hdGUgYSBmZXcgdHlwb3MgYW5kIGhvbW9nZW5pemUgZm9ybWF0LmQCAg9kFgRmDw8WAh8BBQ5PdmVyYWxsIFJhdGluZ2RkAgEPZBYCZg8VAQZBY2NlcHRkAgMPZBYEZg8PFgIfAQUTUmV2aWV3ZXIgQ29uZmlkZW5jZWRkAgEPZBYCZg8VAXxVbmRlcnN0b29kIHRoZSBtYWluIHBvaW50cyBpbiB0aGUgcGFwZXIsIGJ1dCBza2lwcGVkIHRoZSBwcm9vZnMgYW5kIHRlY2huaWNhbCBkZXRhaWxzLCBub3QgdmVyeSBmYW1pbGlhciB3aXRoIHRoZSBsaXRlcmF0dXJlZAIEDw8WAh8AaGRkAggPFQEAZAIBD2QWBgIDD2QWAmYPFQETQXNzaWduZWRfUmV2aWV3ZXJfMmQCBw88KwARAwAPFgQfA2cfAgIDZAEQFgAWABYADBQrAAAWAmYPZBYIAgEPZBYEZg8PFgIfAQUmU3VtbWFyeSBvZiBQYXBlciBhbmQgRGV0YWlsZWQgQ29tbWVudHNkZAIBD2QWAmYPFQHwHFBhcGVyIFN1bW1hcnk8YnIgLz49PT09PT09PT09PT09PT09PT09PT09PTxiciAvPjxiciAvPlRoZSBwYXBlciBhZGRyZXNzZXMgdGhlIHByb2JsZW0gb2YgY2x1c3RlcmluZyBvZiB0aW1lLXNlcmllcyBkYXRhLCBpbiB0aGUgc2V0dGluZyB3aGVyZSB0aGUgbnVtYmVyIG9mIHRpbWUtc2VyaWVzIG9ic2VydmF0aW9ucywgJGQkLCBpcyBsYXJnZXIgdGhhbiB0aGUgZHVyYXRpb24gb2YgdGhlIHRpbWUtc2VyaWVzLCAkVCQuIFRvIGFkZHJlc3MgdGhlIHByb2JsZW0sIHRoZSBwYXBlciB1c2VzIHRoZSBub3Rpb24gb2Yg4oCcY3Jvc3MtcHJlZGljdGFiaWxpdHnigJ0sIHdoZXJlIHRoZSBmdXR1cmUgdmFsdWUgaW4gZWFjaCB0aW1lLXNlcmllcyBpcyBwcmVkaWN0ZWQgYnkgcGFzdCB2YWx1ZXMgb2Ygb3RoZXIgdGltZS1zZXJpZXMuIFNpbmNlIHRoZSBudW1iZXIgb2YgdGltZS1zZXJpZXMsICRkJCwgaXMgbGFyZ2UsIHRoZSBwYXBlciB1c2VzIHRoZSBub3Rpb24gb2Ygc3BhcnNpdHkgdG8gcmVsYXRlIGVhY2ggdGltZS1zZXJpZXMgdG8gb25seSBhIGZldyBvdGhlciB0aW1lLXNlcmllcywgdGhhdCBpZGVhbGx5IGJlbG9uZyB0byB0aGUgc2FtZSBjbHVzdGVyLiBPbmUgY2FuIHJlbGF0ZSB0aGUgY292YXJpYW5jZSBtYXRyaXggb2YgZGF0YSAkXFNpZ21hJCB0byB0aGUgbGFnLTEgYXV0by1jb3ZhcmlhbmNlICRcU2lnbWFfMSQgdXNpbmcgJFxTaWdtYV8xID0gXFNpZ21hIEFeVCQsIHdoZXJlICRBJCBkZW5vdGVzIHRoZSB0cmFuc2l0aW9uIG1hdHJpeCBvZiB0aGUgYXV0b3JlZ3Jlc3NpdmUgbW9kZWwgJFhfe3QrMX0gPSBBIFhfe3R9JC4gVXNpbmcgZW1waXJpY2FsIGNvdmFyaWFuY2UgYW5kIGFuZCBsYWctMSBhdXRvLWNvdmFyaWFuY2UsIHRoZSBwYXBlciBjb25zaWRlcnMgYSBEYW50emlnIFNlbGVjdG9yIGFsZ29yaXRobSB0byByZWNvdmVyIGEgc3BhcnNlICRBJC4gVGhlIHBhcGVyIGV2YWx1YXRlcyB0aGUgcGVyZm9ybWFuY2Ugb2YgdGhlIHByb3Bvc2VkIG1ldGhvZCBvbiBzeW50aGV0aWMgZGF0YSBhbmQgYSBzbWFsbCByZWFsIGRhdGFzZXQgb2Ygc2Vuc29yIG1lYXN1cmVtZW50cy48YnIgLz48YnIgLz48YnIgLz5Db21tZW50czxiciAvPj09PT09PT09PT09PT09PT09PT09PT09PGJyIC8+PGJyIC8+LSBUaGUgcmV2aWV3ZXIgYmVsaWV2ZXMgdGhhdCB0aGUgbm92ZWx0eSBvZiB0aGUgcGFwZXIgaXMgbGltaXRlZC4gTW9yZSBzcGVjaWZpY2FsbHksIHRoZSBwcm9wb3NlZCBhbGdvcml0aG0gZm9yIHRpbWUtc2VyaWVzIGNsdXN0ZXJpbmcgaXMgdmVyeSBzaW1pbGFyIHRvIHRoZSBTcGFyc2UgU3Vic3BhY2UgQ2x1c3RlcmluZyAoU1NDKSBhbGdvcml0aG0gWzksIDI3XS4gTW9yZSBzcGVjaWZpY2FsbHksIHRoZSBEYW50emlnIFNlbGVjdG9yIGFsZ29yaXRobSBpbiBlcXVhdGlvbiAoMy4zKSBhbmQgdGhlIHNwZWN0cmFsIGNsdXN0ZXJpbmcgbWV0aG9kIGFyZSBhbG1vc3QgdGhlIHNhbWUgYXMgdGhlIEJpYXMgQ29ycmVjdGVkIERhbnR6aWcgU2VsZWN0b3IgYWxnb3JpdGhtIGluIFsyN10gZm9sbG93ZWQgYnkgc3BlY3RyYWwgY2x1c3RlcmluZyBhcyBpbiBbOSwgMjddLiBUaGUgb25seSBkaWZmZXJlbmNlIGlzIHRoYXQgdGhlIHBhcGVyIHVzZXMgdGhlIGxhZy0xIGF1dG8tY292YXJpbmFjZSBpbnN0ZWFkIG9mIHRoZSBvdXRlciBwcm9kdWN0IG9mIGVhY2ggcG9pbnQgd2l0aCByZXNwZWN0IHRvIHRoZSByZXN0IG9mIHRoZSBkYXRhLiBVbmZvcnR1bmF0ZWx5LCBkZXNwaXRlIHRoaXMgY2xvc2Ugc2ltaWxhcml0eSwgdGhlIHBhcGVyIGhhcyBiZWVuIHdyaXR0ZW4gaW4gYSB3YXkgdGhhdCBpZ25vcmVzIHRoaXMgbGFyZ2Ugb3ZlcmxhcCBiZXR3ZWVuIHRoZSBwcm9wb3NlZCBhbGdvcml0aG0gYW5kIHRoZSBleGlzdGluZyBsaXRlcmF0dXJlOiB0aGVyZSBpcyBubyBkaXNjdXNzaW9uIG9mIHRoZSBzaW1pbGFyaXRpZXMgYW5kIGRpZmZlcmVuY2VzIGJldHdlZW4gKDMuMykgYW5kIHRoZSBCaWFzIENvcnJlY3RlZCBEYW50emlnIFNlbGVjdG9yIGFsZ29yaXRobSBpbiBbMjddLCB0aGUgc3BlY3RyYWwgY2x1c3RlcmluZyBzdGVwIGlzIHByZXNlbnRlZCB3aXRob3V0IHByaW9yIG1vdGl2YXRpb24gYW5kIGV4cGxhaW5pbmcgc2ltaWxhcml0aWVzIHRvIGV4aXN0aW5nIGxpdGVyYXR1cmUgb24gc3Vic3BhY2UgY2x1c3RlcmluZy4gTW9yZSBpbXBvcnRhbnRseSwgdGhlIHBhcGVyIHJlLWludHJvZHVjZXMgZGVmaW5pdGlvbnMgYW5kIHRoZW9yZW1zIHVzZWQvcHJvdmVkIGluIHRoZSBsaXRlcmF0dXJlIHdpdGhvdXQgcHJvcGVyIHJlZmVyZW5jZXMgYW5kIGRpc2N1c3Npb25zLiBGb3IgZXhhbXBsZSwgRGVmaW5pdGlvbiA0LjIgb24gaW5yYWRpdXMgaXMgaWRlbnRpY2FsIHRvIHRoZSBub3Rpb24gb2Ygc3Vic3BhY2UgaW5yYWRpdXMgaW50cm9kdWNlZCBpbiBbMjYsIDI3XS4gU2ltaWxhcmx5LCDigJxjbHVzdGVyIHJlY292ZXJ5IHByb3BlcnR54oCdIGhhcyBiZWVuIGRlZmluZWQgYW5kIHVzZWQgd2l0aCB0aGUgc2FtZSBzZXR0aW5nIGluIFsyN10gYXMgd2VsbCBhcyDigJxTcGFyc2UgU3Vic3BhY2UgQ2x1c3RlcmluZzogQWxnb3JpdGhtLCBUaGVvcnkgYW5kIEFwcGxpY2F0aW9ucywgUEFNSSAyMDEz4oCdLiBNb3JlIGltcG9ydGFudGx5LCB0aGUgcmVzdWx0IGluIFRoZW9yZW0gNC4zIGlzIGEgc3RyYWlnaHRmb3J3YXJkIGFuZCBzbGlnaHQgbW9kaWZpY2F0aW9uIG9mIHRoZSByZXN1bHRzIGluIFsyNywgMjhdLCB3aGVyZSB0aGUga2VybmVsIGlzIHN1YnN0aXR1dGVkIHdpdGggY292YXJpYW5jZSwgdGhhbmtzIHRvIHRoZSBzYW1lIHNldC11cCBhbmQgYWxtb3N0IHRoZSBzYW1lIGFsZ29yaXRobXMgKERhbnR6aW5nIHNlbGVjdG9yIG9uIGNsdXN0ZXJlZCBjb2x1bW5zKS48YnIgLz48YnIgLz4tIFRoZSByZXZpZXdlciBiZWxpZXZlcyB0aGF0IHRoZSBwcm9wb3NlZCBvcHRpbWl6YXRpb24gaW4gKDMuMykgaGFzIHRoZSBkcmF3YmFjayBvZiBmaW5kaW5nIHRoZSB0cml2aWFsIHNvbHV0aW9uIG9mIGhhdmluZyBlYWNoIGNvbHVtbiBvZiB0aGUgZGF0YSByZXByZXNlbnRpbmcgaXRzZWxmIHdpdGggYSBjb2VmZmljaWVudCBvZiAxLCB3aGlsZSBvdGhlciBlbnRyaWVzIGJlaW5nIHplcm9zLiBNb3JlIHNwZWNpZmljYWxseSwgd2hpbGUgaW4gU1NDIFs5LCAyN10sIGVhY2ggcG9pbnQgaXMgcmVncmVzc2VkIGFzIGEgc3BhcnNlIGNvbWJpbmF0aW9uIG9mIE9USEVSIHBvaW50cywgaW4gKDMuMykgZWFjaCBjb2x1bW4gaXMgcmVncmVzc2VkIGFzIGEgY29tYmluYXRpb24gb2YgQUxMIGNvbHVtbnMsIGluY2x1ZGluZyBpdHNlbGYuIFRoaXMgY2FuIGJlIHNlZW4gYnkgdGhlIGZhY3QgdGhhdCBpbiAoMy4zKSwgJHx8IFxTaWdtYSBBXlQgLSBcU2lnbWFfMSB8fCA9IHx8IFhfU15UIChYX1QgQV5UIC0gWF9UKSB8fCBcbGVxIFxlcHNpbG9uJC4gSGVuY2UsIGltcG9zaW5nIHRoZSBzcGFyc2l0eSBhc3N1bXB0aW9uIG9uICRBJCB3aWxsIGxlYWQgdG8gdGhlIHRyaXZpYWwgc29sdXRpb24gb2YgJEEkIGJlaW5nIHRoZSBpZGVudGl0eS4gVGhlIHJldmlld2VyIGJlbGlldmVzIHRoYXQgdGhlIGFsZ29yaXRobSBzaG91bGQgYmUgbW9kaWZpZWQgdG8gc29sdmUgdGhlIHByb2JsZW0gcGVyIGNvbHVtbiwgd2hlcmUgZm9yIGVhY2ggY29sdW1uLCB0aGUgY292YXJpYW5jZSBpcyBidWlsdCB1c2luZyBPVEhFUiBjb2x1bW5zLmQCAg9kFgRmDw8WAh8BBQ5PdmVyYWxsIFJhdGluZ2RkAgEPZBYCZg8VAQtXZWFrIFJlamVjdGQCAw9kFgRmDw8WAh8BBRNSZXZpZXdlciBDb25maWRlbmNlZGQCAQ9kFgJmDxUBRlVuZGVyc3Rvb2QgdGhlIHBhcGVyLiBDaGVja2VkIHRoZSBwcm9vZnMuIEZhbWlsaWFyIHdpdGggdGhlIGxpdGVyYXR1cmVkAgQPDxYCHwBoZGQCCA8VAQBkAgIPZBYGAgMPZBYCZg8VARNBc3NpZ25lZF9SZXZpZXdlcl8zZAIHDzwrABEDAA8WBB8DZx8CAgNkARAWABYAFgAMFCsAABYCZg9kFggCAQ9kFgRmDw8WAh8BBSZTdW1tYXJ5IG9mIFBhcGVyIGFuZCBEZXRhaWxlZCBDb21tZW50c2RkAgEPZBYCZg8VAcAUQXV0aG9ycyBwcm9wb3NlIGEgbmV3IGFsZ29yaXRobSBmb3IgY2x1c3RlcmluZyB0aW1lIHNlcmllcyBiYXNlZCBvbiB0aGUgYXNzdW1wdGlvbiB0aGF0IGVhY2ggdGltZSBzZXJpZXMgY2FuIGJlIG1vZGVsbGVkIGJ5IGFuIGF1dG8tcmVncmVzc2l2ZSBtb2RlbC4gVGhlIGFsZ29yaXRobSBlc3RpbWF0ZXMgYSBzcGFyc2UgdHJhbnNpdGlvbiBtYXRyaXgsIHVuZGVyIHRoZSBhc3N1bXB0aW9uIHRoYXQgbm9uLXplcm9zIHZhbHVlcyBhcmUgb2J0YWluZWQgZm9yIHRpbWVzIHNlcmllcyBmcm9tIHRoZSBzYW1lIGNsdXN0ZXIuIFNwZWN0cmFsIGNsdXN0ZXJpbmcgYWxnb3JpdGhtIGlzIHRoZW4gdXNlZCB0byBwZXJmb3JtIHRoZSBjbHVzdGVyaW5nLjxiciAvPk1haW4gY29tbWVudHM6PGJyIC8+ICAgICAgLSAidGhlIG9wdGltaXphdGlvbiBwcm9ibGVtIGNhbiBiZSBkZWNvbXBvc2VkIGludG8gZCBpbmRlcGVuZGVudCBzdWItcHJvYmxlbXMgYW5kIHNvbHZlZCBpbmRpdmlkdWFsbHkiOiB3aGlsZSB0aGlzIHN0YXRlbWVudCBpcyBjb21wdXRhdGlvbm5hbHkgYXBwZWFsaW5nLCBpdCByYWlzZXMgY2VydGFpbiBpc3N1ZXMuIFRoZXJlIGlzIG5vIGxvbmdlciBvbmUgZ2xvYmFsIHByb2JsZW0gdG8gc29sdmUgYW5kIGl0IGlzIG5vdCBjbGVhciBob3cgdGhlIGFsZ29yaXRobSB3b3VsZCBiZWhhdmUgYXMgbG9uZyBhcyB0aGUgQVIgYXNzdW1wdGlvbiBkb2VzIG5vdCBwZXJmZWN0bHkgaG9sZHMuIFRoZSBleHBlcmltZW50YWwgc2VjdGlvbiBnaXZlcyBhbiBleGVtcGxlIG9mIHN1Y2ggYSBzZXR0aW5nIGJ1dCBhdXRob3JzIHNob3VsZCBkaXNjdXNzIGluIG1vcmUgZGV0YWlscyB0aGUgaW52b2x2ZW1lbnQgb2YgdGhpcyBidW5kbGUgb2Ygc21hbGwgcHJvYmxlbXMgdG8gc29sdmUgcmF0aGVyIHRoYW4gYSBnbG9iYWwgb25lLjxiciAvPiAgICAgIEluIGFkZGl0aW9uLCBpdCBpcyB3ZWxsIGtub3duIHRoYXQgdGhlIGV4cGxhbmF0b3J5IHZhcmlhYmxlcyBpbiBhIEwxIHByb2JsZW0gc2hvdWxkIG5vdCBiZSB0b28gbXVjaCBjb3JyZWxhdGVkIG9uZSB0byBhbm90aGVyIGluIG9yZGVyIHRvIGhhdmUgYSBjb25zaXN0ZW50IHNvbHV0aW9uLiBBdXRob3JzIHNob3VsZCBkaXNjdXNzIHRoaXMgcG9pbnQuPGJyIC8+ICAgICAgLSBpbiB0aGUgZXhwZXJpbWVudGFsIHNlY3Rpb24sIHJlZ2FyZGluZyB0aGUgcmVhbCB3b3JkIGRhdGFzZXQsIEZpZy4gNSBzaG93cyB0aGF0IHRoZSBwZXJmb3JtYW5jZSBvZiB0aGUgY2x1c3RlcmluZyBpcyBoaWdobHkgcmVsYXRlZCB0byB0aGUgXGxhbWJkYSB2YWx1ZSAocmFuZ2luZyBmcm9tIDAgb3IgMC41IHRvIDAuOCkuIFdoZW4gdGhlcmUgaXMgbm90ICJ0cnVlIiBjbHVzdGVyaW5nIHRvIHR1bmUgdGhpcyBwYXJhbWV0ZXIsIGl0IGlzIGhhcmQgdG8gc2VlIGhvdyB0byBjaG9vc2UgdGhpcyBwYXJhbWV0ZXIgaW4gb3JkZXIgdG8gb2J0YWluIGEgZ29vZCBjbHVzdGVyaW5nLjxiciAvPjxiciAvPk1pbm9yIGNvbW1lbnRzOjxiciAvPiAgICAgIC0gaW4gdGhlIGludHJvZHVjdGlvbiA6ICJkaXN0YW5jZSBtZXRyaWMgbGVhcm5pbmcgWzMwLCAzXSwiOiB0aGVyZSBpcyBub3RoaW5nIHJlbGF0ZWQgdG8gVFMgaW4gdGhlc2UgcGFwZXJzIChvciB0aGUgYXV0aG9ycyBzaG91bGQgcG9pbnQgaXQgYXMgaXQgaXMgbm90IG9idmlvdXMpPGJyIC8+ICAgICAgLSBpbiB0aGUgaW50cm9kdWN0aW9uICJ3aGVyZSBkID4gVDogYSBjb252ZW50aW9uYWwgVkFSIG1vZGVsIjogVkFSIGhhcyBub3QgYmVlbiBkZWZpbmVkIHlldDxiciAvPiAgICAgIC0gdGhlIGZpcnN0IHBhcmFncmFwaCBvZiAiU2ltaWxhcml0eS1iYXNlZCBUaW1lIFNlcmllcyBDbHVzdGVyaW5nIiBzZWN0aW9uIGhhcyBhbHJlYWR5IGJlZW4gc3RhdGVkIGluIHRoZSBpbnRyb2R1Y3Rpb248YnIgLz4gICAgICAtIHN0YXRlIGluIHRoZSBwYXBlciB0aGF0IHRoZSBwcm9vZiBvZiB0aGVvcmVtIDQuMyBpcyBnaXZlbiBpbiB0aGUgc3VwcGxlbWVudGFyeSBtYXRlcmlhbDxiciAvPiAgICAgIC0gc2VjdGlvbiA1LjE6IERUVyBpcyBub3QgYSBkaXN0YW5jZSBidXQgYSBzaW1pbGFyaXR5LCBpdCB0aGVuIGNhbiBub3QgYmUgaW1iZWRkZWQgaW4gYSBnYXVzc2lhbiBrZXJuZWwgZnVuY3Rpb24gKG9yIGF0IGxlYXN0LCBpdCBkb2VzIG5vdCBnaXZlIGEga2VybmVsKTxiciAvPiAgICAgIC0gZGltZW5zaW9uICRrJCBvZiB0aGUgUENBOiBjaGFuZ2UgdGhlIG5vdGF0aW9uPGJyIC8+ICAgICAgLSBob3cgY2FuIHRoZSBQQ0EgcGVyZm9ybXMgc28gd2VsbCB3LnIudC4gdGhlIG90aGVyIGNvbXBldGluZyBtZXRob2RzIHdoZW4gdXNpbmcgdGhlIHN5bnRoZXRpYyBkYXRhPyBFeHBsYWluIGluIG1vcmUgZGV0YWlscywgdGhpcyBtYXkgYmUgY291bnRlci1pbnR1aXRpdmUgYXMgdGhlIFBDQSBkb2VzIG5vdCB0YWtlIGludG8gYWNjb3VudCB0aGUgdGVtcG9yYWwgc3RydWN0dXJlIG9mIHRoZSBkYXRhLjxiciAvPiAgICAgIC0gIldlIHNpbXBseSByb3VnaGx5IHNjYW4gdGhyb3VnaCB0aGUgZW50aXJlIHJhbmdlIG9mIFswLDFdIGZvciAxLyIgYW5kIHRoZSByZXN1bHRzIGFyZSBzaG93biBpbiBGaWd1cmUgNSI6IHRoZSByYW5nZSBpcyBiZXR3ZWVuIDAgYW5kIDAuMTVkAgIPZBYEZg8PFgIfAQUOT3ZlcmFsbCBSYXRpbmdkZAIBD2QWAmYPFQELV2VhayBBY2NlcHRkAgMPZBYEZg8PFgIfAQUTUmV2aWV3ZXIgQ29uZmlkZW5jZWRkAgEPZBYCZg8VAXxVbmRlcnN0b29kIHRoZSBtYWluIHBvaW50cyBpbiB0aGUgcGFwZXIsIGJ1dCBza2lwcGVkIHRoZSBwcm9vZnMgYW5kIHRlY2huaWNhbCBkZXRhaWxzLCBub3QgdmVyeSBmYW1pbGlhciB3aXRoIHRoZSBsaXRlcmF0dXJlZAIEDw8WAh8AaGRkAggPFQEAZAIDD2QWBgIDD2QWAmYPFQETQXNzaWduZWRfUmV2aWV3ZXJfNGQCBw88KwARAwAPFgQfA2cfAgIDZAEQFgAWABYADBQrAAAWAmYPZBYIAgEPZBYEZg8PFgIfAQUmU3VtbWFyeSBvZiBQYXBlciBhbmQgRGV0YWlsZWQgQ29tbWVudHNkZAIBD2QWAmYPFQGBCzxiciAvPiAgICAgICAgICBUaGUgcGFwZXIgaW50cm9kdWNlcyBhIG5vdmVsIHRpbWUgc2VyaWVzIGNsdXN0ZXJpbmcgdGVjaG5pcXVlIHRoYXQgcmVsaWVzIG9uIHRoZSBhdXRvcmVncmVzc2l2ZSBtb2RlbC4gVGhlIGlkZWEgaXMgdG8gbGVhcm4gYSBWQVIgbW9kZWwgd2l0aCBzcGFyc2l0eSBjb25zdHJhaW50cyBvbiB0aGUgdHJhbnNpdGlvbiBtYXRyaXggc3VjaCB0aGF0IG9ubHkgZmV3IHNlbnNvcnMgYXJlIHRha2VuIGludG8gYWNjb3VudCB0byBwcmVkaWN0IGZ1dHVyZSBvYnNlcnZhdGlvbiBvZiBhIGdpdmVuIHNlbnNvci4gT25jZSBkb25lLCBhIHN0YW5kYXJkIHNwZWN0cmFsIGNsdXN0ZXJpbmcgcHJvY2VkdXJlIGlzIHVzZWQuPGJyIC8+PGJyIC8+ICAgICAgICAgIE9uZSBjb25jZXJuIGFib3V0IHRoaXMgaWRlYSBpcyB0aGF0IGF1dGhvcnMgaW50cm9kdWNlIGEgcGVuYWxpemF0aW9uIHRlcm0gaW4gdGhlIG9wdGltaXphdGlvbiBwcm9jZXNzIHRvIHRlbmQgdG93YXJkIHNwYXJzaXR5IG9mIHRoZSB0YXJuc2l0aW9uIG1hdHJpeCwgYnV0IGl0IGlzIG5vdCBzdWZmaWNpZW50IHRvIG1ha2UgaXQgYmxvY2sgZGlhZ29uYWwuIEl0IHdvdWxkIGhhdmUgYmVlbiBuaWNlLCBmb3IgZXhhbXBsZSwgdG8gcHJvdmlkZSB2aXN1YWxpemF0aW9uIG9mIHRoZSBsZWFybmVkIHRyYW5zaXRpb24gbWF0cmljZXMgaW4gdGhlIGV4cGVyaW1lbnRhbCBzZWN0aW9uIChvbiBib3RoIHN5bnRoZXRpYyBhbmQgcmVhbCB3b3JsZCBkYXRhKSB0byBiZXR0ZXIgdW5kZXJzdGFuZCB3aGV0aGVyIHRoaXMgY29uc3RyYWludCB0ZW5kIG9yIG5vdCB0byBwcm9kdWNlIGJsb2NrLWRpYWdvbmFsIHRyYW5zaXRpb24gbWF0cmljZXMuPGJyIC8+PGJyIC8+ICAgICAgICAgIFRoZSBwYXBlciBpcyB3ZWxsLXdyaXR0ZW4sIHRoZSBtZXRob2QgbWFrZXMgc2Vuc2UgYW5kIHRoZSBleHBlcmltZW50cyBhcmUgc291bmQgYW5kIGNvbnZpbmNpbmcuIEEgbWlub3IgcmVtYXJrIGlzIHRoYXQgaXQgd291bGQgaGF2ZSBiZWVuIG5pY2UgdG8gZXhwZXJpbWVudGFsbHkgY29tcGFyZSB0aGUgcHJvcG9zZWQgbWV0aG9kIHdpdGgga2VtZWFucyBEQkEgWzFdLCB3aGljaCBpcyBhIHdlbGwtZXN0YWJsaXNoZWQgdGltZSBzZXJpZXMgY2x1c3RlcmluZyBtZXRob2QgKE5COiBJIGFtIG5vdCBpbnZvbHZlZCBpbiBhbnkgd2F5IGluIHRoaXMgcGFwZXIpLjxiciAvPjxiciAvPiAgICAgICAgICBbMV0gUGV0aXRqZWFuLCBGLiwgS2V0dGVybGluLCBBLiwgR2Fuw6dhcnNraSwgUC4gKDIwMTEpLiBBIGdsb2JhbCBhdmVyYWdpbmcgbWV0aG9kIGZvciBkeW5hbWljIHRpbWUgd2FycGluZywgd2l0aCBhcHBsaWNhdGlvbnMgdG8gY2x1c3RlcmluZy4gUGF0dGVybiBSZWNvZ25pdGlvbiwgNDQoMyksIDY3OC02OTMuPGJyIC8+ICAgICAgZAICD2QWBGYPDxYCHwEFDk92ZXJhbGwgUmF0aW5nZGQCAQ9kFgJmDxUBBkFjY2VwdGQCAw9kFgRmDw8WAh8BBRNSZXZpZXdlciBDb25maWRlbmNlZGQCAQ9kFgJmDxUBfFVuZGVyc3Rvb2QgdGhlIG1haW4gcG9pbnRzIGluIHRoZSBwYXBlciwgYnV0IHNraXBwZWQgdGhlIHByb29mcyBhbmQgdGVjaG5pY2FsIGRldGFpbHMsIG5vdCB2ZXJ5IGZhbWlsaWFyIHdpdGggdGhlIGxpdGVyYXR1cmVkAgQPDxYCHwBoZGQCCA8VAQBkGAQFH2N0bDAwJGNwaCRndlJldmlld3MkY3RsMDMkY3RsMDAPPCsADAEIAgFkBR9jdGwwMCRjcGgkZ3ZSZXZpZXdzJGN0bDAyJGN0bDAwDzwrAAwBCAIBZAUfY3RsMDAkY3BoJGd2UmV2aWV3cyRjdGwwMSRjdGwwMA88KwAMAQgCAWQFH2N0bDAwJGNwaCRndlJldmlld3MkY3RsMDAkY3RsMDAPPCsADAEIAgFkes8moh8gVmVBvKQk36+xkO46bLE=" />
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="E6EC54F9" />
+</div>
+<table id="header">
+<tr>
+<td width="100%"><a href='http&#58;&#47;&#47;www.aistats.org&#47;' target='_blank'>AISTATS 2017</a><br /><b>Artificial Intelligence and Statistics 2017</b><br />Apr 20, 2017 - Apr 22, 2017, Fort Lauderdale, Florida, USA</td>
+</tr>
+<tr class='headerSeparator'>
+    <td style='height:5px'></td>
+</tr>
+</table>
+<table id="content"><tr><td class='contentBorder'>&nbsp;</td><td class="contentContainer">
+<span id="ctl00_cph_Label4" style="font-size:Small;font-weight:bold;">Reviews For Paper</span>
+<span id="ctl00_cph_lblErrorMessage" class="error" style="font-size:Small;"></span>
+<div id="ctl00_cph_pnlReviews">
+	
+    <span style="font-size:Small;"><table id="ctl00_cph_infoSubmission_tblInfo" class="nicetable2" style="text-align:left; width: 100%;">
+		<tr>
+			<td width="100px"><b>Paper ID</b></td>
+			<td><span id="ctl00_cph_infoSubmission_lblPaperId" style="font-size:Small;">212</span></td>
+		</tr>
+		<tr>
+			<td><b>Title</b></td>
+			<td><span id="ctl00_cph_infoSubmission_lblPaperTitle" style="font-size:Small;">High-dimensional Time Series Clustering via Cross-Predictability</span></td>
+		</tr>
+	</table>
+	</span>
+    
+    
+            <hr />
+            <table>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl00_Label2" style="font-size:Small;font-weight:bold;">Masked Reviewer ID:</span>
+                    </td>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl00_Label1" style="font-size:Small;">Assigned_Reviewer_1</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl00_Label3" style="font-size:Small;font-weight:bold;">Review:</span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+            <div>
+		<table cellspacing="0" cellpadding="4" rules="all" border="1" style="color:#333333;border-width:1px;border-style:None;font-family:Verdana;font-size:Small;border-collapse:collapse;">
+			<tr style="color:White;background-color:#5D7B9D;font-weight:bold;">
+				<th scope="col">Question</th><th scope="col">&nbsp;</th>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">Summary of Paper and Detailed Comments</td><td style="width:80%;">
+                            This paper describes a new similarity metric (namely cross-predictability) in the context of time series analysis and with the particular goal of series clustering in problems with much more series that points in each of them.<br /><br />Time series clustering is a very interesting problem and the authors are right when they foresee it may become a key data analytics area due to exponentially increasing available of such type of data.<br /><br />The reported research is appropriately within the remit of the AISTATS conference and the paper well written and structured. <br />The mathematical developments are very thorough and seem sound to me. The review of methods in section 2 is a bit skewed and limited, but this is perhaps unavoidable given space constraints.<br /><br />The results from synthetic data are very encouraging and the comparison with baseline methods is fair.<br />The corresponding results with a real data set are limited in scope but interesting nonetheless.<br />My main concern about this paper has to do with this real data analysis from a general viewpoint: What I actually sorely miss here is a more clear justification of why cross-predictability is an interesting similarity measure for time series clustering, that is, why is it interesting and, importantly, for which type of problems?: what is the domain context of applicability?<br />A few sentences to nail this point would be most welcome. <br /><br />Minor stuff: please revise bibliography list in order to eliminate a few typos and homogenize format.
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">Overall Rating</td><td style="width:80%;">
+                            Accept
+                        </td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">Reviewer Confidence</td><td style="width:80%;">
+                            Understood the main points in the paper, but skipped the proofs and technical details, not very familiar with the literature
+                        </td>
+			</tr>
+		</table>
+	</div>
+            
+        
+            <hr />
+            <table>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl01_Label2" style="font-size:Small;font-weight:bold;">Masked Reviewer ID:</span>
+                    </td>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl01_Label1" style="font-size:Small;">Assigned_Reviewer_2</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl01_Label3" style="font-size:Small;font-weight:bold;">Review:</span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+            <div>
+		<table cellspacing="0" cellpadding="4" rules="all" border="1" style="color:#333333;border-width:1px;border-style:None;font-family:Verdana;font-size:Small;border-collapse:collapse;">
+			<tr style="color:White;background-color:#5D7B9D;font-weight:bold;">
+				<th scope="col">Question</th><th scope="col">&nbsp;</th>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">Summary of Paper and Detailed Comments</td><td style="width:80%;">
+                            Paper Summary<br />=======================<br /><br />The paper addresses the problem of clustering of time-series data, in the setting where the number of time-series observations, $d$, is larger than the duration of the time-series, $T$. To address the problem, the paper uses the notion of “cross-predictability”, where the future value in each time-series is predicted by past values of other time-series. Since the number of time-series, $d$, is large, the paper uses the notion of sparsity to relate each time-series to only a few other time-series, that ideally belong to the same cluster. One can relate the covariance matrix of data $\Sigma$ to the lag-1 auto-covariance $\Sigma_1$ using $\Sigma_1 = \Sigma A^T$, where $A$ denotes the transition matrix of the autoregressive model $X_{t+1} = A X_{t}$. Using empirical covariance and and lag-1 auto-covariance, the paper considers a Dantzig Selector algorithm to recover a sparse $A$. The paper evaluates the performance of the proposed method on synthetic data and a small real dataset of sensor measurements.<br /><br /><br />Comments<br />=======================<br /><br />- The reviewer believes that the novelty of the paper is limited. More specifically, the proposed algorithm for time-series clustering is very similar to the Sparse Subspace Clustering (SSC) algorithm [9, 27]. More specifically, the Dantzig Selector algorithm in equation (3.3) and the spectral clustering method are almost the same as the Bias Corrected Dantzig Selector algorithm in [27] followed by spectral clustering as in [9, 27]. The only difference is that the paper uses the lag-1 auto-covarinace instead of the outer product of each point with respect to the rest of the data. Unfortunately, despite this close similarity, the paper has been written in a way that ignores this large overlap between the proposed algorithm and the existing literature: there is no discussion of the similarities and differences between (3.3) and the Bias Corrected Dantzig Selector algorithm in [27], the spectral clustering step is presented without prior motivation and explaining similarities to existing literature on subspace clustering. More importantly, the paper re-introduces definitions and theorems used/proved in the literature without proper references and discussions. For example, Definition 4.2 on inradius is identical to the notion of subspace inradius introduced in [26, 27]. Similarly, “cluster recovery property” has been defined and used with the same setting in [27] as well as “Sparse Subspace Clustering: Algorithm, Theory and Applications, PAMI 2013”. More importantly, the result in Theorem 4.3 is a straightforward and slight modification of the results in [27, 28], where the kernel is substituted with covariance, thanks to the same set-up and almost the same algorithms (Dantzing selector on clustered columns).<br /><br />- The reviewer believes that the proposed optimization in (3.3) has the drawback of finding the trivial solution of having each column of the data representing itself with a coefficient of 1, while other entries being zeros. More specifically, while in SSC [9, 27], each point is regressed as a sparse combination of OTHER points, in (3.3) each column is regressed as a combination of ALL columns, including itself. This can be seen by the fact that in (3.3), $|| \Sigma A^T - \Sigma_1 || = || X_S^T (X_T A^T - X_T) || \leq \epsilon$. Hence, imposing the sparsity assumption on $A$ will lead to the trivial solution of $A$ being the identity. The reviewer believes that the algorithm should be modified to solve the problem per column, where for each column, the covariance is built using OTHER columns.
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">Overall Rating</td><td style="width:80%;">
+                            Weak Reject
+                        </td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">Reviewer Confidence</td><td style="width:80%;">
+                            Understood the paper. Checked the proofs. Familiar with the literature
+                        </td>
+			</tr>
+		</table>
+	</div>
+            
+        
+            <hr />
+            <table>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl02_Label2" style="font-size:Small;font-weight:bold;">Masked Reviewer ID:</span>
+                    </td>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl02_Label1" style="font-size:Small;">Assigned_Reviewer_3</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl02_Label3" style="font-size:Small;font-weight:bold;">Review:</span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+            <div>
+		<table cellspacing="0" cellpadding="4" rules="all" border="1" style="color:#333333;border-width:1px;border-style:None;font-family:Verdana;font-size:Small;border-collapse:collapse;">
+			<tr style="color:White;background-color:#5D7B9D;font-weight:bold;">
+				<th scope="col">Question</th><th scope="col">&nbsp;</th>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">Summary of Paper and Detailed Comments</td><td style="width:80%;">
+                            Authors propose a new algorithm for clustering time series based on the assumption that each time series can be modelled by an auto-regressive model. The algorithm estimates a sparse transition matrix, under the assumption that non-zeros values are obtained for times series from the same cluster. Spectral clustering algorithm is then used to perform the clustering.<br />Main comments:<br />      - "the optimization problem can be decomposed into d independent sub-problems and solved individually": while this statement is computationnaly appealing, it raises certain issues. There is no longer one global problem to solve and it is not clear how the algorithm would behave as long as the AR assumption does not perfectly holds. The experimental section gives an exemple of such a setting but authors should discuss in more details the involvement of this bundle of small problems to solve rather than a global one.<br />      In addition, it is well known that the explanatory variables in a L1 problem should not be too much correlated one to another in order to have a consistent solution. Authors should discuss this point.<br />      - in the experimental section, regarding the real word dataset, Fig. 5 shows that the performance of the clustering is highly related to the \lambda value (ranging from 0 or 0.5 to 0.8). When there is not "true" clustering to tune this parameter, it is hard to see how to choose this parameter in order to obtain a good clustering.<br /><br />Minor comments:<br />      - in the introduction : "distance metric learning [30, 3],": there is nothing related to TS in these papers (or the authors should point it as it is not obvious)<br />      - in the introduction "where d > T: a conventional VAR model": VAR has not been defined yet<br />      - the first paragraph of "Similarity-based Time Series Clustering" section has already been stated in the introduction<br />      - state in the paper that the proof of theorem 4.3 is given in the supplementary material<br />      - section 5.1: DTW is not a distance but a similarity, it then can not be imbedded in a gaussian kernel function (or at least, it does not give a kernel)<br />      - dimension $k$ of the PCA: change the notation<br />      - how can the PCA performs so well w.r.t. the other competing methods when using the synthetic data? Explain in more details, this may be counter-intuitive as the PCA does not take into account the temporal structure of the data.<br />      - "We simply roughly scan through the entire range of [0,1] for 1/" and the results are shown in Figure 5": the range is between 0 and 0.15
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">Overall Rating</td><td style="width:80%;">
+                            Weak Accept
+                        </td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">Reviewer Confidence</td><td style="width:80%;">
+                            Understood the main points in the paper, but skipped the proofs and technical details, not very familiar with the literature
+                        </td>
+			</tr>
+		</table>
+	</div>
+            
+        
+            <hr />
+            <table>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl03_Label2" style="font-size:Small;font-weight:bold;">Masked Reviewer ID:</span>
+                    </td>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl03_Label1" style="font-size:Small;">Assigned_Reviewer_4</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="ctl00_cph_gvReviews_ctl03_Label3" style="font-size:Small;font-weight:bold;">Review:</span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+            <div>
+		<table cellspacing="0" cellpadding="4" rules="all" border="1" style="color:#333333;border-width:1px;border-style:None;font-family:Verdana;font-size:Small;border-collapse:collapse;">
+			<tr style="color:White;background-color:#5D7B9D;font-weight:bold;">
+				<th scope="col">Question</th><th scope="col">&nbsp;</th>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">Summary of Paper and Detailed Comments</td><td style="width:80%;">
+                            <br />          The paper introduces a novel time series clustering technique that relies on the autoregressive model. The idea is to learn a VAR model with sparsity constraints on the transition matrix such that only few sensors are taken into account to predict future observation of a given sensor. Once done, a standard spectral clustering procedure is used.<br /><br />          One concern about this idea is that authors introduce a penalization term in the optimization process to tend toward sparsity of the tarnsition matrix, but it is not sufficient to make it block diagonal. It would have been nice, for example, to provide visualization of the learned transition matrices in the experimental section (on both synthetic and real world data) to better understand whether this constraint tend or not to produce block-diagonal transition matrices.<br /><br />          The paper is well-written, the method makes sense and the experiments are sound and convincing. A minor remark is that it would have been nice to experimentally compare the proposed method with kemeans DBA [1], which is a well-established time series clustering method (NB: I am not involved in any way in this paper).<br /><br />          [1] Petitjean, F., Ketterlin, A., Gançarski, P. (2011). A global averaging method for dynamic time warping, with applications to clustering. Pattern Recognition, 44(3), 678-693.<br />      
+                        </td>
+			</tr><tr style="color:#284775;background-color:White;">
+				<td style="width:20%;">Overall Rating</td><td style="width:80%;">
+                            Accept
+                        </td>
+			</tr><tr style="color:#333333;background-color:#F7F6F3;">
+				<td style="width:20%;">Reviewer Confidence</td><td style="width:80%;">
+                            Understood the main points in the paper, but skipped the proofs and technical details, not very familiar with the literature
+                        </td>
+			</tr>
+		</table>
+	</div>
+            
+        
+    <br />
+    <br />
+
+</div>
+</td><td class='contentBorder'>&nbsp;</td></tr></table>
+</form>
+</body>
+</html>

@@ -1,0 +1,137 @@
+Buildsys '20 Paper #37 Reviews and Comments
+===========================================================================
+Paper #37 Energon: A Platform for Portable Building Analytics with
+Acquisitional Query Processor
+
+
+Review #37A
+===========================================================================
+
+Overall merit
+-------------
+3. Weak accept
+
+Reviewer expertise
+------------------
+2. Some familiarity
+
+Paper summary
+-------------
+This paper presents a platform, named Energon, to support building analytics using building resources. The paper focuses only on presenting this platform, which is interesting; however, it fails to provide a solid justification and validation for it.
+
+Comments for author
+-------------------
+The paper is well-written and presented interesting materials. Here are the reviewer's comments:
+(1) There are other building analytic platforms already developed. How the presented platform, Energon, is advancing the current literature? What are its main advantages and disadvantages?
+(2) A list of assumptions and limitations of the presented platform needs to be provided in the paper. For example, in ECP, how the occupancy is assumed or modeled? etc. 
+(3) The paper lacks the justification and/or validation of the presented platform. How can the author(s) ensure that the platform is working accurately? Is there any specific application? Does it need any calibration?
+(4) A discussion on the future use of such a platform should be provided in this paper.
+
+
+
+Review #37B
+===========================================================================
+
+Overall merit
+-------------
+2. Weak reject
+
+Reviewer expertise
+------------------
+2. Some familiarity
+
+Paper summary
+-------------
+This paper presents Energon, an open-source platform that enables portable building analytics with an acquisitional query ``processor''. The authors propose a ``logic partition'' of resources in buildings, which universally applies to all buildings, in order to enable mapping of analytics requirements to building resources in a building-agnostic manner. In addition, EnergonQL that allows the user to find resources with high-level queries is also presented to substantially reduce development effort. 
+
+Strength:
+- This submission is well written.
+
+Weakness:
+- Research problem needs more justifications.
+- Insights or some arguments need more clarifications. 
+- Evaluations need further clarifications.
+
+Comments for author
+-------------------
+Detailed Reviews:
+
+This work is well written and well organized. However, some improvements are suggested as follows,
+
+Motivation. This work aims at presenting a universal approach for all buildings to perform data analytics platform. 
+"A developer still needs to spend a considerable amount of time deciding on the best algorithm to use and mapping the algorithm to the actual resources in a specific building". 
+"We present a new layer of abstraction of building resources so that developers **do not need** building-specific knowledge when developing analytics, and thus application development can be simplified substantially".
+"Adaboost has better performance when the data set has bias and SVM has better performance when the data set has **fewer** samples. As such, developers need to select and evaluate ML models when developing the analytics."
+These insights may not work for all the data analytics in smart buildings, thus I would suggest the authors limit their scope of this work into certain specific data analytics applications, such as Chiller Structure analytics. 
+
+Note that, using the limited dataset to train a stable and reasonable accurate ML classifier is not feasible. And handling imbalanced dataset is normal operation in a data science project.
+
+Evaluation. "Figure 15 shows the results for the example of chiller profiling (CP). We see that SVM performs better than Ada using the data in building 1 but performs worse than Ada using the data in building 2." This argument seems problematic. Using limited data to draw a conclusion may not be able to reflect the results in a data analytics application. Figure 14 and Figure 15 need more clarification about the training and testing processes that the author uses to generate these evaluation results. Note that, the kernels, grid search, the size of the dataset, how the authors split the dataset, what ratio are used to prepare training: testing percentages, cross-validation using how many random states. It is very challenging to design a component that provides users with a universal ready-to-use ML integration framework. Rather than that, most data analytics-driven ML approach requires data scientist or researcher to fine-tune their model parameters to calibrate or optimize their model performance.
+
+The merit that this work is trying to present is **unclear** for me. For the data-driven analytics, rather than using a platform to perform these operations, the important step is to pre-process data (https://scikit-learn.org/stable/modules/preprocessing.html), such as Standardization, or mean removal and variance scaling and others, it only requires couples of lines Python code to finish these operations.  In addition, this data cleaning work typically varies on different datasets. Note that, it is very difficult to present a universal framework that can handle all of these operations. 
+
+From the computer science system or data science perspectives, this work needs significant improvements to clarify their insights and contributions. The technical components of the presented framework seem a bit ``trivial'' and thus their contributions are not clear. In addition, collecting the data to a dedicated server or cluster, then perform ML-based data analytics is a typically very straightforward solution and it does not require significant extra effort.
+
+
+
+Review #37C
+===========================================================================
+
+Overall merit
+-------------
+3. Weak accept
+
+Reviewer expertise
+------------------
+3. Knowledgeable
+
+Paper summary
+-------------
+Energon allows data scientists to perform building data analytics
+without having to learn the details of different building sensing and
+control devices components and their variations. The authors propose a
+query algebra to segment the ontology. The system also allows
+selection of ML model conveniently. The evaluation shows that the
+programmers find the system easy to use and the system has decent
+performance.
+
+Comments for author
+-------------------
+The problem is well motivated.
+
+Building the abstraction on top of SPARQL is useful. The examples are
+convincing. The evaluation on develpoment time demonstrates its
+potential.
+
+The paper is well-written and describes the technical parts clearly.
+
+There are many work in extending and abstracting on top of SPARQL. The
+authors do not discuss those and focus on comparing against plain
+SPARQL andd Mortar. Could some of those abstractions help in this
+case? For example, there are abstractions on top of SPARQL that allow
+you to have recursions. Treatment of work related to SPARQL is mostly
+non-existent.
+
+One of the contributions is determining component boundaries and it is
+done nicely. Is the technique generalizable to other building
+ontologies or it only works on the ontology the authors are using?
+This evaluation would be useful.
+
+Data used for performance evaluation is not described in sufficient
+detail.
+
+The evaluation mixes the improvements due to abstraction/algebra and
+rest of the ML workflow. The first is unique. The ML workflow focuses
+on comparing against Mortar but Mortar is not state of the art when it
+comes to simplifying the workflow for building ML models. There are
+production ML systems now available on major cloud providers where you
+upload the data with a click of a button and they build the model for
+you. This would be similar in effort to the post-data-extraction ML
+workflow in Energon. So, ease of ML workflow (after data extraction)
+should consider the state of the art in ML workflow simplification.
+
+One weakness of the approach is the data scientist loses control over
+the granularity of data fetch. For example, if the sensors on one type
+oof chiller is faulty, it would be difficult to specify that. This is
+a standard limitation when we introduce this level and type of
+abstraction.

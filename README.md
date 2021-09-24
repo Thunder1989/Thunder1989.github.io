@@ -1,2 +1,0 @@
-# hdz.github.io
-homepage

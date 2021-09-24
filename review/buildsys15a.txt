@@ -1,0 +1,141 @@
+===========================================================================
+                         BuildSys 2015 Review #25A
+---------------------------------------------------------------------------
+Paper #25: The Building Adapter: Towards Quickly Applying Building
+           Analytics at Scale
+---------------------------------------------------------------------------
+
+                         ===== Paper summary =====
+
+This paper addresses the important problem of automating the manual process of mapping sensor and control points into software that can perform advanced control, analytics, etc.  The approach utilized in this paper is to utilize features from both the point-names and the point-data to sort the data by "type" (e.g. zone temperature sensor, humidity sensor, etc.).  The extracted features are sorted through the use of a weighted combination of classification algorithms.  The different combinations of clustering algorithms and features are shown to have different strengths and weaknesses for "typing" different sensor categories.  Overall, the approach shows promise, with an ability to label at least 36% of the points with at least 85% accuracy.
+
+                            Novelty: 4. Incremental novelty in a new
+                                        research area
+
+                           ===== Strengths =====
+
+Using the combination of data features and name features is a promising approach
+Overall, well-written and well-organized paper
+
+                          ===== Weaknesses =====
+
+The combination of approaches utilized should be further justified/explained from a theoretical standpoint.
+Needs more explanation regarding if this method would be scalable on buildings not used in the design of the algorithm.
+
+                      ===== Comments for author =====
+
+This is an important field of study which will facilitate many other innovative building technologies.  The approach of using the combination of data features and name features shows good promise, and the paper is well organized and well written.
+
+One suggestion that could be improved upon is to use a flowchart or a more detailed pseudo-code to better illustrate the entire process.  There are many steps and combinations of methods, and I had to reread a number of the sections to understand exactly the process utilized (i.e. how all of the different methods were integrated).
+
+I think it would be useful to the reader to include an overview of the clustering algorithms, and why these were specifically selected, before diving into the details of the algorithms.
+
+It wasn't clear to me if this approach was developed beforehand and then tested on these three buildings, or if this approach was developed and refined using the data from these three buildings.  If the latter is the case, then it will be important to test this approach on a building significantly different than those used in the development of the method to demonstrate extensibility/scalability in practice.
+
+Tables 6 & 7 do not stand on their own very well. I would suggest revising to make them easier to interpret.
+
+Figure 5 needs labels on the y-axis.
+
+I also think it would help the paper if there was some discussion of what levels of accuracy and what percentage of points are required to be automatically mapped for a tool like this to be useful for industry.  This would provide useful context for the reader.
+
+It will be interesting to see how much improvement could be gained from additional training buildings.
+
+                      Overall merit: 4. Accept
+                 Reviewer expertise: 3. Knowledgeable
+
+===========================================================================
+                         BuildSys 2015 Review #25B
+---------------------------------------------------------------------------
+Paper #25: The Building Adapter: Towards Quickly Applying Building
+           Analytics at Scale
+---------------------------------------------------------------------------
+
+                         ===== Paper summary =====
+
+This paper presents new techniques to perform automatic mapping without any manual intervention. The approach is based on transfer learning. They evaluated the approach by using 7 days data from over 2500 sensors located in commercial building. The results show that the proposed solution can automatically label at least 36% of the points with more than 85% accuracy compared to baseline which has 63% accuracy.
+
+                            Novelty: 4. Incremental novelty in a new
+                                        research area
+
+                           ===== Strengths =====
+
++ The idea of selecting features that are consistent between different buildings is interesting. The use of both names and data ranges for the features is a step in the right direction.
+
++ Exploring the trade-off between the coverage and accuracy is interesting.
+
+                          ===== Weaknesses =====
+
+- Lack of insight about how to effectively use the data when classification rate is lower than 100%.  What can you do with it, and what is the useful threshold?
+
+- Some sections of the paper are not clear and hard to understand. The author needs to explain them more clearly (see detail comments below).
+
+- The evaluation section is a bit thin. It would be better if the authors would have evaluated the accuracy based on different conditions and not just changing the thresholds.
+
+                      ===== Comments for author =====
+
+In general, the paper is introducing a novel and interesting work and I am positive about it.
+
+The main fundamental weakness I found was the lack of insight on how to effectively use the data when classification is lower than 100%.  For example, if the system classifies 50% of the metadata correctly, what can you do with it?  Can you do building performance analytics?  Can you try to predict energy consmuption?  Could you detect faults? Can you still perform useful building control?  What is the minimum threshold for it for different needs?  Certain metadata would also be more important than other.  No analysis is done to this and I think this is the only stronger point I wish the authors would have gone a bit deeper.
+
+I also believe some parts just need to be explained better to make it easier for the reader, something I believe could be done in the shepherding process.  I provide the following comments hoping the authors can improve the final version of the manuscript.
+
+Sections 3.1.1 and 3.1.2 are about selecting some important features that are consistent for different buildings. In section 3.1.2, the authors should go in to more details for k-mers as it is not clear why it is used in section 3.1.1, otherwise the reader should read the mentioned paper to see how it works. Spend a bit a "real state" here to facilitate readind and understanding. In section 3.2, it is not clear what the author means by "M". What are the models? Are they the classifiers? It was mentioned in a footnote that you use classifier and model changeably, but it doesn't make sense that they are the classifiers. In section 3.3, there are different models based on different neighborhood graphs for the features. It is not clear what is implied by these figures and models. What are the neighborhood graphs of the features? In section 3.4, algorithm 1, how the threshold can change the results. The author did not provide sufficient insights regarding the goal of the threshold.
+
+The paper has some evaluations based on the different thresholds in Figure 5, but it is not really explained why increasing threshold increases the accuracy. The math process is not really clear in this section. The GMM and DP models need to be explained more. In Table 5, it is not clear what the authors mean by mentioning numbers for name feature. Section 5.2 should go in to more details for active learning method combining to the traditional labeling techniques.
+
+The evaluation part can be a bit more comprenhensive. The author can evaluate the accuracy based on different features and not just the threshold. The evaluation can be done based on different classifiers. The author can show the results for this evaluation instead of just saying that the random forest was the best classifier so the paper's readers can get more insight about the process. Different features could be used besides the one that is used for this paper, and perform feature selection analysis based on the results.
+
+                      Overall merit: 4. Accept
+                 Reviewer expertise: 4. Expert
+
+===========================================================================
+                         BuildSys 2015 Review #25C
+---------------------------------------------------------------------------
+Paper #25: The Building Adapter: Towards Quickly Applying Building
+           Analytics at Scale
+---------------------------------------------------------------------------
+
+                         ===== Paper summary =====
+
+The paper presents an approach to automatically label sensor and control points. The accuracy of the classification model is modest.
+
+                            Novelty: 3. Significant novelty in an
+                                        established research area
+
+                           ===== Strengths =====
+
+-Addresses an important issue in the proliferation of building sensors and controls
+
+                      ===== Comments for author =====
+
+The paper attempts to address an important issue in the proliferation of building systems sensors and controls. Effectively mapping devices provides an needed baseline for data collection, management, and analysis. While the effectiveness of the classification model is mixed, the paper presents an interesting approach that can be further developed.
+
+                      Overall merit: 4. Accept
+                 Reviewer expertise: 2. Some familiarity
+
+===========================================================================
+                         BuildSys 2015 Review #25D
+---------------------------------------------------------------------------
+Paper #25: The Building Adapter: Towards Quickly Applying Building
+           Analytics at Scale
+---------------------------------------------------------------------------
+
+                         ===== Paper summary =====
+
+The work presented takes a step towards solving the important problem of automatically mapping the control system points of a building, for example, to the points used by a third-party analytics engine. The work presented focuses on inferring sensor types in a “new” building from the recorded name and numerical data from points in another building or other buildings. The authors develop a method of doing this based on adapting transfer learning and apply it to three buildings on two university campuses. The results for percentage of points automatically labeled and the accuracy of labeling are quite impressive, for example, for some cases up to 81% of the points at more than 96% accuracy.
+
+                            Novelty: 3. Significant novelty in an
+                                        established research area
+
+                           ===== Strengths =====
+
+Thoroughness of the description of the method develop and its underlying techniques.
+
+Very impressive quantitative results.
+
+                      ===== Comments for author =====
+
+Excellent presentation of the development of the methodology, explanation of the application to the three buildings and testing on their data, examination of the behavior of the method by “component,” and examination of training on multiple buildings and complementing manual labeling as potential future directions.
+
+                      Overall merit: 5. Strong accept
+                 Reviewer expertise: 2. Some familiarity

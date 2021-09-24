@@ -1,0 +1,90 @@
+===========================================================================
+            BuildSys 2014 [Regular & Short Papers] Review #83A
+                     Updated 7 Aug 2014 4:44:26pm EDT
+---------------------------------------------------------------------------
+            Paper #83: Sensor-Type Classification in Buildings
+---------------------------------------------------------------------------
+
+                      Overall merit: 4. Accept
+                 Reviewer expertise: 2. Some familiarity
+
+                         ===== Paper summary =====
+
+The paper presents a method for metadata constructions for building sensors aimed at removing inconsistencies and standardizing a taxonomy for the same.
+
+                           ===== Strengths =====
+
+Well written paper with ample references. The intent of standardizing a nomenclature and taxonomy of sensors in a building aimed at handling inconsistencies and missing data is commendable.
+
+                          ===== Weaknesses =====
+
+None.
+
+                      ===== Comments for author =====
+
+None.
+
+===========================================================================
+            BuildSys 2014 [Regular & Short Papers] Review #83B
+                     Updated 10 Aug 2014 7:32:39pm EDT
+---------------------------------------------------------------------------
+            Paper #83: Sensor-Type Classification in Buildings
+---------------------------------------------------------------------------
+
+                      Overall merit: 4. Accept
+                 Reviewer expertise: 3. Knowledgeable
+
+                         ===== Paper summary =====
+
+This paper proposed an efficient classification framework to differentiate sensors in buildings by type. Features are extracted from series sensor data, which are then used to classify sensor types.
+
+                           ===== Strengths =====
+
+- The proposed data processing workflow is based on solid feature extraction and classification algorithms.
+- The performance is evaluated using a large dataset collected from sensors real-world deployments.
+
+                          ===== Weaknesses =====
+
+- Only a limited set of sensor types are supported
+- Only a limited set of features are considered, and no investigation on their relative importance
+
+                      ===== Comments for author =====
+
+This paper is well written, well organized, and easy to follow. A data processing workflow is proposed to process sensor data from real-world deployments.
+
+Although the experiment results are promising, the accuracy should be further improved by considering more features. Meanwhile, the relative importance of each feature can be investigated as well.
+
+Currently only 6 sensor types are supported in the proposed workflow, which is not enough for modern commercial buildings. For sensor readings with large variances (e.g., power meter readings), the accuracy needs more investigation.
+
+===========================================================================
+            BuildSys 2014 [Regular & Short Papers] Review #83C
+                     Updated 12 Aug 2014 1:59:28am EDT
+---------------------------------------------------------------------------
+            Paper #83: Sensor-Type Classification in Buildings
+---------------------------------------------------------------------------
+
+                      Overall merit: 3. Weak accept
+                 Reviewer expertise: 3. Knowledgeable
+
+                         ===== Paper summary =====
+
+This paper studies the problem of identifying the sensor type when the associated Meta data is missing. The paper uses the time-series data from these sensors to identify the sensor type (e.g., a flow sensor vs. a temperature sensor). The paper uses a supervised learning approach to identify the class (sensor type) of a sensor point. In particular, a modified version of random forest is used to classify the various sensors. In addition, a simple technique to identify the potentially misclassified sensors is also proposed. The proposed methods are tested on two real datasets.
+
+                           ===== Strengths =====
+
+- The paper addresses an important problem that often gets overlooked. The problem of noisy meta data is very common in BMS systems, where the sensor tags (or point tags) do not follow a standard naming convention making it hard to identify the sensor type, and other information regarding the sensor. This often results in having to use a laborious manual process to clean up or generate the necessary meta data.
+- The paper also proposes a simple approach to identify the potential misclassified sensors, which can then be manually labeled. 
+- The proposed algorithm is tested on real-world datasets. The paper performs extensive tests to study the effect of intra-building and inter-building learning.
+
+                          ===== Weaknesses =====
+
+see below
+
+                      ===== Comments for author =====
+
+Weakness/Comments
+The contributions of the paper seem weak in its current form
+- The main drawback of the paper is that the novelty of the paper lies only in the application. The paper uses off-the-shelf algorithms for classification. Even the idea of using soft labels to identify potentially misclassified sensors has been used earlier in the literature, and is not novel.
+- The paper does not provide much insights into the experimental results. It is not clear why the base feature set seems to perform much better than the proposed rich feature set for CO2 sensors. Similarly, it is not clear why the classification results for the Rice Hall seem much better than the SDH. A detailed post-mortem of this analysis would help understand the limitations of the feature set and the random forest algorithm.
+- It would be useful to understand how the features used influence the classification accuracy. Similarly, for a given feature set, how does the classification change over several approaches such as SVM, etc. Such analysis would have further strengthened the paper.
+- The results of proposed soft label-based approach to detect misclassified sensors does not seem very promising either, with a very low accuracy.

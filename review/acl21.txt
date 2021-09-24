@@ -1,0 +1,148 @@
+============================================================================ 
+ACL-IJCNLP 2021 Reviews for Submission #756
+============================================================================ 
+
+Title: Sensei: Self-Supervised Sensor Name Segmentation
+Authors: Jiaman Wu, Dezhi Hong, Rajesh Gupta and Jingbo Shang
+============================================================================
+                            META-REVIEW
+============================================================================ 
+
+Comments: The paper is well-written and the contribution represents an interesting application of language models (employed in a very creative way). However, the evaluation part seems to be the weaker aspect (datasets and baselines).
+
+============================================================================
+                            REVIEWER #1
+============================================================================
+
+The core review
+---------------------------------------------------------------------------
+This paper describes an interesting algorithm to segment sensor names
+without human supervisions. Typically the segmentation requires manual
+engineering. The intuition in this work is a character-level language
+model (LM) will be more "surprised" at segment boundaries than in
+other places. The author proposes to use the LM's probabilities to
+generate loose supervisions, and then build ensemble MLP's to learn
+from the data. This results in models that can achieve ~85% F_1 score.
+
+The paper is clearly written, with proper citations/reasoning to
+justify each step. The proposed approach shows a very interesting
+application on language models. Also the proposed ensemble model was a
+creative approach to de-noise the LM's output.
+
+One comparison we hope to see is the comparison with supervised
+models, as both a lower bound and an upper bound. For example: an
+lower bound would be what will happen when we train a supervised model
+on a large amount of data from other buildings' sensor names? What if
+we annotate 10 examples, and just train using that? An upper-bound
+would be: say we have full annotations for the training set, will we
+be able to classify on the dev set from the same building with 100%
+accuracy? The current comparisons are all between pure unsupervised
+models, where supervised models might also serve the same purpose as
+long as we don't need to annotate data while serving it.
+---------------------------------------------------------------------------
+
+
+Reasons to Accept
+---------------------------------------------------------------------------
+Very interesting application of character level language models, and how to denoise its output.
+---------------------------------------------------------------------------
+
+
+Reasons to Reject
+---------------------------------------------------------------------------
+The argument can be further strengthened if the authors include comparisons with supervised model variants.
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+Reviewer's Scores
+---------------------------------------------------------------------------
+                  Overall Recommendation: 4
+
+Typos, Grammar, Style, and Presentation Improvements
+---------------------------------------------------------------------------
+Figure 2: it's a little difficult to understand how we labeled ties/breaks/unknowns, but I figured it out after some time. The part I spent a lot of time on was to compare the three rows of characters (e.g. S, D, H), and see if there's any difference. Also without prediction probabilities, I was not sure why we pick tie v.s. unknown v.s. break at certain places. My suggestions is to eliminate one or two rows of the characters S D H. Also maybe using some real numbers at each prediction arrow can help readers understand the decision criteria better. In addition, if we can move the "bag of models" graph below the character level LM graph, reading the figure will become more natural.
+Line 309: it is actually not quite straightforward to figure out where the "turning points are" -- the two precision lines are either straightly going up or down.
+---------------------------------------------------------------------------
+
+
+
+============================================================================
+                            REVIEWER #2
+============================================================================
+
+The core review
+---------------------------------------------------------------------------
+The authors introduce the problem of decoding the names of sensors that are used in smart building applications. Buildings can have thousands of these sensors and even though every manufacturer encodes the same information in the names (i.e. location, type, etc), there is no standard way of doing so. The effort of doing this manually is considerable and considering the fact that there is a clear structure in these names, the authors defined the task of sensor name name segmentation. The proposed method here is self-supervised and the authors motivate the task, describe their solution, evaluate on the data of 5 different buidlings and compare to similar tasks. 
+This is a well written and easy to understand paper that describes a nice real-world application of nlp technology using a combination of well-understood techniques.
+I like the paper. It is a good example of applying NLP technology to a non-NL, but related problem and tackles the problem quite successfully. I think there are a few weaknesses in the paper. First of all, I think that the chosen baselines are very weak and some of them rather pointless. It is fine to point out that this task can be seen as a NLP segmentation task, but it is a bit naieve to think that a tokenizer that is optimised for a completely different task would do reasonably well at this task. So, where I can see that the naieve baseline 'Delimiter' is somewhat insightful (but given the explanation of how inconsistent sensor manufacturers are, it shouldn't be expected to work terribly wel either), none of the others give much extra insight. Something I was missing, was maybe an easier language model. I would expect a simple character ngram model to work quite well (instead of the LSTM). I think it might be nice to get an understanding how necessary it is to use a more!
+  complicated model. Having said that, it is interesting (and possibly not unexpected ) to see that the Forward algorithm works so much better than the Backward. However, it is not immediately clear that the Backward algo does add insight. Why not try bi-directional model as well? It is an easy win in so many NLP applications.
+One other thing. I am assuming that for each building you have to train a new model. However, I would assume that there is some information that can be generalised over naming conventions for al buildings. Have the authors tried to get a signal from the complete corpus to see if it allowed the model to generalise better?
+---------------------------------------------------------------------------
+
+
+Reasons to Accept
+---------------------------------------------------------------------------
+It is a nice application of NLP technology to a real-world non-language task. The language modelling approach is pretty standard, but combined with the self-supervised framework to decide on the segment boundaries, there is also a non-trivial element to the paper. I think that element is well-performed and will be generalisable to other tasks.
+---------------------------------------------------------------------------
+
+
+Reasons to Reject
+---------------------------------------------------------------------------
+It is nice, but there is little novelty. I don't know the task area at all, but I think that the baselines are a bit too weak to compare to. I would hope that other people had worked on this task before and a comparison with a proper competitive system (if exists) would be insightful.
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+Reviewer's Scores
+---------------------------------------------------------------------------
+                  Overall Recommendation: 3.5
+
+
+============================================================================
+                            REVIEWER #3
+============================================================================
+
+The core review
+---------------------------------------------------------------------------
+This paper proposes to frame the segmentation of names of sensors as an NLP task. Specifically, a semi-supervised approach is followed where the transition probabilities of a language model are used to attach labels to segments. Then a classifier is trained on these pseudo-labeled data in order to segment the names.
+
+Generally, seems to be a valid approach even though the use of a neural model for the final classifier is questionable as is known that neural models fit very well the noise in the labels unless some specific regularization in the loss is used.
+
+I am missing some parts as how the different models were tuned. So, if authors used a separate training set to tune the threshold. Maybe I missed this part.
+
+One dataset seems quite limited to be honest.
+
+Then the differences with the other approaches rings a bell of not well tuned approaches. 
+
+Also, did the authors try to see whether by having a test set of only one vendor that is never used in the training are able to do appropriate segmentation?
+
+Generally experimental setup needs more work here.
+---------------------------------------------------------------------------
+
+
+Reasons to Accept
+---------------------------------------------------------------------------
+Approach is interesting
+
+Results seems good even though I believe that baselines are not well tuned.
+---------------------------------------------------------------------------
+
+
+Reasons to Reject
+---------------------------------------------------------------------------
+- Limited use of datasets
+- Experimental setup can be better with more settings.
+- Baselines seem very weak.
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+Reviewer's Scores
+---------------------------------------------------------------------------
+                  Overall Recommendation: 2.5
+
+Questions for the Author(s)
+---------------------------------------------------------------------------
+Please see my detailed review
+---------------------------------------------------------------------------

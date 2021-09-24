@@ -1,0 +1,205 @@
+Review #586A
+===========================================================================
+
+Paper summary
+-------------
+This paper presents a design of the system that can capture as many events as possible while avoiding the depletion of the sensor node's energy faced with unpredictable, sporadic energy availability. Ember, an energy management technique that uses deep reinforcement learning to learn energy availability and event patterns in the environment and adapt to the changing trends. Ember has been prototyped and its performance is demonstrated through real-world experiments.
+
+Reasons to accept the paper
+---------------------------
+The difference of the work from prior works is summarized in Table 1, which is helpful for readers (and reviewers) to understand the novelty and the contribution(s) of the work. The proposed technique called Ember has been implemented and tested through real-world experiments.
+
+Major weaknesses of the paper
+-----------------------------
+Nothing particular.
+
+Comments for author
+-------------------
+This paper presents an energy management technique that users deep RL to learn energy availability and event patterns in the environment and adapt to the changing trends. The approach is quite interesting and the paper is basically well written. The more detailed comments are as follows.
+
+The paper clearly claims the novelty and the originality of the work in the introduction, which are successfully ensured.
+
+As the reviewer mentioned, the difference of the work from prior works is summarized in Table 1, which is helpful for readers to identify the novelty and the contribution(s) of the work.
+
+The implementation for experiment has been well developed. The demonstration in the real field has made the effectiveness of the proposed system convincing.
+
+As an editorial comment, the visibility of the paper including figures is good.
+
+Overall merit
+-------------
+4. Accept
+
+Involves human subject research
+-------------------------------
+2. Does not involve human and animal subjects or ethical review / approval
+   is mentioned in the paper.
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+Review #586B
+===========================================================================
+
+Paper summary
+-------------
+In this paper, the authors present Ember, a Reinforcement-learning wake-up mechanism for event-based sensing on batteryless devices. Using Proximal Policy Optimization and by inputing the current storage capacity, lighting level and current time, their system is able to decide when to turn on sensing and for how long. The authors augment their RL agent with a self-supervised approach, where a traditional algorithm is used to collect data when energy is available, and allows Ember to improve exploration and be trained further to adapt to new environments. The authors test their solution on 20-days traces from several environments, and is further evaluated on real-life sensors for 10 days.
+
+Reasons to accept the paper
+---------------------------
+- State-of-the-art RL tools applied to an interesting problem
+- The self-supervised component is a good approach to solve learning in non-stationary and unknown environments
+
+Major weaknesses of the paper
+-----------------------------
+- I am unsure how the offline analysis is conducted, and if the high event detection can be caused by overfitting
+
+Comments for author
+-------------------
+The paper is well written and very interesting, and the use of state-of-the-art RL techniques, combined with your self-supervised exploration, should be of interest to the community.
+I am not sure to understand your methodology in Sec 5.2. You state that "we use our day-by-day [training] with historical data". Should we understand that you use your 20-day trace as the basis of your simulator to train until convergence, after which you evaluate with 5 runs? Do all runs use the same trained model? Are you using a separate testing set during the evaluation? If this is not the case, and the evaluation part reuse the environment with the same traces, how can you ensure that your model simply does not overfit your data, and learns precisely when events happen? This could explain Fig. 6, where your model is able to wake-up minutes before an event.
+How do you explain the degradation from 95% event detection in your simulation environment, for the office, to 78% in the real-world deployment? Did the conditions change dramatically? Such a difference can also be due to overfitting in your offline evaluation.
+What neural architecture are you using? You did not state it in the paper.
+
+In Table 6, all values are close, and it is hard to select a state representation that outperforms (especially since you use a 60min update, the minute field should have little to no impact). What is the standard deviation between your 5 runs here?
+
+I really like your self-supervised approach, where you augment your system with an oracle to obtain ground truth label. Have you compared your system+self-supervision vs PPO with, for example, 20 percent exploration at runtime? I assume that your approach yields better results, but this can be considered as a baseline if you continue to improve this component further in the future. Maybe looking into the Upper Confidence Bound can help you find more advanced heuristic than a simple round-robin.
+
+In 2.2, you define the loss function $L_\theta$ (Eq. 1). In [58], the authors use the terms "loss" and "objective" functions interchangeably, since they use a gradient ascent approach to learn their objective. Later on, the $L_\phi$ loss (Eq 4) is solved through gradient descent. You might want to indicate that Eq.1 is solved through gradient ascent, as most people would assume that PPO tries to minimise the loss.
+
+Have you tried if different reward values (0.1 instead of 0.01) have an impact on the learned behaviour?
+
+Overall merit
+-------------
+3. Weak accept
+
+Involves human subject research
+-------------------------------
+2. Does not involve human and animal subjects or ethical review / approval
+   is mentioned in the paper.
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+Review #586C
+===========================================================================
+
+Paper summary
+-------------
+The paper presents a system called Ember: reinforcement-learning system aiding in learning sensing patterns for battery-free autonomous indoor wireless sensing mote. The learning process is bases on a well-cited algorithm presented already online ("Proximal policy optimization algorithms"). The objective of the system presented in this submission is to minimize missed sensing events while maximizing the life-time of the battery-free sensor. The system has been evaluated on a real custom battery-free sensor (together with a back-end system for learning and simulations) and very extensively evaluated in a very realistic indoor scenario.
+
+Reasons to accept the paper
+---------------------------
+* Very well written paper in terms of presentation: clear design goals, clear statements what the contributions are (and what elements of the whole system are taken from other works)
+* Very large set of experimental results based on the real battery-free hardware platform: results were diverse in terms of scenarios, location, and duration; all this makes the reader convinced that the system will really work in the wild as promised
+* Paper attacks an important societal problem, i.e. a battery pollution by IoT systems
+* Extremely good match with the scope of SenSys, i.e. a sensor network platform
+
+Major weaknesses of the paper
+-----------------------------
+* No comparison with other system from the literature targeting battery-free sensing (even the ones that would in most cases fail)
+* This paper does not present anything new scientifically, while it simply applies the Proximal Policy Optimization to a newly-engineered system presented here by the authors
+
+Comments for author
+-------------------
+Dear Authors, thank you for submitting your paper to ACM SenSys 2020 conference. I really enjoyed reading your submission. Like I wrote in my list of "Reasons to accept the paper", your paper is very well written in terms of presentation, structure, contributions. I also deeply admire your attention to details. It shows that you care to present a paper that the audience will appreciate to read.
+
+The amount of the evaluation is broad, and different aspects of the battery-free deployment (indoors) and its application to sensing are explored and evaluated. I really like the comparison with the battery-powered nodes (and I also like the last paragraph before conclusions "Battery Replacement" where the difficulties of deploying IoT with batteries are discussed). The fact that the actual sensor mote was built and deployed in such numbers (40 nodes) gives the credibility to the result.
+
+I also liked the fact that the authors clearly specified what is the author's contribution and what is not. And what does not belong to this contribution is the core foundation of the reinforcement learning used in Ember (i.e. Section 2.2  "Proximal Policy Optimization"). So from the academic perspective, this submission is an application of an existing algorithm to the engineered system and showing what one has learned from such an implementation. This is the biggest weakness of the paper.
+
+Nonetheless, while I don't see a strong scientific contribution in this paper (to say once more - as it is mostly an extremely-well executed sensing platform that applies existing algorithm for reinforcement learning running on a classical single-hop network with a sensor made of off-the-shelf components), the depth of evaluation and prove that one can make a very accurate sensing with battery-free sensors powered by not-that-great indoor office environment is something that I really appreciated.
+
+# Editorial comments
+* I would replace "*" symbol with $\times$ if one refers to multiplication
+* I suggest to keep all tables and titles on top of the page, not in-between paragraphs in any location on the page
+* Table 1: there are already systems that perform continuous learning on intermittently-powered systems, so the information in the table should be updated; the same comments applies to "Event-driven apps" - more and more intermittent computing runtimes address this issue so this information should be updated as well
+
+Overall merit
+-------------
+3. Weak accept
+
+Involves human subject research
+-------------------------------
+2. Does not involve human and animal subjects or ethical review / approval
+   is mentioned in the paper.
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+Review #586D
+===========================================================================
+
+Paper summary
+-------------
+This paper proposes an idea using reinforcement learning (RL) to optimize the functioning states of a batteryless and energy-harvesting sensing system. The assumption made for designing such system is that the harvested energy is not sufficient enough to keep the sensors always on and the energy may not be available at the occurring time of meaningful events. The proposed RL scheme is designed to decide when to turn which sensor on or off to capture as many meaningful events as possible. The paper reports evaluation results from experiments conducted in an indoor deployment of 40 sensor nodes for 10 days.
+
+Reasons to accept the paper
+---------------------------
++ Real deployment
++ Integration of machine learning techniques for real sensor systems.
+
+Major weaknesses of the paper
+-----------------------------
+Details in comments.
+
+Comments for author
+-------------------
+- Overall, the idea of applying reinforcement learning for managing energy in energy-harvesting systems is not new. The authors claim that the proposed solution is novel in the way that it is not limited to a static environment and can adapt to environmental changes over time, but the evaluation is not convincing as both motion and ambient sensing data in the indoor environment (office-like) are highly predictable. The pattern of indoor light intensity is particularly quite static, hence it is expected that the system can profile the capacity charge or available energy at each sensor node.
+
+- A 10-day experiment seems to be too short for proper evaluation of the system. I'm curious how the pattern of each sensing channel changed throughout the data collection, and how the policy of each sensor node changed over time? Is there a saturation point observed in the evaluation study?
+
+- Does each sensor node require a dedicated RL model to frequently update its policy? Would the inter-node information be useful for optimizing the policy of each node? as ambient and motion data of the neighbor nodes may have correlations.
+
+- The choice of the reward function is not well described (or justified). In particular, why is it better to apply a penalty every time the capacitor depletes (depleted count) instead of depleted duration? Could it be possible in the former case that a sensor node will keep all the sensors off just to avoid depleting energy while it can sense more data for some duration then get depleted?
+
+- If the charging capacity of a capacitor decreases over time, how does it affect the system?
+
+Overall merit
+-------------
+2. Weak reject
+
+Involves human subject research
+-------------------------------
+2. Does not involve human and animal subjects or ethical review / approval
+   is mentioned in the paper.
+
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+Review #586E
+===========================================================================
+
+Paper summary
+-------------
+This paper presents a system to use deep reinforcement learning to manage the energy usage of batteryless event-detection sensors.
+
+Reasons to accept the paper
+---------------------------
+Addresses an important problem, presents and implements a system that is shown to outperform prior works.
+
+Major weaknesses of the paper
+-----------------------------
+Insufficient exploration of limitations. No indication of sharing trained model / data for repeatability, benchmarking and to contribute to further developments.
+
+Comments for author
+-------------------
+The work is well-motivated, and I appreciated the clear identification and quantified comparison with relevant prior works in this space.
+
+The paper would benefit from more systematic exploration of conditions under which the proposed approach would *not* do well? Could an adversary cause the system to perform poorly? How?
+
+I would encourage the authors to post/share code/data/models from their work publicly to enable other researchers to verify and validate their work, to benchmark against it and build on their work.
+
+Overall merit
+-------------
+3. Weak accept
+
+Involves human subject research
+-------------------------------
+2. Does not involve human and animal subjects or ethical review / approval
+   is mentioned in the paper.
+
+
